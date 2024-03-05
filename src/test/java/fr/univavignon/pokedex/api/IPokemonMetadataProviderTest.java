@@ -42,4 +42,30 @@ public class IPokemonMetadataProviderTest {
         assertEquals(168, metadata2.getDefense(), "Aquali defense doit être : 168 !!! ");
         assertEquals(260, metadata2.getStamina(), "Aquali endurance doit être : 260 !!!");
     }
+    //pour que je teste un index Invalid
+    @Test
+    public void getPokemonMetadata_IndexInvalideTest() {
+        // mockito pour lancer PokedexException si idx >150 ou > 0
+        Mockito.when(metadataProvider.getPokemonMetadata(argThat(idx -> idx < 0 || idx > 150)))
+                .thenThrow(new PokedexException("Index invalide"));
+
+        // Test pour idx > 150
+        int idxSuperieur = 155;
+        Exception exptSup = assertThrows(PokedexException.class, () -> {
+            metadataProvider.getPokemonMetadata(idxSuperieur);
+        }, "si l'index > 150 : PokedexException doit être lancée !!!");
+        assertTrue(exptSup.getMessage().contains("Index invalide"),
+                "Le message pour idx sup doit contenir 'Index invalide'");
+
+        // Test pour idx < 0
+        int idxInferieur = -1;
+        Exception exptInf = assertThrows(PokedexException.class, () -> {
+            metadataProvider.getPokemonMetadata(idxInferieur);
+        }, "si l'index < 0 : PokedexException doit être lancée !!!");
+        assertTrue(exptInf.getMessage().contains("Index invalide"),
+                "Le message pour idx inf doit contenir 'Index invalide'");
+    }
+
+
+
 }
