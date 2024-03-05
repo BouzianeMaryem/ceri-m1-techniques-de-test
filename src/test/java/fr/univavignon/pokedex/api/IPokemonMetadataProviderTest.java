@@ -42,6 +42,7 @@ public class IPokemonMetadataProviderTest {
         assertEquals(260, metadata2.getStamina(), "Aquali endurance doit être : 260 !!!");
     }
     //pour que je teste un index Invalid
+      // sup à 150
     @Test
     public void getPokemonMetadata_invalidIndexSup150() throws PokedexException {
 
@@ -55,7 +56,7 @@ public class IPokemonMetadataProviderTest {
             metadataProvider.getPokemonMetadata(invalidIndex);
         }, "si invalid indx lance PodexException");
     }
-
+    // inf à 0
     @Test
     public void getPokemonMetadata_invalidIndexInfZero() throws PokedexException {
 
@@ -69,13 +70,5 @@ public class IPokemonMetadataProviderTest {
             metadataProvider.getPokemonMetadata(invalidIndex);
         }, "si invalid indx lance PodexException");
     }
-    @Test
-    public void getPokemonMetadata_invalidIndexInfComp() throws PokedexException {
-        int invalidIndexInf = -6;
 
-        verify(metadataProvider, never()).getPokemonMetadata(argThat(index -> index < 0));
-        assertThrows(PokedexException.class, () -> {
-            metadataProvider.getPokemonMetadata(invalidIndexInf);
-        }, "Une PokedexException doit être lancée pour un index invalide inférieur à zéro");
-    }
 }
