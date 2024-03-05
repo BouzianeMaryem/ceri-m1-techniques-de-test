@@ -57,7 +57,6 @@ public class IPokemonMetadataProviderTest {
             metadataProvider.getPokemonMetadata(invalidIndex);
         }, "A PokedexException should be thrown for an invalid idx");
     }
-}
 
 
 
