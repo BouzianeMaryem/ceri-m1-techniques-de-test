@@ -6,9 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.any;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
@@ -19,6 +19,7 @@ public class IPokemonTrainerFactoryTest {
 
     @Mock
     private IPokedex mockPokedex;
+
     @Mock
     private IPokemonTrainerFactory factoryTrainerMock;
 
@@ -28,22 +29,22 @@ public class IPokemonTrainerFactoryTest {
     @BeforeEach
     void setUp() {
 
-        when(mockPokedexFactory.createPokedex(any(), any())).thenReturn(mockPokedex);
+        lenient().when(mockPokedexFactory.createPokedex(any(), any())).thenReturn(mockPokedex);
     }
 
     @Test
-    public void ensureTrainerCreationIsCorrect() {
+    public void verifyTrainerCreatedIsCorrect() {
         String nomTrainer = "Misty";
         Team choixTeam = Team.VALOR;
 
 
-        when(factoryTrainerMock.createTrainer(nomTrainer, choixTeam, mockPokedexFactory)).thenReturn(expectTrainerMock);
+        lenient().when(factoryTrainerMock.createTrainer(nomTrainer, choixTeam, mockPokedexFactory)).thenReturn(expectTrainerMock);
 
 
         PokemonTrainer newTrain = factoryTrainerMock.createTrainer(nomTrainer, choixTeam, mockPokedexFactory);
 
         verify(factoryTrainerMock).createTrainer(nomTrainer, choixTeam, mockPokedexFactory);
 
-        assertEquals(expectTrainerMock, newTrain, "le trainer creé doit matcher avec le trainer qu'on attend !!!");
+        assertEquals(expectTrainerMock, newTrain, "The created trainer should match the expected mock instance.");
     }
 }
