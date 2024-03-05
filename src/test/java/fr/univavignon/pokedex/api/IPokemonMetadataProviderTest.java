@@ -32,14 +32,18 @@ public class IPokemonMetadataProviderTest {
         int attaqueReal = 186;
         int defenseReal = 168;
         int enduranceReal = 260;
+
+        // Configuration de mock pour Aquali
         Mockito.when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal));
+
         PokemonMetadata metadataAquili = metadataProvider.getPokemonMetadata(133);
-        //verification
-        assertNotNull(metadataAquiliTest, "Les metadonnes ne doivent pas être nulles !!!");
-        assertEquals(indexReal, metadataAquili.getIndex(), "L'index  est incorrect !!!");
+
+        // Vérification
+        assertNotNull(metadataAquili, "Les metadonnes ne doivent pas être nulles !!!");
+        assertEquals(indexReal, metadataAquili.getIndex(), "L'index est incorrect !!!");
         assertEquals(nomReal, metadataAquili.getName(), "Le nom est incorrect !!!");
         assertEquals(attaqueReal, metadataAquili.getAttack(), "La valeur d'attaque est incorrecte!!!");
-        assertEquals(defenseReal, metadataAquili.getDefense(), "La valeur de défense  est incorrecte !!!");
+        assertEquals(defenseReal, metadataAquili.getDefense(), "La valeur de défense est incorrecte !!!");
         assertEquals(enduranceReal, metadataAquili.getStamina(), "La valeur d'endurance est incorrecte !!!");
     }
 
