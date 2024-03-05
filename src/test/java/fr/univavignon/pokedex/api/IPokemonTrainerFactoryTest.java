@@ -6,45 +6,44 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 public class IPokemonTrainerFactoryTest {
 
     @Mock
-    private IPokedexFactory pokedexFactory;
+    private IPokedexFactory mockPokedexFactory;
 
     @Mock
-    private IPokedex pokedex;
+    private IPokedex mockPokedex;
+    @Mock
+    private IPokemonTrainerFactory factoryTrainerMock;
 
     @Mock
-    private IPokemonTrainerFactory trainerFactory;
-
-    @Mock
-    private PokemonTrainer expectedTrainer;
+    private PokemonTrainer expectTrainerMock;
 
     @BeforeEach
     void setUp() {
-        // Configurez le mock de pokedexFactory pour retourner un mock de pokedex
-        lenient().when(pokedexFactory.createPokedex(any(), any())).thenReturn(pokedex);
+
+        when(mockPokedexFactory.createPokedex(any(), any())).thenReturn(mockPokedex);
     }
 
     @Test
-    void testCreateTrainer() {
-        String trainerName = "Ash";
-        Team team = Team.MYSTIC;
+    public void ensureTrainerCreationIsCorrect() {
+        String nomTrainer = "Misty";
+        Team choixTeam = Team.VALOR;
 
-        // Configuration du mock de trainerFactory pour retourner le mock expectedTrainer
-        when(trainerFactory.createTrainer(trainerName, team, pokedexFactory)).thenReturn(expectedTrainer);
 
-        // Invocation de la méthode à tester
-        PokemonTrainer createdTrainer = trainerFactory.createTrainer(trainerName, team, pokedexFactory);
+        when(factoryTrainerMock.createTrainer(nomTrainer, choixTeam, mockPokedexFactory)).thenReturn(expectTrainerMock);
 
-        // Vérification que le mock de createTrainer a été appelé avec les bons arguments
-        verify(trainerFactory).createTrainer(trainerName, team, pokedexFactory);
 
-        // Assertion pour vérifier que le trainer retourné est bien le mock attendu
-        assertSame(expectedTrainer, createdTrainer, "Le trainer créé doit être le même que le mock attendu.");
+        PokemonTrainer newTrain = factoryTrainerMock.createTrainer(nomTrainer, choixTeam, mockPokedexFactory);
+
+        verify(factoryTrainerMock).createTrainer(nomTrainer, choixTeam, mockPokedexFactory);
+
+        assertEquals(expectTrainerMock, newTrain, "le trainer creé doit matcher avec le trainer qu'on attend !!!");
     }
 }
