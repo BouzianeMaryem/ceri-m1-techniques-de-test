@@ -51,5 +51,11 @@ public class IPokedexTest {
         int idxHerbizarre = pokedex.addPokemon(new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70));
         assertEquals(1, idxAquali);
     }
+    //test getpokemon
+    @Test
+    public void testGetPokemon() throws PokedexException {
+        assertEquals(bulbizarre, pokedex.getPokemon(0));
+        assertEquals(herbizarre, pokedex.getPokemon(1));
+    }
 
 }
