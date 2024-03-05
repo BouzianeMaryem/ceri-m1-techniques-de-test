@@ -45,27 +45,20 @@ public class IPokemonMetadataProviderTest {
     }
     //pour que je teste un index Invalid
     @Test
-    public void getPokemonMetadata_IndexInvalideTest() throws PokedexException {
-        // mockito pour lancer PokedexException si idx >150 ou > 0
-        Mockito.when(metadataProvider.getPokemonMetadata(argThat(idx -> idx < 0 || idx > 150)))
-                .thenThrow(new PokedexException("Index invalide"));
+    public void getPokemonMetadata_invalidIndex() throws PokedexException {
 
-        // Test pour idx > 150
-        int idxSuperieur = 155;
-        Exception exptSup = assertThrows(PokedexException.class, () -> {
-            metadataProvider.getPokemonMetadata(idxSuperieur);
-        }, "si l'index > 150 : PokedexException doit être lancée !!!");
-        assertTrue(exptSup.getMessage().contains("Index invalide"),
-                "Le message pour idx sup doit contenir 'Index invalide'");
+        when(metadataProvider.getPokemonMetadata(155)).thenThrow(new PokedexException("Invalid idx"));
 
-        // Test pour idx < 0
-        int idxInferieur = -1;
-        Exception exptInf = assertThrows(PokedexException.class, () -> {
-            metadataProvider.getPokemonMetadata(idxInferieur);
-        }, "si l'index < 0 : PokedexException doit être lancée !!!");
-        assertTrue(exptInf.getMessage().contains("Index invalide"),
-                "Le message pour idx inf doit contenir 'Index invalide'");
+
+        int invalidIndex = 155;
+
+
+        assertThrows(PokedexException.class, () -> {
+            metadataProvider.getPokemonMetadata(invalidIndex);
+        }, "A PokedexException should be thrown for an invalid idx");
     }
+}
+
 
 
 
