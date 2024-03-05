@@ -36,7 +36,7 @@ public class IPokemonMetadataProviderTest {
         Mockito.when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal));
         PokemonMetadata metadata2 = metadataProvider.getPokemonMetadata(133);
         assertNotNull(metadata2);
-        assertEquals("Aquali", metadata2.getName())
+        assertEquals("Aquali", metadata2.getName());
     }
 
 
