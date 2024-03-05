@@ -14,27 +14,22 @@ public class IPokedexTest {
     private Pokemon herbizarre;
 
     @BeforeEach
-    public void setUp() throws PokedexException{
-        // Mock IPokedex
+    public void setUp() throws PokedexException {
         pokedex = mock(IPokedex.class);
 
-        //  Bulbizarre et Herbizarre
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         herbizarre = new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
 
-
         when(pokedex.size()).thenReturn(2);
-+
+
         when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
         when(pokedex.getPokemon(1)).thenReturn(herbizarre);
 
         when(pokedex.getPokemons()).thenReturn(List.of(bulbizarre, herbizarre));
 
-        //  tri des pokemons
         Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getName);
         when(pokedex.getPokemons(comparator)).thenReturn(List.of(bulbizarre, herbizarre));
 
-        // ajout pockmon pour la fonction add
         when(pokedex.addPokemon(any(Pokemon.class))).thenAnswer(invocation -> {
             Pokemon pokemon = invocation.getArgument(0);
             if (pokemon.getName().equals("Bulbizarre")) return 0;
@@ -42,12 +37,12 @@ public class IPokedexTest {
             else return -1;
         });
     }
-//test size
+// test size
     @Test
     public void testSize() {
         assertEquals(2, pokedex.size());
     }
-//test add
+// test add pokemon
     @Test
     public void testAddPokemon() {
         // Test de l'ajout de Bulbizarre
