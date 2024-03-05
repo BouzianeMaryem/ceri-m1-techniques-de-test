@@ -53,18 +53,21 @@ public class IPokemonMetadataProviderTest {
 
         assertThrows(PokedexException.class, () -> {
             metadataProvider.getPokemonMetadata(invalidIndex);
-        }, "A PokedexException should be thrown for an invalid index");
+        }, "si invalid indx lance PodexException");
     }
+
     @Test
-    public void getPokemonMetadata_invalidSupInfIndex() throws PokedexException {
-        // Verification  index > 150
-        int invalidIndexSup = 170;
-        verify(metadataProvider, never()).getPokemonMetadata(argThat(index -> index > 150));
-        metadataProvider.getPokemonMetadata(invalidIndexSup);
-        // Verification  index < 0
-        int invalidIndexInf = -2;
-        verify(metadataProvider, never()).getPokemonMetadata(argThat(index -> index < 0));
-        metadataProvider.getPokemonMetadata(invalidIndexInf);
+    public void getPokemonMetadata_invalidIndexInfZero() throws PokedexException {
+
+        when(metadataProvider.getPokemonMetadata(-6)).thenThrow(new PokedexException("Invalid index"));
+
+
+        int invalidIndex = -6;
+
+
+        assertThrows(PokedexException.class, () -> {
+            metadataProvider.getPokemonMetadata(invalidIndex);
+        }, "si invalid indx lance PodexException");
     }
 
 }
