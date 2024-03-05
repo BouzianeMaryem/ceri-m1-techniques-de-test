@@ -26,9 +26,15 @@ public class IPokedexTest {
         when(pokedex.getPokemon(1)).thenReturn(herbizarre);
 
         when(pokedex.getPokemons()).thenReturn(List.of(bulbizarre, herbizarre));
-
+        //Comparator
         Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getName);
-        when(pokedex.getPokemons(comparator)).thenReturn(List.of(bulbizarre, herbizarre));
+        when(pokedex.getPokemons(comparator)).thenAnswer(invocation -> {
+            Comparator<Pokemon> comp = invocation.getArgument(0, Comparator.class);
+            List<Pokemon> sortedPokemons = List.of(bulbizarre, herbizarre);
+            sortedPokemons.sort(comp);
+            return sortedPokemons;
+        });
+
 
         when(pokedex.addPokemon(any(Pokemon.class))).thenAnswer(invocation -> {
             Pokemon pokemon = invocation.getArgument(0);
