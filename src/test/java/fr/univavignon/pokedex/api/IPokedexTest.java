@@ -53,4 +53,18 @@ public class IPokedexTest {
         int idxHerbizarre = pokedex.addPokemon(herbizarre);
         assertEquals(1, idxHerbizarre);
     }
+    // test getpokemon()
+    @Test
+    public void testGetPokemon() throws PokedexException {
+        assertEquals(bulbizarre, pokedex.getPokemon(0));
+        assertEquals(herbizarre, pokedex.getPokemon(1));
+    }
+//test getpokemons
+    @Test
+    public void testGetPokemons() {
+        List<Pokemon> pokemons = pokedex.getPokemons();
+        assertNotNull(pokemons);
+        assertEquals(2, pokemons.size());
+        assertTrue(pokemons.containsAll(List.of(bulbizarre, herbizarre)));
+    }
 }
