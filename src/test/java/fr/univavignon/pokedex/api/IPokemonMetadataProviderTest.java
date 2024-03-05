@@ -24,28 +24,24 @@ public class IPokemonMetadataProviderTest {
     }
     //avec le pokemon Aquali
     // ici, je teste  plus de parametres
-   @Test
-   public void getPokemonMetadata_AvecValidIndexAquali() throws PokedexException {
-       // je teste les metadonnees suivantes:
-       int indexReal = 133;
-       String nomReal = "Aquali";
-       int attaqueReal = 186;
-       int defenseReal = 168;
-       int enduranceReal = 260;
-
-       PokemonMetadata metadataAquiliReal = new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal);
-       when(metadataProvider.getPokemonMetadata(indexReal)).thenReturn(metadataAquiliReal);
-
-       PokemonMetadata metadataAquiliTest = metadataProvider.getPokemonMetadata(indexReal);
-
-       // Vérification
-       assertNotNull(metadataAquiliTest, "Les metadonnes ne doivent pas être nulles !!!");
-       assertEquals(indexReal, metadataAquiliTest.getIndex(), "L'index  est incorrect !!!");
-       assertEquals(nomReal, metadataAquiliTest.getName(), "Le nom est incorrect !!!");
-       assertEquals(attaqueReal, metadataAquiliTest.getAttack(), "La valeur d'attaque est incorrecte!!!");
-       assertEquals(defenseReal, metadataAquiliTest.getDefense(), "La valeur de défense  est incorrecte !!!");
-       assertEquals(enduranceReal, metadataAquiliTest.getStamina(), "La valeur d'endurance est incorrecte !!!");
-   }
+    @Test
+    public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
+        // je teste les metadonnees suivantes:
+        int indexReal = 133;
+        String nomReal = "Aquali";
+        int attaqueReal = 186;
+        int defenseReal = 168;
+        int enduranceReal = 260;
+        Mockito.when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal));
+        PokemonMetadata metadataAquili = metadataProvider.getPokemonMetadata(133);
+        //verification
+        assertNotNull(metadataAquiliTest, "Les metadonnes ne doivent pas être nulles !!!");
+        assertEquals(indexReal, metadataAquili.getIndex(), "L'index  est incorrect !!!");
+        assertEquals(nomReal, metadataAquili.getName(), "Le nom est incorrect !!!");
+        assertEquals(attaqueReal, metadataAquili.getAttack(), "La valeur d'attaque est incorrecte!!!");
+        assertEquals(defenseReal, metadataAquili.getDefense(), "La valeur de défense  est incorrecte !!!");
+        assertEquals(enduranceReal, metadataAquili.getStamina(), "La valeur d'endurance est incorrecte !!!");
+    }
 
 
 }
