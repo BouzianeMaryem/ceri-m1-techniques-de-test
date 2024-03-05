@@ -50,15 +50,16 @@ public class IPokemonMetadataProviderTest {
     @Test
     public void getPokemonMetadata_invalidIndex() throws PokedexException {
 
-        Mockito.when(metadataProvider.getPokemonMetadata(155)).thenThrow(new PokedexException("Invalid idx"));
+        when(metadataProvider.getPokemonMetadata(155)).thenThrow(new PokedexException("Invalid index"));
+
 
         int invalidIndex = 155;
 
+
         assertThrows(PokedexException.class, () -> {
             metadataProvider.getPokemonMetadata(invalidIndex);
-        }, PokedexException doit etre lancer pour invalid idx");
+        }, "A PokedexException should be thrown for an invalid index");
     }
-
 
 
 }
