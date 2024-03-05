@@ -55,4 +55,16 @@ public class IPokemonMetadataProviderTest {
             metadataProvider.getPokemonMetadata(invalidIndex);
         }, "A PokedexException should be thrown for an invalid index");
     }
+    @Test
+    public void getPokemonMetadata_invalidSupInfIndex() throws PokedexException {
+        // Verification  index > 150
+        int invalidIndexSup = 160;
+        verify(metadataProvider, never()).getPokemonMetadata(argThat(index -> index > 150));
+        metadataProvider.getPokemonMetadata(invalidIndexSup);
+        // Verification  index < 0
+        int invalidIndexInf = -2;
+        verify(metadataProvider, never()).getPokemonMetadata(argThat(index -> index < 0));
+        metadataProvider.getPokemonMetadata(invalidIndexInf);
+    }
+
 }
