@@ -45,7 +45,7 @@ public class IPokemonMetadataProviderTest {
     }
     //pour que je teste un index Invalid
     @Test
-    public void getPokemonMetadata_IndexInvalideTest() {
+    public void getPokemonMetadata_IndexInvalideTest() throws PokedexException {
         // mockito pour lancer PokedexException si idx >150 ou > 0
         Mockito.when(metadataProvider.getPokemonMetadata(argThat(idx -> idx < 0 || idx > 150)))
                 .thenThrow(new PokedexException("Index invalide"));
