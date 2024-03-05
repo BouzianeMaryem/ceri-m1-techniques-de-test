@@ -3,21 +3,17 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
 
 @ExtendWith(MockitoExtension.class)
 public class IPokemonMetadataProviderTest {
 
+    @Mock
+    private IPokemonMetadataProvider metadataProvider;
 
-
-    @BeforeEach
-    public void setUp() {
-        metadataProvider = Mockito.mock(IPokemonMetadataProvider.class);
-    }
 //pour que je teste un index Valid
     //avec le pokemon Bulbizarre
     @Test
