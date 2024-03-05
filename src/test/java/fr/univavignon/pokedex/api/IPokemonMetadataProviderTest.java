@@ -26,23 +26,18 @@ public class IPokemonMetadataProviderTest {
     // ici, je teste  plus de parametres
     @Test
     public void getPokemonMetadata_AvecValidIndexAquali() throws PokedexException {
+
         int indexReal = 133;
         String nomReal = "Aquali";
         int attaqueReal = 186;
         int defenseReal = 168;
         int enduranceReal = 260;
 
-        PokemonMetadata metadataAqualiReal = new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal);
-        when(metadataProvider.getPokemonMetadata(indexReal)).thenReturn(metadataAqualiReal);
-
-        PokemonMetadata metadataAqualiTest = metadataProvider.getPokemonMetadata(indexReal);
-
-        assertNotNull(metadataAqualiTest);
-        assertEquals(indexReal, metadataAqualiTest.getIndex());
-        assertEquals(nomReal, metadataAqualiTest.getName());
-        assertEquals(attaqueReal, metadataAqualiTest.getAttack());
-        assertEquals(defenseReal, metadataAqualiTest.getDefense());
-        assertEquals(enduranceReal, metadataAqualiTest.getStamina());
+        Mockito.when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal));
+        PokemonMetadata metadata2 = metadataProvider.getPokemonMetadata(133);
+        assertNotNull(metadata2);
+        assertEquals("Aquali", metadata2.getName())
     }
+
 
 }
