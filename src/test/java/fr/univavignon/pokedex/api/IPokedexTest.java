@@ -83,5 +83,14 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.containsAll(List.of(bulbizarre, herbizarre)));
     }
-
+//test order
+@Test
+public void testGetPokemonsOrderParNom() {
+    Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getName);
+    List<Pokemon> pokemons = pokedex.getPokemons(comparator);
+    assertNotNull(pokemons);
+    assertEquals(2, pokemons.size());
+    assertEquals("Bulbizarre", pokemons.get(0).getName());
+    assertEquals("Herbizarre", pokemons.get(1).getName());
+}
 }
