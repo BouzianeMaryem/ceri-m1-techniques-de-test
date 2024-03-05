@@ -53,6 +53,20 @@ public class IPokedexTest {
         int idxHerbizarre = pokedex.addPokemon(herbizarre);
         assertEquals(1, idxHerbizarre);
     }
+    //test on peut pas ajouter des pokemons si la liste est full avec 151 pokemons
+    @Test
+    public void testCannotAddPokemonWhenPokedexIsFull() {
+        //  Pokedex plein
+        when(pokedex.size()).thenReturn(151);
+
+        // si j'essaie d'ajouter un pokemon supp
+        Pokemon extraPokemon = new Pokemon(152, "TestPokemon", 100, 100, 100, 1000, 100, 5000, 5, 100);
+        int indexExtra = pokedex.addPokemon(extraPokemon);
+
+        //peut pas etre ajouté
+        assertEquals(-1, indexExtra, "Aucun Pokémon ne devrait être ajouté si le Pokédex est plein.");
+    }
+
     // test getpokemon()
     @Test
     public void testGetPokemon() throws PokedexException {
@@ -67,4 +81,5 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.containsAll(List.of(bulbizarre, herbizarre)));
     }
+
 }
