@@ -44,7 +44,7 @@ public class IPokedexTest {
                 throw new PokedexException("Index out of bounds");
             }
             return null;
-        }).when(pokedex).getPokemon(anyInt())
+        }).when(pokedex).getPokemon(anyInt());
     }
 // test size
     @Test
