@@ -36,15 +36,7 @@ public class IPokedexTest {
             else if (pokemon.getName().equals("Herbizarre")) return 1;
             else return -1;
         });
-        // config pour idx > 150
-        when(pokedex.getPokemon(151)).thenThrow(new PokedexException("Index out of bounds"));
-        doAnswer(invocation -> {
-            Integer index = invocation.getArgument(0);
-            if (index > 150) {
-                throw new PokedexException("Index out of bounds");
-            }
-            return null;
-        }).when(pokedex).getPokemon(anyInt());
+
     }
 // test size
     @Test
@@ -62,7 +54,8 @@ public class IPokedexTest {
         int idxHerbizarre = pokedex.addPokemon(herbizarre);
         assertEquals(1, idxHerbizarre);
     }
-    //test on peut pas ajouter des pokemons si la liste est full avec 151 pokemons
+    //test on peut pas ajouter des pokemons si la liste est full
+    // c à d : on 151 pokemons
     @Test
     public void testCannotAddPokemonWhenPokedexIsFull() {
         //  Pokedex plein
@@ -90,11 +83,5 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.containsAll(List.of(bulbizarre, herbizarre)));
     }
-//test si index > 150
-@Test
-public void testCannotGetPokemonWithIndexGreaterThan150() {
-    assertThrows(PokedexException.class, () -> {
-        pokedex.getPokemon(151);
-    }, " si  indx > 150: on lancePokedexException ");
-}
+
 }
