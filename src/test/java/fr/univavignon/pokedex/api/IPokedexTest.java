@@ -20,8 +20,8 @@ public class IPokedexTest {
         pokedex = mock(IPokedex.class);
 
         // creation de bulbizarre et herbizarre
-        bulbizarre = new Pokemon(1, "Bulbizarre", 45, 49, 49, 65, 65, 1000, 10, 60);
-        herbizarre = new Pokemon(2, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
+        bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
+        herbizarre = new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
 
         when(pokedex.size()).thenReturn(2);
 
@@ -41,4 +41,15 @@ public class IPokedexTest {
     public void testSize() {
         assertEquals(2, pokedex.size());
     }
+    //test pour add
+    @Test
+    public void testAddPokemon() {
+        //ajout bulbizarre
+        int idxBulbizarre = pokedex.addPokemon(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56));
+        assertEquals(0, idxBulbizarre);
+        // ajout herbizarre
+        int idxHerbizarre = pokedex.addPokemon(new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70));
+        assertEquals(1, idxAquali);
+    }
+
 }
