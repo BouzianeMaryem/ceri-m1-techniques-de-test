@@ -2,7 +2,6 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import java.util.Comparator;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,42 +15,47 @@ public class IPokedexTest {
 
     @BeforeEach
     public void setUp() throws PokedexException{
-        //  mock IPokedex
+        // Mock IPokedex
         pokedex = mock(IPokedex.class);
 
-        // creation de bulbizarre et herbizarre
+        //  Bulbizarre et Herbizarre
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         herbizarre = new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
 
-        when(pokedex.size()).thenReturn(2);
 
-        // pokemon celon son index
+        when(pokedex.size()).thenReturn(2);
++
         when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
         when(pokedex.getPokemon(1)).thenReturn(herbizarre);
 
-        //la liste avec tous le spokemons
         when(pokedex.getPokemons()).thenReturn(List.of(bulbizarre, herbizarre));
 
-        // tri d'ordre pour les pokemons
+        //  tri des pokemons
         Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getName);
         when(pokedex.getPokemons(comparator)).thenReturn(List.of(bulbizarre, herbizarre));
+
+        // ajout pockmon pour la fonction add
+        when(pokedex.addPokemon(any(Pokemon.class))).thenAnswer(invocation -> {
+            Pokemon pokemon = invocation.getArgument(0);
+            if (pokemon.getName().equals("Bulbizarre")) return 0;
+            else if (pokemon.getName().equals("Herbizarre")) return 1;
+            else return -1;
+        });
     }
-// test pour size
+//test size
     @Test
     public void testSize() {
         assertEquals(2, pokedex.size());
     }
-    //test pour add
+//test add
     @Test
     public void testAddPokemon() {
-        //ajout bulbizarre
-        int idxBulbizarre = pokedex.addPokemon(new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56));
+        // Test de l'ajout de Bulbizarre
+        int idxBulbizarre = pokedex.addPokemon(bulbizarre);
         assertEquals(0, idxBulbizarre);
-        // ajout herbizarre
-        int idxHerbizarre = pokedex.addPokemon(new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70));
+
+        // Test de l'ajout de Herbizarre
+        int idxHerbizarre = pokedex.addPokemon(herbizarre);
         assertEquals(1, idxHerbizarre);
     }
-
-
-
 }
