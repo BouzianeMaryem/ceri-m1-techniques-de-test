@@ -2,10 +2,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>tp3</groupId>
     <artifactId>Pokemon</artifactId>
     <version>1.0.0</version>
-    <!-- Configuration générale  -->
+
     <properties>
         <java.version>11</java.version>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
@@ -13,9 +14,9 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
     </properties>
-    <!-- les dependences -->
+
     <dependencies>
-        <!-- JUnit -->
+        <!-- JUnit Jupiter API -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -23,7 +24,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Moteur JUnit  -->
+        <!-- JUnit Jupiter Engine -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -31,13 +32,15 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito core  -->
+        <!-- Mockito Core -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>{version}</version>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Mockito Integration JUnit 5 -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
@@ -45,8 +48,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito Inline  -->
-        <!--  pour mocker les classes finales -->
+        <!-- Mockito Inline for final class mocking -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
@@ -54,10 +56,10 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <!-- configuration de la construction -->
+
     <build>
         <plugins>
-            <!-- pour que je compile le code source en utilisant Java 11 -->
+            <!-- Maven Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -68,7 +70,7 @@
                 </configuration>
             </plugin>
 
-            <!-- pour executer les tests unitaires en incluant les fichiers *Test.java -->
+            <!-- Maven Surefire Plugin for unit tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -82,3 +84,4 @@
         </plugins>
     </build>
 </project>
+
