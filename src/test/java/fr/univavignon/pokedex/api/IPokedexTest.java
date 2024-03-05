@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.Comparator;
 
-public class PokedexTest {
+public class IPokedexTest {
 
     private Pokedex pokedex;
     private Pokemon pokemon1;
