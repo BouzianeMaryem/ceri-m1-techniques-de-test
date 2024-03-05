@@ -58,7 +58,7 @@ public class IPokemonMetadataProviderTest {
     @Test
     public void getPokemonMetadata_invalidSupInfIndex() throws PokedexException {
         // Verification  index > 150
-        int invalidIndexSup = 160;
+        int invalidIndexSup = 170;
         verify(metadataProvider, never()).getPokemonMetadata(argThat(index -> index > 150));
         metadataProvider.getPokemonMetadata(invalidIndexSup);
         // Verification  index < 0
