@@ -81,5 +81,11 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.containsAll(List.of(bulbizarre, herbizarre)));
     }
-
+//test si index > 150
+@Test
+public void testCannotGetPokemonWithIndexGreaterThan150() {
+    assertThrows(PokedexException.class, () -> {
+        pokedex.getPokemon(151);
+    }, " si  indx > 150: on lancePokedexException ");
+}
 }
