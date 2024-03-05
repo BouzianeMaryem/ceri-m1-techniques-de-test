@@ -15,7 +15,7 @@ public class IPokedexTest {
     private Pokemon herbizarre;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws PokedexException{
         //  mock IPokedex
         pokedex = mock(IPokedex.class);
 
