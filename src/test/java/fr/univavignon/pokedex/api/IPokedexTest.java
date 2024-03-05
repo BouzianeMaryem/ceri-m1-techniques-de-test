@@ -36,6 +36,15 @@ public class IPokedexTest {
             else if (pokemon.getName().equals("Herbizarre")) return 1;
             else return -1;
         });
+        // config pour idx > 150
+        when(pokedex.getPokemon(151)).thenThrow(new PokedexException("Index out of bounds"));
+        doAnswer(invocation -> {
+            Integer index = invocation.getArgument(0);
+            if (index > 150) {
+                throw new PokedexException("Index out of bounds");
+            }
+            return null;
+        }).when(pokedex).getPokemon(anyInt())
     }
 // test size
     @Test
