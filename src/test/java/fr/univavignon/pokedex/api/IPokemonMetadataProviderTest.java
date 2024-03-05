@@ -25,7 +25,7 @@ public class IPokemonMetadataProviderTest {
     //avec le pokemon Aquali
     // ici, je teste  plus de parametres
     @Test
-    public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
+    public void getPokemonMetadata_AvecValidIndexAquali() throws PokedexException {
         // je teste les metadonnees suivantes:
         int indexReal = 133;
         String nomReal = "Aquali";
