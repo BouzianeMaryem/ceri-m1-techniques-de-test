@@ -2,7 +2,7 @@ package fr.univavignon.pokedex.api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IPokemonMetadataProviderTest {
@@ -46,4 +46,6 @@ public class IPokemonMetadataProviderTest {
        assertEquals(defenseReal, metadataAquiliTest.getDefense(), "La valeur de défense  est incorrecte !!!");
        assertEquals(enduranceReal, metadataAquiliTest.getStamina(), "La valeur d'endurance est incorrecte !!!");
    }
+
+
 }
