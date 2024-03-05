@@ -20,7 +20,7 @@ public class IPokemonMetadataProviderTest {
         Mockito.when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
         PokemonMetadata metadata = metadataProvider.getPokemonMetadata(0);
         assertNotNull(metadata);
-        assertEquals("Bulbizarre", metadata.getName());
+        assertEquals("Bulbizarr", metadata.getName());
     }
 
 
