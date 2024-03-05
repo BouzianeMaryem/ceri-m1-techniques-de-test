@@ -12,7 +12,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class IPokemonMetadataProviderTest {
 
+    @Mock
     private IPokemonMetadataProvider metadataProvider;
+
 
     @BeforeEach
     public void setUp() {
