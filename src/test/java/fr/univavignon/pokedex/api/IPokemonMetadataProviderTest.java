@@ -35,7 +35,11 @@ public class IPokemonMetadataProviderTest {
 
         Mockito.when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(indexReal, nomReal, attaqueReal, defenseReal, enduranceReal));
         PokemonMetadata metadata2 = metadataProvider.getPokemonMetadata(133);
-        assertNotNull(metadata2);
-        assertEquals("Aquali", metadata2.getName());
+        //verification:
+        assertNotNull(metadata2, "METADATA  ne doit pas être null !!!");
+        assertEquals("Aquali", metadata2.getName(), "Le nom doit être : Aquali !!!");
+        assertEquals(186, metadata2.getAttack(), " Aquali attack doit être : 186 !!!");
+        assertEquals(168, metadata2.getDefense(), "Aquali defense doit être : 168 !!! ");
+        assertEquals(260, metadata2.getStamina(), "Aquali endurance doit être : 260 !!!");
     }
 }
