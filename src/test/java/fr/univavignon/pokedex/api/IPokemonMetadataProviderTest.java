@@ -41,4 +41,18 @@ public class IPokemonMetadataProviderTest {
         assertEquals(168, metadata2.getDefense(), "Aquali defense doit être : 168 !!!");
         assertEquals(260, metadata2.getStamina(), "Aquali endurance doit être : 260 !!!");
     }
+    //pour que je teste un index Invalid
+    @Test
+    public void getPokemonMetadata_invalidIndex() throws PokedexException {
+
+        when(metadataProvider.getPokemonMetadata(155)).thenThrow(new PokedexException("Invalid index"));
+
+
+        int invalidIndex = 155;
+
+
+        assertThrows(PokedexException.class, () -> {
+            metadataProvider.getPokemonMetadata(invalidIndex);
+        }, "A PokedexException should be thrown for an invalid index");
+    }
 }
