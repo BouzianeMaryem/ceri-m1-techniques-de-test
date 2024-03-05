@@ -32,7 +32,7 @@ public class IPokemonFactoryTest {
         assertNotNull(createdPokemon, "Pokémon doit etre non null !!! ");
         assertTrue(createdPokemon.getIndex() == 133, "idx ne correspond pas à celui attendu !!!");
         assertTrue(createdPokemon.getName().equals("Aquali"), "Le nom est different !!!");
-        assertTrue(createdPokemon.getCp() == 2729, "Le cp est different  ");
+        assertTrue(createdPokemon.getCp() == 2729, "Le cp est different !!!");
         assertTrue(createdPokemon.getHp() == 202, " HP est different !!!");
     }
 }
