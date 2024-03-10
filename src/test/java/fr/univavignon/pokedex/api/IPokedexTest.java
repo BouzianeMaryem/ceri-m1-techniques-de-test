@@ -61,7 +61,7 @@ public class IPokedexTest {
         assertEquals(1, idxHerbizarre);
     }
     //test on peut pas ajouter des pokemons si la liste est full
-    // c à d : on 151 pokemons
+    // c à d : on doit pas dépasser 151 pokemons
     @Test
     public void testCannotAddPokemonWhenPokedexIsFull() {
         //  Pokedex plein
