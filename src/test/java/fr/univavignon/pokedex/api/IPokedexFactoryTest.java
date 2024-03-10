@@ -93,6 +93,5 @@ public class IPokedexFactoryTest {
         assertEquals("Herbizarre", sortedPokemons.get(1).getName(), "Herbizarre doit être deuxième.");
     }
 
-}
 
 }
