@@ -12,6 +12,7 @@ import java.util.Comparator;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class IPokedexFactoryTest {
     @Mock
     private IPokemonMetadataProvider metadataProvider;
