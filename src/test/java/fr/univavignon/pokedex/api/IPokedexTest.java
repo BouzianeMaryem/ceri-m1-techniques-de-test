@@ -63,15 +63,16 @@ public class IPokedexTest {
     //test on peut pas ajouter des pokemons si la liste est full
     // c à d : on 151 pokemons
     @Test
-    public void testCannotAddPokemonWhenPokedexIsFull() {
+    public void testCannotAddPokemonWhenPokedexIsFull() throws PokedexException  {
         // Pokedex plein
         when(pokedex.size()).thenReturn(151);
-        doThrow(new PokedexException("Pokedex est plein !!!")).when(pokedex).addPokemon(any(Pokemon.class));
-        // si j'essaie d'ajouter un pokemon supp
         Pokemon extraPokemon = new Pokemon(152, "TestPokemon", 100, 100, 100, 1000, 100, 5000, 5, 100);
+
+        // PokedexException est lancée
         assertThrows(PokedexException.class, () -> {
             pokedex.addPokemon(extraPokemon);
-        }, "Exception car le Pokedex est !!!");
+        }, "PokedexException, si le Pokedex est plein.");
+
     }
 
 
@@ -83,9 +84,16 @@ public class IPokedexTest {
     }
     //test getPokemon si index est invalid
     @Test
-    public void testGetPokemonAvecIndexInvalid() {
-        when(pokedex.getPokemon(-2)).thenThrow(new PokedexException("Index invalide"));
-        assertThrows(PokedexException.class, () -> pokedex.getPokemon(-2));
+    public void testGetPokemonAvecIndexInvalid() throws PokedexException  {
+        when(pokedex.getPokemon(-2)).thenThrow(new PokedexException("Invalid index"));
+        int invalidIndex = -2;
+
+        assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemon(invalidIndex);
+        }, "si invalid indx lance PodexException");
+
+
+
     }
 
 //test getpokemons
