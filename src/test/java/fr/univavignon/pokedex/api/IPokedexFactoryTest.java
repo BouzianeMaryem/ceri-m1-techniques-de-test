@@ -11,7 +11,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class IPokedexFactoryTest {
-
     @Mock
     private IPokemonMetadataProvider metadataProvider;
 
@@ -22,14 +21,30 @@ public class IPokedexFactoryTest {
     private IPokedexFactory pokedexFactory;
 
     private IPokedex pokedex;
+    private Pokemon bulbizarre;
+    private Pokemon herbizarre;
 
     @BeforeEach
     void setUp() {
-        // preparation des mocks
+        // Préparation des mocks
         pokedex = mock(IPokedex.class);
+        // Correction: Déclaration correcte des Pokémon dans la méthode setUp
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         herbizarre = new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
-        doReturn(pokedex).when(pokedexFactory).createPokedex(eq(metadataProvider), eq(pokemonFactory));
+
+        doReturn(pokedex).when(pokedexFactory).createPokedex(metadataProvider, pokemonFactory);
+
+        // Configurer les mocks pour utiliser les Pokémon déclarés
+        try {
+            when(pokedex.addPokemon(bulbizarre)).thenReturn(0);
+            when(pokedex.addPokemon(herbizarre)).thenReturn(1);
+            when(pokedex.getPokemon(0)).thenReturn(bulbizarre);
+            when(pokedex.getPokemon(1)).thenReturn(herbizarre);
+            when(pokedex.getPokemons()).thenReturn(Arrays.asList(bulbizarre, herbizarre));
+            doThrow(new PokedexException("Invalid index")).when(pokedex).getPokemon(-1);
+        } catch (PokedexException e) {
+            e.printStackTrace();
+        }
     }
     //creation de Podex
     @Test
@@ -57,19 +72,20 @@ public class IPokedexFactoryTest {
 
     @Test
     void testPokedexSizeAfterAddingPokemons() throws PokedexException {
-        when(pokedex.addPokemon(any(Pokemon.class))).thenReturn(0).thenReturn(1);
+        // Mise à jour pour utiliser les variables locales bulbizarre et herbizarre
         when(pokedex.size()).thenReturn(2);
         IPokedex createdPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
 
-        createdPokedex.addPokemon(pikachu);
-        createdPokedex.addPokemon(bulbasaur);
+        createdPokedex.addPokemon(bulbizarre);
+        createdPokedex.addPokemon(herbizarre);
 
         assertEquals(2, createdPokedex.size(), "Taille du Pokedex doit être 2 après ajout de deux Pokémons.");
     }
 
     @Test
     void testPokemonsSortedByName() {
-        List<Pokemon> expectedOrder = Arrays.asList(bulbasaur, pikachu);
+        // Utilisation correcte des variables locales bulbizarre et herbizarre dans le test
+        List<Pokemon> expectedOrder = Arrays.asList(bulbizarre, herbizarre);
         when(pokedex.getPokemons(any(Comparator.class))).thenReturn(expectedOrder);
         IPokedex createdPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
 
@@ -77,7 +93,9 @@ public class IPokedexFactoryTest {
 
         assertNotNull(sortedPokemons, "Liste triée des Pokémon ne doit pas être nulle.");
         assertEquals(2, sortedPokemons.size(), "Liste triée doit contenir deux éléments.");
-        assertEquals("Bulbasaur", sortedPokemons.get(0).getName(), "Bulbasaur doit être premier.");
-        assertEquals("Pikachu", sortedPokemons.get(1).getName(), "Pikachu doit être deuxième.");
+        assertEquals("Bulbizarre", sortedPokemons.get(0).getName(), "Bulbizarre doit être premier.");
+        assertEquals("Herbizarre", sortedPokemons.get(1).getName(), "Herbizarre doit être deuxième.");
     }
+
+
 }
