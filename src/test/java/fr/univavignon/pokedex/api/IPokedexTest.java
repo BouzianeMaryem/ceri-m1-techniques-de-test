@@ -64,22 +64,27 @@ public class IPokedexTest {
     // c à d : on 151 pokemons
     @Test
     public void testCannotAddPokemonWhenPokedexIsFull() {
-        //  Pokedex plein
+        // Pokedex plein
         when(pokedex.size()).thenReturn(151);
 
         // si j'essaie d'ajouter un pokemon supp
         Pokemon extraPokemon = new Pokemon(152, "TestPokemon", 100, 100, 100, 1000, 100, 5000, 5, 100);
-        int indexExtra = pokedex.addPokemon(extraPokemon);
-
-        //peut pas etre ajouté
-        assertEquals(-1, indexExtra, "Aucun Pokémon ne devrait être ajouté si le Pokédex est plein.");
+        assertThrows(YourCustomException.class, () -> {
+            pokedex.addPokemon(extraPokemon);
+        }, "Exception car le Pokédex est plein");
     }
+
 
     // test getpokemon()
     @Test
     public void testGetPokemon() throws PokedexException {
         assertEquals(bulbizarre, pokedex.getPokemon(0));
         assertEquals(herbizarre, pokedex.getPokemon(1));
+    }
+    //test getPokemon si index est invalide
+    @Test
+    public void testGetPokemonAvecIndexInvalid() {
+        assertThrows(PokedexException.class, () -> pokedex.getPokemon(-2));
     }
 //test getpokemons
     @Test
@@ -89,7 +94,9 @@ public class IPokedexTest {
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.containsAll(List.of(bulbizarre, herbizarre)));
     }
-//test order
+
+
+    //test order
 @Test
 public void testGetPokemonsOrderParNom() {
     Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getName);
