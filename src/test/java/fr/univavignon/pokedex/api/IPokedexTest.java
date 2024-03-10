@@ -69,7 +69,7 @@ public class IPokedexTest {
 
         // si j'essaie d'ajouter un pokemon supp
         Pokemon extraPokemon = new Pokemon(152, "TestPokemon", 100, 100, 100, 1000, 100, 5000, 5, 100);
-        assertThrows(YourCustomException.class, () -> {
+        assertThrows(PokedexException.class, () -> {
             pokedex.addPokemon(extraPokemon);
         }, "Exception car le Pokédex est plein");
     }
