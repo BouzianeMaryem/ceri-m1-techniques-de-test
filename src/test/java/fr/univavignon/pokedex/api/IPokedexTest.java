@@ -66,7 +66,8 @@ public class IPokedexTest {
     public void testCannotAddPokemonWhenPokedexIsFull() {
         when(pokedex.size()).thenReturn(151);
         Pokemon extraPokemon = new Pokemon(152, "TestPokemon", 100, 100, 100, 1000, 100, 5000, 5, 100);
-        doThrow(new PokedexException("Le Pokedex est plein")).when(pokedex).addPokemon(extraPokemon);
+        doThrow(new PokedexException("Le Pokedex est plein")).when(pokedex).addPokemon(any(Pokemon.class));
+
 
         //  la PokedexException est bien lancrr
         assertThrows(PokedexException.class, () -> pokedex.addPokemon(extraPokemon), "PokedexException, si le Pokedex est plein.");
