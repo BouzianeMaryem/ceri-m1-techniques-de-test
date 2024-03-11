@@ -47,7 +47,7 @@ public class IPokemonFactoryTest {
 
     @Test
     void testCreationDePokemonAvecParametresInvalidesDevraitRenvoyerNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25), "Créer un Pokémon avec des paramètres invalides devrait renvoyer null.");
+        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25));
     }
 
 
