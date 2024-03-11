@@ -68,12 +68,12 @@ public class IPokemonFactoryTest {
     @Test
     void testLeCpDuPokemonEstCorrectementDefini() {
         assertEquals(bulbizarre.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp(), "La valeur du CP devrait correspondre pour Bulbizarre.");
-        assertEquals(aquali.getCp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getCp(), "La valeur du CP devrait correspondre pour Aquali.");
+        assertEquals(aquali.getCp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getCp(), "La valeur du CP devrait correspondre pour Aquali.");
     }
 
     @Test
     void testLaDustDuPokemonEstCorrectementDefinie() {
         assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "La valeur de la poussière devrait correspondre pour Bulbizarre.");
-        assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getDust(), "La valeur de la poussière devrait correspondre pour Aquali.");
+        assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getDust(), "La valeur de la poussière devrait correspondre pour Aquali.");
     }
 }
