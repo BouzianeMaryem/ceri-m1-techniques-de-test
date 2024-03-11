@@ -12,8 +12,6 @@ public class IPokemonMetadataProviderTest {
 
     @Mock
     private IPokemonMetadataProvider metadataProvider;
-
-    // Test pour un index valide avec le Pokémon Bulbizarre
     @Test
     public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
         when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
