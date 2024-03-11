@@ -31,23 +31,38 @@ public class IPokemonFactoryTest {
 
     @Test
     void testCreationDePokemonAvecParametresValides() {
-        Pokemon pokemonCree = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+        Pokemon pokemonCree1 = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+        //bulbizarre
+        assertNotNull(pokemonCree1, "Le pokemon créé ne doit pas être nul!!");
+        assertEquals(bulbizarre.getIndex(), pokemonCree1.getIndex(), "L'index du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getName(), pokemonCree1.getName(), "Le nom du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getAttack(), pokemonCree1.getAttack(), "L'attaque du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getDefense(), pokemonCree1.getDefense(), "La défense du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getStamina(), pokemonCree1.getStamina(), "L'endurance du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getCp(), pokemonCree1.getCp(), "Le CP du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getHp(), pokemonCree1.getHp(), "Le HP du pokemon est incorrect !!!");
+        assertEquals(bulbizarre.getDust(), pokemonCree1.getDust(), "La poussière du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getCandy(), pokemonCree1.getCandy(), "Le candy du pokemon est incorrect !!!");
 
-        assertNotNull(pokemonCree, "Le pokemon créé ne doit pas être nul!!");
-        assertEquals(bulbizarre.getIndex(), pokemonCree.getIndex(), "L'index du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getName(), pokemonCree.getName(), "Le nom du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getAttack(), pokemonCree.getAttack(), "L'attaque du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getDefense(), pokemonCree.getDefense(), "La défense du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getStamina(), pokemonCree.getStamina(), "L'endurance du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getCp(), pokemonCree.getCp(), "Le CP du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getHp(), pokemonCree.getHp(), "Le HP du pokemon est incorrect !!!");
-        assertEquals(bulbizarre.getDust(), pokemonCree.getDust(), "La poussière du pokemon est incorrect !!!!!");
-        assertEquals(bulbizarre.getCandy(), pokemonCree.getCandy(), "Le candy du pokemon est incorrect !!!");
+        //aquali
+        Pokemon pokemonCree2 = pokemonFactory.createPokemon(0, 2729, 202, 5000, 4);
+
+        assertNotNull(pokemonCree2, "Le pokemon créé ne doit pas être nul!!");
+        assertEquals(aquali.getIndex(), pokemonCree2.getIndex(), "L'index du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getName(), pokemonCree2.getName(), "Le nom du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getAttack(), pokemonCree2.getAttack(), "L'attaque du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getDefense(), pokemonCree2.getDefense(), "La défense du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getStamina(), pokemonCree2.getStamina(), "L'endurance du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getCp(), pokemonCree2.getCp(), "Le CP du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getHp(), pokemonCree2.getHp(), "Le HP du pokemon est incorrect !!!");
+        assertEquals(aquali.getDust(), pokemonCree2.getDust(), "La poussière du pokemon est incorrect !!!!!");
+        assertEquals(aquali.getCandy(), pokemonCree2.getCandy(), "Le candy du pokemon est incorrect !!!");
+
     }
 
     @Test
     void testCreationDePokemonAvecParametresInvalidesdoitRenvoyerNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 2500, 2500, 2500, 2500), "un pokemon cree avec des params inamides doit envoyer null !!!");
+        assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params inamides doit envoyer null !!!");
     }
 
 
