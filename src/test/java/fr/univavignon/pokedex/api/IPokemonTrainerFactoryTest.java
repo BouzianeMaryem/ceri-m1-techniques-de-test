@@ -39,7 +39,7 @@ public class IPokemonTrainerFactoryTest {
 
         verify(factoryTrainerMock).createTrainer(nomTrainer, choixTeam, mockPokedexFactory);
 
-        assertEquals(expectTrainerMock, newTrainer, "The created trainer should match the expected mock instance.");
+        assertEquals(expectTrainerMock, newTrainer, "Le tariner  créé doit correspondre à l'instance attendue!!");
     }
     @Test
     public void testHandlingOfDuplicateTrainerCreation() {
@@ -47,14 +47,14 @@ public class IPokemonTrainerFactoryTest {
         Team team = Team.VALOR;
 
         when(factoryTrainerMock.createTrainer(eq(trainerName), eq(team), eq(mockPokedexFactory)))
-                .thenReturn(expectTrainerMock).thenThrow(new IllegalStateException("Trainer déjà existant."));
+                .thenReturn(expectTrainerMock).thenThrow(new IllegalStateException("Trainer existe deja !!"));
 
         PokemonTrainer firstCreation = factoryTrainerMock.createTrainer(trainerName, team, mockPokedexFactory);
-        assertSame(expectTrainerMock, firstCreation, "Le premier trainer créé doit être retourné.");
+        assertSame(expectTrainerMock, firstCreation, "doit retourner le premier trainer créé !!");
 
         assertThrows(IllegalStateException.class, () -> {
             factoryTrainerMock.createTrainer(trainerName, team, mockPokedexFactory);
-        }, "La tentative de recréation d'un trainer existant devrait échouer.");
+        }, "La recréation d'un trainer existant doit echouer !!");
     }
 
     @Test
@@ -67,7 +67,7 @@ public class IPokemonTrainerFactoryTest {
 
         PokemonTrainer createdTrainer = factoryTrainerMock.createTrainer(trainerName, team, mockPokedexFactory);
 
-        assertAll("Trainer information should be consistent",
+        assertAll("les infos du trainer doivent etre coherentes !!!",
                 () -> assertEquals(trainerName, createdTrainer.getName()),
                 () -> assertEquals(team, createdTrainer.getTeam()),
                 () -> assertSame(mockPokedex, createdTrainer.getPokedex())
@@ -80,7 +80,7 @@ public class IPokemonTrainerFactoryTest {
 
         assertThrows(IllegalArgumentException.class, () -> {
             factoryTrainerMock.createTrainer(null, null, null);
-        }, "La création d'un entraîneur avec des paramètres null devrait lancer une IllegalArgumentException.");
+        }, "la creation d'un trainer avec des params null , doit lever une exception !!!");
     }
 
 

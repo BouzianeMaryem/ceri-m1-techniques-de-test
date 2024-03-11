@@ -33,47 +33,45 @@ public class IPokemonFactoryTest {
     void testCreationDePokemonAvecParametresValides() {
         Pokemon pokemonCree = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
 
-        assertNotNull(pokemonCree, "Le Pokémon créé ne devrait pas être nul.");
-        assertEquals(bulbizarre.getIndex(), pokemonCree.getIndex(), "L'index du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getName(), pokemonCree.getName(), "Le nom du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getAttack(), pokemonCree.getAttack(), "L'attaque du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getDefense(), pokemonCree.getDefense(), "La défense du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getStamina(), pokemonCree.getStamina(), "L'endurance du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getCp(), pokemonCree.getCp(), "Le CP du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getHp(), pokemonCree.getHp(), "Les HP du Pokémon ne correspondent pas à la valeur attendue.");
-        assertEquals(bulbizarre.getDust(), pokemonCree.getDust(), "La poussière du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(bulbizarre.getCandy(), pokemonCree.getCandy(), "Les bonbons du Pokémon ne correspondent pas à la valeur attendue.");
+        assertNotNull(pokemonCree, "Le pokemon créé ne doit pas être nul!!");
+        assertEquals(bulbizarre.getIndex(), pokemonCree.getIndex(), "L'index du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getName(), pokemonCree.getName(), "Le nom du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getAttack(), pokemonCree.getAttack(), "L'attaque du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getDefense(), pokemonCree.getDefense(), "La défense du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getStamina(), pokemonCree.getStamina(), "L'endurance du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getCp(), pokemonCree.getCp(), "Le CP du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getHp(), pokemonCree.getHp(), "Le HP du pokemon est incorrect !!!");
+        assertEquals(bulbizarre.getDust(), pokemonCree.getDust(), "La poussière du pokemon est incorrect !!!!!");
+        assertEquals(bulbizarre.getCandy(), pokemonCree.getCandy(), "Le candy du pokemon est incorrect !!!");
     }
 
     @Test
-    void testCreationDePokemonAvecParametresInvalidesDevraitRenvoyerNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25), "Créer un Pokémon avec des paramètres invalides devrait renvoyer null.");
+    void testCreationDePokemonAvecParametresInvalidesdoitRenvoyerNull() {
+        assertNull(pokemonFactory.createPokemon(-1, 2500, 2500, 2500, 2500), "un pokemon cree avec des params inamides doit envoyer null !!!");
     }
 
 
     @Test
     void testLeHpDuPokemonEstCorrectementDefini() {
-        assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "La valeur des HP devrait correspondre pour Bulbizarre.");
-        // Assurez-vous que les valeurs des paramètres sont les mêmes que celles utilisées lors de la création des mocks.
-        assertEquals(aquali.getHp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getHp(), "La valeur des HP devrait correspondre pour Aquali.");
+        assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "Le HP doit correspondre à celui de  Bulbizarre!!");
+        assertEquals(aquali.getHp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getHp(), "Le HP doit correspondre à celui de  Aquali!!");
     }
 
     @Test
     void testLeCandyDuPokemonEstCorrectementDefini() {
-        // Les paramètres doivent correspondre aux valeurs utilisées dans setUp.
-        assertEquals(bulbizarre.getCandy(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCandy(), "La valeur des bonbons devrait correspondre pour Bulbizarre.");
-        assertEquals(aquali.getCandy(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getCandy(), "La valeur des bonbons devrait correspondre pour Aquali.");
+        assertEquals(bulbizarre.getCandy(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCandy(), "Le candy doit correspondre à celui de  Bulbizarre!!");
+        assertEquals(aquali.getCandy(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getCandy(), "Le candy doit correspondre à celui de  Aquali!!");
     }
 
     @Test
     void testLeCpDuPokemonEstCorrectementDefini() {
-        assertEquals(bulbizarre.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp(), "La valeur du CP devrait correspondre pour Bulbizarre.");
-        assertEquals(aquali.getCp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getCp(), "La valeur du CP devrait correspondre pour Aquali.");
+        assertEquals(bulbizarre.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp(), "Le CP doit correspondre à celui de  Bulbizarre!!");
+        assertEquals(aquali.getCp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getCp(), "Le CP doit correspondre à celui de  Aquali!!");
     }
 
     @Test
     void testLaDustDuPokemonEstCorrectementDefinie() {
-        assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "La valeur de la poussière devrait correspondre pour Bulbizarre.");
-        assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getDust(), "La valeur de la poussière devrait correspondre pour Aquali.");
+        assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "la poussière doit correspondre à celui de  Bulbizarre!!");
+        assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getDust(), "la poussière doit correspondre à celui de  Aquali!!");
     }
 }
