@@ -62,23 +62,17 @@ public class IPokemonFactoryTest {
 
     @Test
     void testCreationDePokemonAvecParametresInvalidesdoitRenvoyerNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params invelides doit envoyer null !!!");
+        assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params invelides doit renvoyer null !!!");
     }
 
     @Test
     void testCreationDePokemonAvecIndexInferieurAZeroDoitLeverException() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-            pokemonFactory.createPokemon(-1, 100, 100, 1000, 10);
-        }, "indx de Pokemon ne doit pas etre inférieur à 0 !!! ");
-        assertNotNull(thrown);
+        assertNull(pokemonFactory.createPokemon(-1, 100, 100, 1000, 10), "un pokemon cree avec indx inf 0  doit renvoyer null !!!");
     }
 
     @Test
     void testCreationDePokemonAvecIndexSuperieurACentCinquanteDoitLeverException() {
-        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
-            pokemonFactory.createPokemon(152, 100, 100, 1000, 10);
-        }, "indx de Pokemon ne doit pas etre superieur à 150 !!!");
-        assertNotNull(thrown);
+        assertNull(pokemonFactory.createPokemon(152, 100, 100, 1000, 10), "un pokemon cree avec indx sup à 150 , doit renvoyer null !!!");
     }
 
     @Test
