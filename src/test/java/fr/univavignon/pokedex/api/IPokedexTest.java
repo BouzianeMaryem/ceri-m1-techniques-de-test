@@ -64,14 +64,9 @@ public class IPokedexTest {
     // c à d : on doit pas dépasser 151 pokemons
     @Test
     public void testCannotAddPokemonWhenPokedexIsFull() {
-        //  Pokedex plein
         when(pokedex.size()).thenReturn(151);
-
-        // si j'essaie d'ajouter un pokemon supp
         Pokemon testPok = new Pokemon(152, "Bulbul", 100, 100, 100, 1000, 100, 5000, 5, 100);
         int idxSupp = pokedex.addPokemon(testPok);
-
-        //peut pas etre ajouté
         assertEquals(-1, idxSupp, "le pokedex est plein , impossible d'ajouter un pokemon !!!");
     }
 
