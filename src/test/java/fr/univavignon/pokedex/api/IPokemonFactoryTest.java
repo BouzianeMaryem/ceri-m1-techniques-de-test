@@ -64,15 +64,16 @@ public class IPokemonFactoryTest {
     void testCreationDePokemonAvecParametresInvalidesdoitRenvoyerNull() {
         assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params invelides doit renvoyer null !!!");
     }
-
+    // je peux as faire un asset throw car la signature de la fonction ne leve pas une exception
+    //donc au cas des pamars invalide , je crée une instance null
     @Test
     void testCreationDePokemonAvecIndexInferieurAZeroDoitLeverException() {
-        assertNull(pokemonFactory.createPokemon(-1, 100, 100, 1000, 10), "un pokemon cree avec indx inf 0  doit renvoyer null !!!");
+        assertNull(pokemonFactory.createPokemon(-1, 100, 100, 1000, 10), "un pokemon cree avec indx inf 0 doit renvoyer null !!!");
     }
 
     @Test
     void testCreationDePokemonAvecIndexSuperieurACentCinquanteDoitLeverException() {
-        assertNull(pokemonFactory.createPokemon(152, 100, 100, 1000, 10), "un pokemon cree avec indx sup à 150 , doit renvoyer null !!!");
+        assertNull(pokemonFactory.createPokemon(152, 100, 100, 1000, 10), "un pokemon cree avec indx sup à 150  doit renvoyer null !!!");
     }
 
     @Test
