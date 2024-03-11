@@ -45,7 +45,7 @@ public class IPokemonFactoryTest {
         assertEquals(bulbizarre.getCandy(), pokemonCree1.getCandy(), "Le candy du pokemon est incorrect !!!");
 
         //aquali
-        Pokemon pokemonCree2 = pokemonFactory.createPokemon(0, 2729, 202, 5000, 4);
+        Pokemon pokemonCree2 = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
 
         assertNotNull(pokemonCree2, "Le pokemon créé ne doit pas être nul!!");
         assertEquals(aquali.getIndex(), pokemonCree2.getIndex(), "L'index du pokemon est incorrect !!!!!");
