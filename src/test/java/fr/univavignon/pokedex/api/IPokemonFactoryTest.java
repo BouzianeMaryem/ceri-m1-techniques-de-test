@@ -20,7 +20,8 @@ public class IPokemonFactoryTest {
     @BeforeEach
     void setUp() {
         doReturn(new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1.0))
-                .when(pokemonFactory).createPokemon(anyInt(), anyInt(), anyInt(), anyInt(), anyInt());
+                .when(pokemonFactory).createPokemon(eq(133), eq(2729), eq(202), eq(5000), eq(4));
+        doReturn(null).when(pokemonFactory).createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt());
     }
 
     @Test
