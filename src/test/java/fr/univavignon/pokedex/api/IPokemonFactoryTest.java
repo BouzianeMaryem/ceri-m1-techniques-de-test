@@ -54,13 +54,15 @@ public class IPokemonFactoryTest {
     @Test
     void testLeHpDuPokemonEstCorrectementDefini() {
         assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "La valeur des HP devrait correspondre pour Bulbizarre.");
+        // Assurez-vous que les valeurs des paramètres sont les mêmes que celles utilisées lors de la création des mocks.
         assertEquals(aquali.getHp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getHp(), "La valeur des HP devrait correspondre pour Aquali.");
     }
 
     @Test
     void testLeCandyDuPokemonEstCorrectementDefini() {
+        // Les paramètres doivent correspondre aux valeurs utilisées dans setUp.
         assertEquals(bulbizarre.getCandy(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCandy(), "La valeur des bonbons devrait correspondre pour Bulbizarre.");
-        assertEquals(aquali.getCandy(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getCandy(), "La valeur des bonbons devrait correspondre pour Aquali.");
+        assertEquals(aquali.getCandy(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getCandy(), "La valeur des bonbons devrait correspondre pour Aquali.");
     }
 
     @Test
