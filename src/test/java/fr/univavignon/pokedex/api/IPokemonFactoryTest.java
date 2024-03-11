@@ -20,26 +20,26 @@ public class IPokemonFactoryTest {
 
     @BeforeEach
     void setUp() {
-        when(pokemonFactory.createPokemon(eq(133), eq(2729), eq(202), eq(5000), eq(4))).thenReturn(aquali);
-        when(pokemonFactory.createPokemon(eq(0), eq(613), eq(64), eq(4000), eq(4))).thenReturn(bulbizarre);
-        // pour les params invalides
-        when(pokemonFactory.createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(null);
+        lenient().when(pokemonFactory.createPokemon(eq(133), eq(2729), eq(202), eq(5000), eq(4))).thenReturn(aquali);
+        lenient().when(pokemonFactory.createPokemon(eq(0), eq(613), eq(64), eq(4000), eq(4))).thenReturn(bulbizarre);
+        lenient().when(pokemonFactory.createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(null);
     }
+
 
     @Test
     void testCreationDePokemonAvecParametresValides() {
         Pokemon pokemonCree = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
 
         assertNotNull(pokemonCree, "Le Pokémon créé ne devrait pas être nul.");
-        assertEquals(aquali.getIndex(), pokemonCree.getIndex(), "L'index du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(aquali.getName(), pokemonCree.getName(), "Le nom du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(aquali.getCp(), pokemonCree.getCp(), "Le CP du Pokémon ne correspond pas à la valeur attendue.");
-        assertEquals(aquali.getHp(), pokemonCree.getHp(), "Les HP du Pokémon ne correspondent pas à la valeur attendue.");
+        assertEquals(aquali.getIndex(), pokemonCree.getIndex(), "L'index du Pokémon ne correspond pas à la valeur attendue !!!");
+        assertEquals(aquali.getName(), pokemonCree.getName(), "Le nom du Pokémon ne correspond pas à la valeur attendue !!!");
+        assertEquals(aquali.getCp(), pokemonCree.getCp(), "Le CP du Pokémon ne correspond pas à la valeur attendue !!! ");
+        assertEquals(aquali.getHp(), pokemonCree.getHp(), "Les HP du Pokémon ne correspondent pas à la valeur attendue !!! ");
     }
 
     @Test
     void testCreationDePokemonAvecParametresInvalidesDevraitRenvoyerNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25), "Créer un Pokémon avec des paramètres invalides devrait renvoyer null.");
+        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25), "Pokemon avec invalides params doit return null !!!");
     }
 
     @Test
