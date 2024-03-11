@@ -65,7 +65,19 @@ public class IPokemonFactoryTest {
         assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params inamides doit envoyer null !!!");
     }
 
+    @Test
+    void testCreationDePokemonAvecIndexInferieurAZeroDoitLeverException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            pokemonFactory.createPokemon(-1, 100, 100, 1000, 10);
+        }, "indx de Pokemon ne doit pas etre inférieur à 0 !!! ");
+    }
 
+    @Test
+    void testCreationDePokemonAvecIndexSuperieurACentCinquanteDoitLeverException() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            pokemonFactory.createPokemon(151, 100, 100, 1000, 10);
+        }, "indx de Pokemon ne doit pas etre superieur à 150 !!!");
+    }
     @Test
     void testLeHpDuPokemonEstCorrectementDefini() {
         assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "Le HP doit correspondre à celui de  Bulbizarre!!");
@@ -89,4 +101,5 @@ public class IPokemonFactoryTest {
         assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "la poussière doit correspondre à celui de  Bulbizarre!!");
         assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getDust(), "la poussière doit correspondre à celui de  Aquali!!");
     }
+
 }
