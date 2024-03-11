@@ -9,20 +9,23 @@ import org.mockito.Mock;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @ExtendWith(MockitoExtension.class)
 public class IPokemonFactoryTest {
 
     @Mock
     private IPokemonFactory pokemonFactory;
+    private Pokemon bulbizarre;
+    private Pokemon aquali;
 
     @BeforeEach
     void setUp() {
-        // Peu importe les paramètres, on retourne un objet Pokemon Aquali
-        doReturn(new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1.0))
-                .when(pokemonFactory).createPokemon(anyInt(), anyInt(), anyInt(), anyInt(), anyInt());
+        bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 0.56);
+        aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 4, 1.0);
 
-        // Retourne null pour un index invalide
-        doReturn(null).when(pokemonFactory).createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt());
+        lenient().when(pokemonFactory.createPokemon(eq(0), eq(613), eq(64), eq(4000), eq(4))).thenReturn(bulbizarre);
+        lenient().when(pokemonFactory.createPokemon(eq(133), eq(2729), eq(202), eq(5000), eq(4))).thenReturn(aquali);
+        lenient().when(pokemonFactory.createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(null);
     }
 
     @Test
