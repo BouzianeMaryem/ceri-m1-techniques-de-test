@@ -56,7 +56,6 @@ public class IPokemonFactoryTest {
         assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "La valeur des HP devrait correspondre pour Bulbizarre.");
         assertEquals(aquali.getHp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getHp(), "La valeur des HP devrait correspondre pour Aquali.");
     }
-    }
 
     @Test
     void testLeCandyDuPokemonEstCorrectementDefini() {
