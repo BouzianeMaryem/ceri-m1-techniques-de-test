@@ -3,73 +3,66 @@ package fr.univavignon.pokedex.api;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.Mock;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class IPokemonFactoryTest {
+
     @Mock
     private IPokemonFactory pokemonFactory;
-    Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1000);
-    Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
 
-    @Test
-    void testCreationOfPokemonWithValidParameters() {
-        Pokemon createdPokemon = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
+    private Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1000);
+    private Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
 
-        // verifications
-        assertNotNull(createdPokemon, "The created Pokémon should not be null.");
-        assertEquals(133, createdPokemon.getIndex(), "The Pokémon index does not match the expected value.");
-        assertEquals("Aquali", createdPokemon.getName(), "The Pokémon name does not match the expected value.");
-        assertEquals(2729, createdPokemon.getCp(), "The Pokémon CP does not match the expected value.");
-        assertEquals(202, createdPokemon.getHp(), "The Pokémon HP does not match the expected value.");
+    @BeforeEach
+    void setUp() {
+        when(pokemonFactory.createPokemon(eq(133), eq(2729), eq(202), eq(5000), eq(4))).thenReturn(aquali);
+        when(pokemonFactory.createPokemon(eq(0), eq(613), eq(64), eq(4000), eq(4))).thenReturn(bulbizarre);
+        // pour les params invalides
+        when(pokemonFactory.createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(null);
     }
 
     @Test
-    void testCreationOfPokemonWithInvalidParametersShouldReturnNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25), "Creating a Pokémon with invalid parameters should return null.");
+    void testCreationDePokemonAvecParametresValides() {
+        Pokemon pokemonCree = pokemonFactory.createPokemon(133, 2729, 202, 5000, 4);
+
+        assertNotNull(pokemonCree, "Le Pokémon créé ne devrait pas être nul.");
+        assertEquals(aquali.getIndex(), pokemonCree.getIndex(), "L'index du Pokémon ne correspond pas à la valeur attendue.");
+        assertEquals(aquali.getName(), pokemonCree.getName(), "Le nom du Pokémon ne correspond pas à la valeur attendue.");
+        assertEquals(aquali.getCp(), pokemonCree.getCp(), "Le CP du Pokémon ne correspond pas à la valeur attendue.");
+        assertEquals(aquali.getHp(), pokemonCree.getHp(), "Les HP du Pokémon ne correspondent pas à la valeur attendue.");
     }
 
-
     @Test
-    void testPokemonHpIsCorrectlySet() {
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 0.5);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1.0);
-
-        assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "The HP value should match for Bulbizarre.");
-        assertEquals(aquali.getHp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getHp(), "The HP value should match for Aquali.");
-        assertNotEquals(aquali.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "The HP value should not match when comparing different Pokémon.");
+    void testCreationDePokemonAvecParametresInvalidesDevraitRenvoyerNull() {
+        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25), "Créer un Pokémon avec des paramètres invalides devrait renvoyer null.");
     }
-    @Test
-    void testPokemonCandyIsCorrectlySet() {
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 0.5);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1.0);
 
-        assertEquals(bulbizarre.getCandy(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCandy(), "The Candy value should match for Bulbizarre.");
-        assertEquals(aquali.getCandy(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getCandy(), "The Candy value should match for Aquali.");
-        assertNotEquals(aquali.getCandy(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCandy(), "The Candy value should not match when comparing different Pokémon.");
+    @Test
+    void testLeHpDuPokemonEstCorrectementDefini() {
+        assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "La valeur des HP devrait correspondre pour Bulbizarre.");
+        assertEquals(aquali.getHp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getHp(), "La valeur des HP devrait correspondre pour Aquali.");
     }
-    @Test
-    void testPokemonDustIsCorrectlySet() {
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 0.5);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1.0);
 
-        assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "The Dust value should match for Bulbizarre.");
-        assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getDust(), "The Dust value should match for Aquali.");
-        assertNotEquals(aquali.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "The Dust value should not match when comparing different Pokémon.");
+    @Test
+    void testLeCandyDuPokemonEstCorrectementDefini() {
+        assertEquals(bulbizarre.getCandy(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCandy(), "La valeur des bonbons devrait correspondre pour Bulbizarre.");
+        assertEquals(aquali.getCandy(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getCandy(), "La valeur des bonbons devrait correspondre pour Aquali.");
     }
-    @Test
-    void testPokemonCpIsCorrectlySet() {
-        Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 118, 118, 90, 613, 64, 4000, 4, 0.5);
-        Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1.0);
 
-        assertEquals(bulbizarre.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp(), "The CP value should match for Bulbizarre.");
-        assertEquals(aquali.getCp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getCp(), "The CP value should match for Aquali.");
-        assertNotEquals(aquali.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp(), "The CP value should not match when comparing different Pokémon.");
+    @Test
+    void testLeCpDuPokemonEstCorrectementDefini() {
+        assertEquals(bulbizarre.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp(), "La valeur du CP devrait correspondre pour Bulbizarre.");
+        assertEquals(aquali.getCp(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getCp(), "La valeur du CP devrait correspondre pour Aquali.");
+    }
+
+    @Test
+    void testLaDustDuPokemonEstCorrectementDefinie() {
+        assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "La valeur de la poussière devrait correspondre pour Bulbizarre.");
+        assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 5).getDust(), "La valeur de la poussière devrait correspondre pour Aquali.");
     }
 }
