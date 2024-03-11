@@ -62,22 +62,25 @@ public class IPokemonFactoryTest {
 
     @Test
     void testCreationDePokemonAvecParametresInvalidesdoitRenvoyerNull() {
-        assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params inamides doit envoyer null !!!");
+        assertNull(pokemonFactory.createPokemon(-1, 10000, 10000, 10000, 10000), "un pokemon cree avec des params invelides doit envoyer null !!!");
     }
 
     @Test
     void testCreationDePokemonAvecIndexInferieurAZeroDoitLeverException() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
             pokemonFactory.createPokemon(-1, 100, 100, 1000, 10);
         }, "indx de Pokemon ne doit pas etre inférieur à 0 !!! ");
+        assertNotNull(thrown);
     }
 
     @Test
     void testCreationDePokemonAvecIndexSuperieurACentCinquanteDoitLeverException() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            pokemonFactory.createPokemon(151, 100, 100, 1000, 10);
+        IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {
+            pokemonFactory.createPokemon(152, 100, 100, 1000, 10);
         }, "indx de Pokemon ne doit pas etre superieur à 150 !!!");
+        assertNotNull(thrown);
     }
+
     @Test
     void testLeHpDuPokemonEstCorrectementDefini() {
         assertEquals(bulbizarre.getHp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getHp(), "Le HP doit correspondre à celui de  Bulbizarre!!");
