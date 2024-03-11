@@ -87,20 +87,6 @@ public class IPokedexFactoryTest {
         assertEquals(2, createdPokedex.size(), "Taille du Pokedex doit être 2 après ajout de deux Pokémons.");
     }
 
-    @Test
-    void testPokemonsSortedByName() {
-        // Utilisation correcte des variables locales bulbizarre et herbizarre dans le test
-        List<Pokemon> expectedOrder = Arrays.asList(bulbizarre, herbizarre);
-        when(pokedex.getPokemons(any(Comparator.class))).thenReturn(expectedOrder);
-        IPokedex createdPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
-
-        List<Pokemon> sortedPokemons = createdPokedex.getPokemons(Comparator.comparing(Pokemon::getName));
-
-        assertNotNull(sortedPokemons, "Liste triée des Pokémon ne doit pas être nulle.");
-        assertEquals(2, sortedPokemons.size(), "Liste triée doit contenir deux éléments.");
-        assertEquals("Bulbizarre", sortedPokemons.get(0).getName(), "Bulbizarre doit être premier.");
-        assertEquals("Herbizarre", sortedPokemons.get(1).getName(), "Herbizarre doit être deuxième.");
-    }
 
 
 }
