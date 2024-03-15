@@ -14,12 +14,18 @@ jobs:
           name: Build and Run Tests
           command: mvn test
 
+orbs:
+  codecov: codecov/codecov@4.0.1
+
 workflows:
   version: 2
-  build:
+  upload-to-codecov:
     jobs:
       - build:
           filters:
             branches:
               only:
                 - master
+      - codecov/upload:
+          requires:
+            - build
