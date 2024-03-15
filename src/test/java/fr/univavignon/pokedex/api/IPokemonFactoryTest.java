@@ -102,7 +102,7 @@ public class IPokemonFactoryTest {
     @Test
     void testLaIvDuPokemonEstCorrectementDefinie() {
         assertEquals(bulbizarre.getIv(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getIv(), "la IV pourcentage  doit correspondre à celui de  Bulbizarre!!");
-        assertEquals(aquali.getIv, pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getIv, "la IV pourcentage doit correspondre à celui de  Aquali!!");
+        assertEquals(aquali.getIv(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getIv(), "la IV pourcentage doit correspondre à celui de  Aquali!!");
     }
 
 
