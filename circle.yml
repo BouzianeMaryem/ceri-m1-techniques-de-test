@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: maven:3.8-openjdk-11
+      - image: maven:3.8.4-jdk-11
 
     working_directory: ~/project
 
@@ -11,8 +11,16 @@ jobs:
       - checkout
 
       - run:
-          name: Build and Run Tests
+          name: Run Unit Tests
           command: mvn test
+      - run:
+          name: Generate JaCoCo Coverage Report
+          command: mvn jacoco:report
+
+      - run:
+          name: Upload Coverage to Codecov
+          command: |
+            bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 
 workflows:
   version: 2
