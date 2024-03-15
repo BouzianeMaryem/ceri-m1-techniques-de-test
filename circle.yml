@@ -13,7 +13,6 @@ jobs:
       - run:
           name: Build and Run Tests
           command: mvn test
-      - codecov/upload
 
 workflows:
   version: 2
