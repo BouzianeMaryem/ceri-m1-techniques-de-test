@@ -107,35 +107,34 @@ public class IPokedexTest {
     //test par nom
     @Test
     public void testGetPokemonsOrderParNom() {
-        PokemonComparators nameComparator = PokemonComparators.NAME;
 
-        List<Pokemon> expectedPokemonsSortedByName = Arrays.asList(bulbizarre, herbizarre);
-        Mockito.doReturn(expectedPokemonsSortedByName).when(pokedex).getPokemons(nameComparator);
-        List<Pokemon> pokemonsSortedByName = pokedex.getPokemons(nameComparator);
+        List<Pokemon> pokemonsSortedByNameExpected = List.of(bulbizarre, herbizarre);
+        when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(pokemonsSortedByNameExpected);
+
+
+        List<Pokemon> pokemonsSortedByName = pokedex.getPokemons(PokemonComparators.NAME);
 
         assertNotNull(pokemonsSortedByName);
         assertEquals(2, pokemonsSortedByName.size());
-
-        assertEquals("Bulbizarre", pokemonsSortedByName.get(0).getName());
-        assertEquals("Herbizarre", pokemonsSortedByName.get(1).getName());
+        assertEquals(bulbizarre.getName(), pokemonsSortedByName.get(0).getName());
+        assertEquals(herbizarre.getName(), pokemonsSortedByName.get(1).getName());
     }
+
 
 
 // test par index
 @Test
 public void testGetPokemonsOrderParIndex() {
-    PokemonComparators indexComparator = PokemonComparators.INDEX;
 
-    List<Pokemon> expectedPokemonsSortedByIndex = Arrays.asList(bulbizarre, herbizarre);
-    Mockito.doReturn(expectedPokemonsSortedByIndex).when(pokedex).getPokemons(indexComparator);
+    List<Pokemon> pokemonsSortedByIndexExpected = List.of(bulbizarre, herbizarre);
+    when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(pokemonsSortedByIndexExpected);
 
-    List<Pokemon> pokemonsSortedByIndex = pokedex.getPokemons(indexComparator);
+    List<Pokemon> pokemonsSortedByIndex = pokedex.getPokemons(PokemonComparators.INDEX);
 
     assertNotNull(pokemonsSortedByIndex);
     assertEquals(2, pokemonsSortedByIndex.size());
-
-    assertEquals("Bulbizarre", pokemonsSortedByIndex.get(0).getName());
-    assertEquals("Herbizarre", pokemonsSortedByIndex.get(1).getName());
+    assertEquals(bulbizarre.getIndex(), pokemonsSortedByIndex.get(0).getIndex());
+    assertEquals(herbizarre.getIndex(), pokemonsSortedByIndex.get(1).getIndex());
 }
 
 
@@ -143,17 +142,17 @@ public void testGetPokemonsOrderParIndex() {
     // test par CP
     @Test
     public void testGetPokemonsOrderParCP() {
-        PokemonComparators cpComparator = PokemonComparators.CP;
-        List<Pokemon> expectedPokemonsSortedByCP = Arrays.asList(bulbizarre, herbizarre);
-        Mockito.doReturn(expectedPokemonsSortedByCP).when(pokedex).getPokemons(cpComparator);
 
-        List<Pokemon> pokemonsSortedByCP = pokedex.getPokemons(cpComparator);
+        List<Pokemon> pokemonsSortedByCPExpected = List.of(bulbizarre, herbizarre);
+        when(pokedex.getPokemons(PokemonComparators.CP)).thenReturn(pokemonsSortedByCPExpected);
+
+
+        List<Pokemon> pokemonsSortedByCP = pokedex.getPokemons(PokemonComparators.CP);
 
         assertNotNull(pokemonsSortedByCP);
         assertEquals(2, pokemonsSortedByCP.size());
-
-        assertEquals(613, pokemonsSortedByCP.get(0).getCp());
-        assertEquals(80, pokemonsSortedByCP.get(1).getCp());
+        assertEquals(bulbizarre.getCp(), pokemonsSortedByCP.get(0).getCp());
+        assertEquals(herbizarre.getCp(), pokemonsSortedByCP.get(1).getCp());
     }
 
 
