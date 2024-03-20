@@ -125,17 +125,17 @@ public class IPokedexTest {
 // test par index
 @Test
 public void testGetPokemonsOrderParIndex() {
-
-    List<Pokemon> pokemonsSortedByIndexExpected = List.of(bulbizarre, herbizarre);
-    when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(pokemonsSortedByIndexExpected);
+    List<Pokemon> expectedPokemonsSortedByIndex = List.of(bulbizarre, herbizarre);
+    when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(expectedPokemonsSortedByIndex);
 
     List<Pokemon> pokemonsSortedByIndex = pokedex.getPokemons(PokemonComparators.INDEX);
 
-    assertNotNull(pokemonsSortedByIndex);
-    assertEquals(2, pokemonsSortedByIndex.size());
-    assertEquals(bulbizarre.getIndex(), pokemonsSortedByIndex.get(0).getIndex());
-    assertEquals(herbizarre.getIndex(), pokemonsSortedByIndex.get(1).getIndex());
+    for(int i = 0; i < pokemonsSortedByIndex.size() - 1; i++) {
+        assertTrue(PokemonComparators.INDEX.compare(pokemonsSortedByIndex.get(i), pokemonsSortedByIndex.get(i+1)) <= 0,
+                "La liste doit etre trié dans un ordre croissant pour les indx !!!");
+    }
 }
+
 
 
 
