@@ -24,7 +24,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
         for (int i = 0; i < SIZE; i++) {
             if (metadataList.get(i) == null) {
-                PokemonMetadata pokemonNull = new PokemonMetadata(i, "null", 0, 0, 0)
+                PokemonMetadata pokemonNull = new PokemonMetadata(i, "null", 0, 0, 0);
                 metadataList.set(i,pokemonNull);
             }
         }
