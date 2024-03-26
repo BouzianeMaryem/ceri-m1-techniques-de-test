@@ -7,11 +7,12 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     private List<PokemonMetadata> metadataList;
 
+    private static final int SIZE = 151;
     private static final int firstIndx = 0;
     private static final int lastIndx = 150;
 
     public PokemonMetadataProvider() {
-        this.metadataList = new ArrayList<>();
+        this.metadataList = new ArrayList<>(SIZE);
     }
 
     @Override
