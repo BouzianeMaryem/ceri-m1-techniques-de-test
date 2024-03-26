@@ -11,7 +11,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
     private static final int lastIndx = 150;
 
     public PokemonMetadataProvider() {
-        this.metadataList = new ArrayList<>;
+        this.metadataList = new ArrayList<>();
     }
 
     @Override
