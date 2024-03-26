@@ -1,7 +1,7 @@
 package fr.univavignon.pokedex.api;
 
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
-    //code mal développé, dirigé et limité par les tests
+    //fonction 1 : code mal développé, dirigé et limité par les tests
     @Override
     public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
         switch (index) {
