@@ -26,7 +26,7 @@ public class Pokedex implements IPokedex {
     public int addPokemon(Pokemon pokemon) {
         if (pokemon != null) {
             pokemonList.add(pokemon);
-            indxLastElement = pokemonList.size() - 1;
+            int indxLastElement = pokemonList.size() - 1;
             return indxLastElement;
         } else {
             return -1;
