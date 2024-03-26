@@ -58,5 +58,10 @@ public class IPokemonMetadataProviderTest {
             metadataProvider.getPokemonMetadata(invalidIndex);
         }, "si invalid indx lance PodexException");
     }
+    @Test
+    public void getPokemonMetadata_NegativeIndex_ThrowsException() {
+        int invalidIndex = -1;
+        assertThrows(PokedexException.class, () -> metadataProvider.getPokemonMetadata(invalidIndex));
+    }
 
 }
