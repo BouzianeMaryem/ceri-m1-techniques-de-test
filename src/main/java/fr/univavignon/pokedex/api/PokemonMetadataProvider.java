@@ -1,16 +1,33 @@
 package fr.univavignon.pokedex.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
-    //fonction 1 : code mal développé, dirigé et limité par les tests
-    @Override
-    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        switch (index) {
-            case 0:
-                return new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
-            case 133:
-                return new PokemonMetadata(133, "Aquali", 186, 168, 260);
-            default:
-                throw new PokedexException("Invalid index");
+
+    private List<PokemonMetadata> metadataList;
+
+    private static final int SIZE = 151;
+    private static final int firstIndx = 0;
+    private static final int lastIndx = 150;
+
+    public PokemonMetadataProvider() {
+        this.metadataList = new ArrayList<>(SIZE);
+        for (int i = firstIndx; i <= lastIndx; i++) {
+            metadataList.add(null);
         }
+    }
+
+    @Override
+    public PokemonMetadata getPokemonMetadata(int indx) throws PokedexException {
+        if (indx < firstIndx || indx > lastIndx) {
+            throw new PokedexException("Attention: invalid index: " + indx + "!!!");
+        }
+
+        PokemonMetadata metadata = metadataList.get(indx);
+        if (metadata == null) {
+            throw new PokedexException("Attention: je ne trouve pas de metadonnees pour l'index " + indx + "!!!");
+        }
+        return metadata;
     }
 }
