@@ -1,5 +1,6 @@
 package fr.univavignon.pokedex.api;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -14,10 +15,16 @@ public class IPokemonMetadataProviderTest {
     private IPokemonMetadataProvider metadataProvider;
 
     @BeforeEach
-    public void setUp() {
-        when(mockedMetadataList.get(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
-        when(mockedMetadataList.get(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
-        when(mockedMetadataList.get(anyInt())).thenReturn(null);
+    public void setUp() throws PokedexException {
+        when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
+        when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
+        when(metadataProvider.getPokemonMetadata(anyInt())).thenAnswer(invocation -> {
+            Integer index = invocation.getArgument(0);
+            if(index == 0 || index == 133) {
+                return metadataProvider.getPokemonMetadata(index);
+            }
+            throw new PokedexException("Invalid indx");
+        });
     }
 
     @Test
