@@ -20,12 +20,12 @@ class IPokemonMetadataProviderTest {
         Exception lowerBoundException = assertThrows(PokedexException.class, () -> {
             pokemonMetadataProvider.getPokemonMetadata(-1);
         });
-        assertEquals("Pokemon's indexes are between 0 and 150.", lowerBoundException.getMessage());
+        assertEquals("Attention: invalid index: -1!!!", lowerBoundException.getMessage());
 
         Exception upperBoundException = assertThrows(PokedexException.class, () -> {
             pokemonMetadataProvider.getPokemonMetadata(151);
         });
-        assertEquals("Pokemon's indexes are between 0 and 150.", upperBoundException.getMessage());
+        assertEquals("Attention: invalid index: 151!!!", upperBoundException.getMessage());
     }
 
     @Test
