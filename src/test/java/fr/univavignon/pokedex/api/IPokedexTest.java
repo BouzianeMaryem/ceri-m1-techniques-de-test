@@ -81,12 +81,12 @@ public class IPokedexTest {
     //test getPokemon si index est invalid
     @Test
     public void testGetPokemonAvecIndexInvalid() throws PokedexException  {
-        when(pokedex.getPokemon(-2)).thenThrow(new PokedexException("Invalid index"));
+        when(pokedex.getPokemon(-2)).thenThrow(new PokedexException("invalid id !!!"));
         int invalidIndex = -2;
 
         assertThrows(PokedexException.class, () -> {
             pokedex.getPokemon(invalidIndex);
-        }, "si invalid indx lance PodexException");
+        }, "invalid id !!!");
 
 
 
