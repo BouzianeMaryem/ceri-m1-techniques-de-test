@@ -18,14 +18,9 @@ public class IPokemonMetadataProviderTest {
     public void setUp() throws PokedexException {
         when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
         when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
-        when(metadataProvider.getPokemonMetadata(anyInt())).thenAnswer(invocation -> {
-            Integer index = invocation.getArgument(0);
-            if(index == 0 || index == 133) {
-                return metadataProvider.getPokemonMetadata(index);
-            }
-            throw new PokedexException("Invalid indx");
-        });
+        doThrow(new PokedexException("Invalid index")).when(metadataProvider).getPokemonMetadata(argThat(arg -> arg != 0 && arg != 133));
     }
+
 
     @Test
     public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
