@@ -1,6 +1,5 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -13,15 +12,6 @@ public class IPokemonMetadataProviderTest {
 
     @Mock
     private IPokemonMetadataProvider metadataProvider;
-
-    @BeforeEach
-    public void setUp() throws PokedexException {
-        when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
-        when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
-        doThrow(new PokedexException("Invalid index")).when(metadataProvider).getPokemonMetadata(argThat(arg -> arg != 0 && arg != 133));
-    }
-
-
     @Test
     public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
         when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
@@ -67,27 +57,6 @@ public class IPokemonMetadataProviderTest {
         assertThrows(PokedexException.class, () -> {
             metadataProvider.getPokemonMetadata(invalidIndex);
         }, "si invalid indx lance PodexException");
-    }
-    @Test
-    public void getPokemonMetadata_ValidIndex_ReturnsMetadata() throws PokedexException {
-        PokemonMetadata BulbizarreMetadata = metadataProvider.getPokemonMetadata(0);
-        assertNotNull(BulbizarreMetadata);
-        assertEquals("Bulbizarre", BulbizarreMetadata.getName());
-
-        PokemonMetadata AqualiMetadata = metadataProvider.getPokemonMetadata(133);
-        assertNotNull(AqualiMetadata);
-        assertEquals("Aquali", AqualiMetadata.getName());
-    }
-
-    @Test
-    public void getPokemonMetadata_InvalidIndex_ThrowsException() {
-        assertThrows(PokedexException.class, () -> metadataProvider.getPokemonMetadata(151));
-        assertThrows(PokedexException.class, () -> metadataProvider.getPokemonMetadata(-1));
-    }
-
-    @Test
-    public void getPokemonMetadata_UninitializedIndex_ThrowsException() {
-        assertThrows(PokedexException.class, () -> metadataProvider.getPokemonMetadata(100));
     }
 
 }
