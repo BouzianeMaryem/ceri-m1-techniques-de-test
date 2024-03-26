@@ -11,12 +11,30 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
     private static final int firstIndx = 0;
     private static final int lastIndx = 150;
 
-    public PokemonMetadataProvider() {
-        this.metadataList = new ArrayList<>(SIZE);
-        for (int i = firstIndx; i <= lastIndx; i++) {
+    private void initMetadataList() {
+        PokemonMetadata bulbizarre = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
+        PokemonMetadata aquali = new PokemonMetadata(133, "Aquali", 186, 168, 260);
+
+        for (int i = 0; i < SIZE; i++) {
             metadataList.add(null);
         }
+
+        metadataList.set(0, bulbizarre);
+        metadataList.set(133, aquali);
+
+        for (int i = 0; i < SIZE; i++) {
+            if (metadataList.get(i) == null) {
+                PokemonMetadata pokemonNull = new PokemonMetadata(i, "null", 0, 0, 0)
+                metadataList.set(i,pokemonNull);
+            }
+        }
     }
+
+    public PokemonMetadataProvider() {
+        this.metadataList = new ArrayList<>(SIZE);
+        initMetadataList();
+    }
+
 
     @Override
     public PokemonMetadata getPokemonMetadata(int indx) throws PokedexException {
