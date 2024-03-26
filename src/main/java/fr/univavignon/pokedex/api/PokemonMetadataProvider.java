@@ -16,8 +16,7 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
         PokemonMetadata aquali = new PokemonMetadata(133, "Aquali", 186, 168, 260);
 
         for (int i = 0; i < SIZE; i++) {
-            PokemonMetadata pokemonNull = new PokemonMetadata(i, "null", 0, 0, 0);
-            metadataList.add(pokemonNull);
+            metadataList.add(null);
         }
 
         metadataList.set(0, bulbizarre);
