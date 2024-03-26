@@ -1,34 +1,74 @@
 package fr.univavignon.pokedex.api;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Pokedex implements IPokedex {
 
-    private List<Pokemon> pokemons;
-    //fonction 2 : code mal développé, dirigé et limité par les tests
+    private List<Pokemon> pokemonList;
+    private IPokemonMetadataProvider metadataProvider;
+    private IPokemonFactory pokemonFactory;
+
+    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
+        this.metadataProvider = metadataProvider;
+        this.pokemonFactory = pokemonFactory;
+        this.pokemonList = new ArrayList<>();
+    }
+
+    @Override
+    public int size() {
+        return pokemonList.size();
+    }
+
     @Override
     public int addPokemon(Pokemon pokemon) {
-        if (pokemons.size() == 151) {
+        if (pokemon != null) {
+            pokemonList.add(pokemon);
+            indxLastElement = pokemonList.size() - 1;
+            return indxLastElement;
+        } else {
             return -1;
         }
-        if ("Bulbizarre".equals(pokemon.getName())) {
-            pokemons.add(pokemon);
-            return 0;
-        } else if ("Herbizarre".equals(pokemon.getName())) {
-            pokemons.add(pokemon);
-            return 1;
-        }
-        return -1;
     }
-//fonction 3 : code mal développé, dirigé et limité par les tests
+
     @Override
     public Pokemon getPokemon(int id) throws PokedexException {
-        if (id == 0) {
-            return pokemons.get(0);
-        } else if (id == 1) {
-            return pokemons.get(1);
+        if (id >= 0 && id < pokemonList.size()) {
+            return pokemonList.get(id);
+        } else {
+            throw new PokedexException("invalid id !!!");
         }
-        throw new PokedexException("Invalid index");
     }
+
+    @Override
+    public List<Pokemon> getPokemons() {
+        return pokemonList;
+    }
+
+    @Override
+    public List<Pokemon> getPokemons(Comparator<Pokemon> comparator) {
+        List<Pokemon> listOrdonnee = new ArrayList<>(pokemonList);
+        listOrdonnee.sort(comparator);
+        return listOrdonnee;
+    }
+
+
+    @Override
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
+    }
+
+    @Override
+    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
+        PokemonMetadata metadata;
+        try {
+            metadata = metadataProvider.getPokemonMetadata(index);
+        } catch (Exception e) {
+            throw new PokedexException("impossible d'avoir les metadonnees !!!");
+        }
+        return metadata;
+    }
+
 }
