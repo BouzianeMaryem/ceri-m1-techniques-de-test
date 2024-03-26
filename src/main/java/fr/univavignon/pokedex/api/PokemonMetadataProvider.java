@@ -13,6 +13,9 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     public PokemonMetadataProvider() {
         this.metadataList = new ArrayList<>(SIZE);
+        for (int i = firstIndx; i <= lastIndx; i++) {
+            metadataList.add(null);
+        }
     }
 
     @Override
