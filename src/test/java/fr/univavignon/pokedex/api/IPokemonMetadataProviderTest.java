@@ -6,12 +6,23 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.argThat;
 
 @ExtendWith(MockitoExtension.class)
 public class IPokemonMetadataProviderTest {
 
     @Mock
     private IPokemonMetadataProvider metadataProvider;
+
+    @BeforeEach
+    public void setUp() throws PokedexException {
+        when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
+        when(metadataProvider.getPokemonMetadata(133)).thenReturn(new PokemonMetadata(133, "Aquali", 186, 168, 260));
+        when(metadataProvider.getPokemonMetadata(argThat(arg -> arg < 0 || arg > 150)))
+                .thenThrow(new PokedexException("Invalid index"));
+
+    }
+
     @Test
     public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
         when(metadataProvider.getPokemonMetadata(0)).thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
