@@ -55,14 +55,6 @@ public class IPokedexTest {
         assertEquals(-1, pokedex.addPokemon(null));
     }
 
-    //test on peut pas ajouter des pokemons si la liste est full
-    // c à d : on doit pas dépasser 151 pokemons
-    @Test
-    public void testCannotAddPokemonWhenPokedexIsFull() {
-
-    }
-
-
     // test getpokemon()
     @Test
     public void testGetPokemon() throws PokedexException {
@@ -81,6 +73,11 @@ public class IPokedexTest {
     //test getPokemon si index est invalid
     @Test
     public void testGetPokemonAvecIndexInvalid() throws PokedexException  {
+        Exception invalidIndx = assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemon(-6);
+        });
+
+        assertEquals(invalidIndx.getMessage(), "invalid id !!!");
 
     }
 
