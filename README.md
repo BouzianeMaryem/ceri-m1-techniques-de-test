@@ -27,8 +27,8 @@
 - **Classe `PokedexFactory`** : 
 - Implémente IPokedexFactory, fournissant une méthode de fabrique pour créer des instances de Pokedex. Cette approche modulaire facilite l'extension et la maintenance du système.
 
-### PokemonFactory :
-- **Classe `PokemonFactory`** : 
+### FactoryPokemon :
+- **Classe `FactoryPokemon`** : 
 - Implémente IPokemonFactory, chargée de la création des objets Pokemon avec leurs caractéristiques de base et des attributs calculés comme les points de combat (CP) et les points de vie (HP).
 
 ### PokemonMetadataProvider :
