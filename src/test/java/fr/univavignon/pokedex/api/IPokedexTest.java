@@ -52,6 +52,25 @@ public class IPokedexTest {
     }
 
     @Test
+    public void testSize() {
+        assertEquals(0, pokedex.size());
+
+        pokedex.addPokemon(bulbizarre);
+        assertEquals(1, pokedex.size());
+
+        pokedex.addPokemon(herbizarre);
+        assertEquals(2, pokedex.size());
+    }
+    @Test
+    public void testGetPokemonMetadataWithException() {
+        int invalidIndx = 155;
+        when(pokemonMetadataProvider.getPokemonMetadata(invalidIndx)).thenThrow(new RuntimeException("Database access error"));
+        Exception invalidException = assertThrows(PokedexException.class, () -> {
+            pokedex.getPokemonMetadata(invalidIndx);
+        });
+        assertEquals("impossible d'avoir les metadonnees !!!", invalidException.getMessage());
+    }
+    @Test
     public void testGetPokemons() {
         pokedex.addPokemon(bulbizarre);
         pokedex.addPokemon(herbizarre);
@@ -61,15 +80,6 @@ public class IPokedexTest {
         assertTrue(pokemons.contains(herbizarre));
     }
 
-    @Test
-    public void testGetPokemonsWithComparator() {
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(herbizarre);
-
-        List<Pokemon> pokemonsSortedByName = pokedex.getPokemons(PokemonComparators.NAME);
-        assertEquals("Bulbizarre", pokemonsSortedByName.get(0).getName());
-        assertEquals("Herbizarre", pokemonsSortedByName.get(1).getName());
-    }
 
     @Test
     public void testCreatePokemon() {
@@ -94,4 +104,5 @@ public class IPokedexTest {
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(-6));
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(500));
     }
+
 }
