@@ -104,12 +104,14 @@ public class IPokedexTest {
 
     @Test
     public void testErreurLorsDeLaRecuperationDesMetadonnees() {
-        int indxInvalid = 155;
-        when(pokemonMetadataProvider.getPokemonMetadata(indxInvalid)).thenThrow(new RuntimeException("erreur database"));
+        int indexInvalid = 155;
 
-        PokedexException exception = assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(indxInvalid));
+        when(pokemonMetadataProvider.getPokemonMetadata(indexInvalid)).thenThrow(new PokedexException("Impossible d'avoir les métadonnées"));
+
+        PokedexException exception = assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(indexInvalid));
         assertEquals("impossible d'avoir les metadonnees !!!", exception.getMessage());
     }
+
 
     @Test
     public void testTriDesPokemonsName() {
