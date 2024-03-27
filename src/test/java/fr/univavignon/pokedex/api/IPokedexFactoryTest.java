@@ -53,7 +53,7 @@ public class IPokedexFactoryTest {
     @Test
     void testCreatePokedex() {
         IPokedex createdPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
-        assertNotNull(createdPokedex, "Le pokedex créé ne doit pas être null");
+        assertNotNull(createdPokedex, "le pokedex doit etre null !!!");
 
     }
 
@@ -62,7 +62,7 @@ public class IPokedexFactoryTest {
         doThrow(new PokedexException("invalid id !!!")).when(pokedex).getPokemon(-1);
         IPokedex createdPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
         assertThrows(PokedexException.class, () -> createdPokedex.getPokemon(-1),
-                "Accès à un index invalide doit lever une PokedexException.");
+                "l'acces à un index invalid doit lancer une exception!!!");
     }
 
     @Test
@@ -74,7 +74,7 @@ public class IPokedexFactoryTest {
         createdPokedex.addPokemon(pikachu);
         createdPokedex.addPokemon(bulbasaur);
 
-        assertEquals(2, createdPokedex.size(), "Taille du Pokedex doit être 2 après ajout de deux Pokémons.");
+        assertEquals(2, createdPokedex.size(), "la taille du podex doit etre 2!!!");
     }
 
 
