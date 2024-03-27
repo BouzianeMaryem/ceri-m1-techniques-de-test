@@ -10,11 +10,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class IPokemonMetadataProviderTest {
 
-    private final PokemonMetadata bulbizarre =
-            new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
+    private final PokemonMetadata bulbizarre = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
     private final PokemonMetadata aquali = new PokemonMetadata(133, "Aquali", 186, 168, 260);
-    private final IPokemonMetadataProvider pokemonMetadataProvider =
-            new PokemonMetadataProvider();
+    private final IPokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
     @Test
     public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
         PokemonMetadata fetchedBulbizarre = pokemonMetadataProvider.getPokemonMetadata(0);
