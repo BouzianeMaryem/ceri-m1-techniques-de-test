@@ -52,8 +52,7 @@ public class IPokedexTest {
 
     @Test
     public void testAddPokemonNull() {
-        int index = pokedex.addPokemon(null);
-        assertEquals(-1, index, "si on ajoute un pokemon null alors retourne -1 !!! ");
+        assertEquals(-1, pokedex.addPokemon(null));
     }
 
     //test on peut pas ajouter des pokemons si la liste est full
