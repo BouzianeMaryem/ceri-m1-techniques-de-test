@@ -83,13 +83,23 @@ public class IPokedexTest {
 
     @Test
     public void testCreatePokemon() throws PokedexException {
-        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(bulbizarre);
-        Pokemon pokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
 
-        assertNotNull(pokemon, "La creation n'a pas retourné d'instance.");
-        assertEquals(bulbizarre, pokemon, "ne correspond pas à l'attendu.");
+        Pokemon aquali = pokedex.createPokemon(2729, 202, 5000, 4);
 
-        verify(pokemonFactory).createPokemon(0, 613, 64, 4000, 4);
+        int aqualiIndx = pokedex.addPokemon(pokemon);
+
+        Pokemon  aqualiInPodex = pokedex.getPokemon(aqualiIndx);
+        int aqualiCp = aquali.getCp();
+        int aqualiHp = aquali.getHp();
+        int aqualiDust = aquali.getDust();
+        int aqualiCandy = aquali.getCandy();
+
+
+        assertEquals(aqualiInPodex, aquali);
+        assertEquals(aqualiCp, 2729);
+        assertEquals(aqualiHp, 202);
+        assertEquals(aqualiDust, 5000);
+        assertEquals(aqualiCandy, 4);
     }
 
     //test order
