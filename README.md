@@ -10,6 +10,13 @@
 ## Badge CircleCI :
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/BouzianeMaryem/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/BouzianeMaryem/ceri-m1-techniques-de-test/tree/master)
+
+## technologies :
+- **Maven** : Maven pour la gestion des dépendances .
+- **CircleCI** :  pour la validation des tests.
+- **JUnit/Mockito** : pour les tests unitaires.
+- **JaCoCo** : pour les rapports de couverture de tests et de code, codecove.
+
 ## Implementations Doc :
 
 ### Pokedex :
@@ -29,11 +36,6 @@
 - Implémente IPokemonMetadataProvider, s'occupant de la fourniture des métadonnées pour les Pokémon. Les métadonnées incluent des informations essentielles telles que le nom, l'attaque, la défense et l'endurance des Pokémon.
 
 ### PokemonTrainerFactory :
-- **Classe `PokemonTrainerFactory`** :ù
+- **Classe `PokemonTrainerFactory`** :
 - Implémente IPokemonTrainerFactory, permettant de créer des instances de PokemonTrainer. Cette classe utilise les fabricants IPokedexFactory, IPokemonMetadataProvider et IPokemonFactory pour assembler un PokemonTrainer complet avec son propre Pokedex.
 
-## Choix Techniques :
-- **Maven** : Maven pour la gestion des dépendances .
-- **CircleCI** :  pour la validation des tests.
-- **JUnit/Mockito** : pour les tests unitaires.
-- **JaCoCo** : pour les rapports de couverture de tests et de code, codecove.
