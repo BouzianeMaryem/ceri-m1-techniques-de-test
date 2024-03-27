@@ -53,7 +53,7 @@ public class Pokedex implements IPokedex {
 
     @Override
     public PokemonMetadata getPokemonMetadata( int indx) throws PokedexException {
-        return pokemonMetadataProvider.getPokemonMetadata(indx);
+        return metadataProvider.getPokemonMetadata(indx);
     }
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> comparator) {
