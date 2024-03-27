@@ -103,10 +103,29 @@ public class IPokedexTest {
 
 
     @Test
-    public void testErreurLorsDeLaRecuperationDesMetadonnees()throws PokedexException {
-        assertEquals(pokedex.getPokemonMetadata(0), pokemonMetadataProvider.getPokemonMetadata(0));
+    public void testErreurLorsDeLaRecuperationDesMetadonnees() {
+        int indexInvalid = 155;
+
+        when(pokemonMetadataProvider.getPokemonMetadata(indexInvalid)).thenThrow(new PokedexException("Impossible d'avoir les métadonnées"));
+
+        PokedexException exception = assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(indexInvalid));
+        assertEquals("impossible d'avoir les metadonnees !!!", exception.getMessage());
     }
 
 
+    @Test
+    public void testTriDesPokemonsName() {
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(herbizarre);
+
+        Comparator<Pokemon> nameDescendingComparator = Comparator.comparing(Pokemon::getName).reversed();
+
+
+        List<Pokemon> sortedPokemonsName = pokedex.getPokemons(nameDescendingComparator);
+
+        assertEquals(2, sortedPokemonsName.size());
+        assertEquals(herbizarre.getName(), sortedPokemonsName.get(0).getName());
+        assertEquals(bulbizarre.getName(), sortedPokemonsName.get(1).getName());
+    }
 
 }
