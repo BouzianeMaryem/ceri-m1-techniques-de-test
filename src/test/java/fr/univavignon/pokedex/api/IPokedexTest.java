@@ -48,7 +48,7 @@ public class IPokedexTest {
         assertEquals(2, pokedex.size());
     }
     @Test
-    public void testGetPokemonMetadataWithException() {
+    public void testGetPokemonMetadataWithException() throws PokedexException {
         assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
     }
     @Test
