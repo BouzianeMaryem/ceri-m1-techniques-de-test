@@ -11,17 +11,14 @@ import java.util.Arrays;
 import org.mockito.Mockito;
 public class IPokedexTest {
 
-    private IPokedex pokedex;
-    private IPokemonMetadataProvider;
-    private IPokemonFactory ;
+    IPokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
+    IPokemonFactory pokemonFactory = new PokemonFactory();
+    IPokedex pokedex;
     private List<Pokemon> pokemonList ;
-
     private Pokemon bulbizarre;
     private Pokemon herbizarre;
     @BeforeEach
     public void setUp() throws PokedexException {
-        pokemonMetadataProvider = new PokemonMetadataProvider();
-        pokemonFactory = new PokemonFactory();
         pokedex = new Pokedex(pokemonMetadataProvider, pokemonFactory);
         pokemonList = new ArrayList<>();
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
