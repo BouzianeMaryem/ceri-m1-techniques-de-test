@@ -121,7 +121,7 @@ public class IPokedexTest {
 
         List<Pokemon> sortedPokemonsName = pokedex.getPokemons(nameDescendingComparator);
 
-        assertEquals(2, sortedPokemons.size());
+        assertEquals(2, sortedPokemonsName.size());
         assertEquals(herbizarre.getName(), sortedPokemonsName.get(0).getName());
         assertEquals(bulbizarre.getName(), sortedPokemonsName.get(1).getName());
     }
