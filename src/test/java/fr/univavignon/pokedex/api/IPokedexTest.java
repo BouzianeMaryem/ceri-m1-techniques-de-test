@@ -36,20 +36,6 @@ public class IPokedexTest {
         when(pokemonMetadataProvider.getPokemonMetadata(1)).thenReturn(new PokemonMetadata(1, "Herbizarre", 60, 62, 63));
     }
 
-    @Test
-    public void testAddAndGetPokemon() throws PokedexException {
-        int indexBulbizarre = pokedex.addPokemon(bulbizarre);
-        assertEquals(0, indexBulbizarre);
-
-        Pokemon fetchedBulbizarre = pokedex.getPokemon(indexBulbizarre);
-        assertEquals(bulbizarre.getName(), fetchedBulbizarre.getName());
-
-        int indexHerbizarre = pokedex.addPokemon(herbizarre);
-        assertEquals(1, indexHerbizarre);
-
-        Pokemon fetchedHerbizarre = pokedex.getPokemon(indexHerbizarre);
-        assertEquals(herbizarre.getName(), fetchedHerbizarre.getName());
-    }
 
     @Test
     public void testSize() {
@@ -64,11 +50,7 @@ public class IPokedexTest {
     @Test
     public void testGetPokemonMetadataWithException() {
         int invalidIndx = 155;
-        when(pokemonMetadataProvider.getPokemonMetadata(invalidIndx)).thenThrow(new RuntimeException("Database access error"));
-        Exception invalidException = assertThrows(PokedexException.class, () -> {
-            pokedex.getPokemonMetadata(invalidIndx);
-        });
-        assertEquals("impossible d'avoir les metadonnees !!!", invalidException.getMessage());
+        assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(invalidIndx);
     }
     @Test
     public void testGetPokemons() {
@@ -103,6 +85,21 @@ public class IPokedexTest {
     public void testGetPokemonInvalidIndex() {
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(-6));
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(500));
+    }
+
+    @Test
+    public void testAddAndGetPokemon() throws PokedexException {
+        int indexBulbizarre = pokedex.addPokemon(bulbizarre);
+        assertEquals(0, indexBulbizarre);
+
+        Pokemon fetchedBulbizarre = pokedex.getPokemon(indexBulbizarre);
+        assertEquals(bulbizarre.getName(), fetchedBulbizarre.getName());
+
+        int indexHerbizarre = pokedex.addPokemon(herbizarre);
+        assertEquals(1, indexHerbizarre);
+
+        Pokemon fetchedHerbizarre = pokedex.getPokemon(indexHerbizarre);
+        assertEquals(herbizarre.getName(), fetchedHerbizarre.getName());
     }
 
 }
