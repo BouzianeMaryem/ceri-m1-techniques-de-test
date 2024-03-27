@@ -107,12 +107,12 @@ public class IPokedexTest {
         int indxInvalid = 155;
         when(pokemonMetadataProvider.getPokemonMetadata(indxInvalid)).thenThrow(new RuntimeException("erreur database"));
 
-        PokedexException exceptionIndxInvalid = assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(indxInvalid));
-        assertEquals("impossible d'avoir les metadonnees !!!", exceptionIndxInvalid.getMessage());
+        PokedexException exception = assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(indxInvalid));
+        assertEquals("impossible d'avoir les metadonnees !!!", exception.getMessage());
     }
 
     @Test
-    public void testTriDesPokemons() {
+    public void testTriDesPokemonsName() {
         pokedex.addPokemon(bulbizarre);
         pokedex.addPokemon(herbizarre);
 
