@@ -43,7 +43,7 @@ public class IPokedexFactoryTest {
             when(pokedex.getPokemon(0)).thenReturn(pikachu);
             when(pokedex.getPokemons()).thenReturn(Arrays.asList(pikachu, bulbasaur));
             when(pokedex.getPokemons(any(Comparator.class))).thenReturn(Arrays.asList(bulbasaur, pikachu));
-            doThrow(new PokedexException("Invalid index")).when(pokedex).getPokemon(-1);
+            doThrow(new PokedexException("invalid id !!!")).when(pokedex).getPokemon(-1);
         } catch (PokedexException e) {
             e.printStackTrace();
         }
@@ -59,7 +59,7 @@ public class IPokedexFactoryTest {
 
     @Test
     void testGetPokemonInvalidIndexException() throws PokedexException {
-        doThrow(new PokedexException("Invalid index")).when(pokedex).getPokemon(-1);
+        doThrow(new PokedexException("invalid id !!!")).when(pokedex).getPokemon(-1);
         IPokedex createdPokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
         assertThrows(PokedexException.class, () -> createdPokedex.getPokemon(-1),
                 "Accès à un index invalide doit lever une PokedexException.");
