@@ -1,7 +1,7 @@
 package fr.univavignon.pokedex.api;
 
 // je dois ajouter comments pour generation du javadoc
-public class PokemonFactory implements IPokemonFactory {
+public class FactoryPokemon implements IPokemonFactory {
 
 
     @Override
