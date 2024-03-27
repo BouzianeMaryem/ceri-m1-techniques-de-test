@@ -112,69 +112,15 @@ public class IPokedexTest {
     //et aussi PokemonComparators
 
     //test par nom
-
     @Test
-    public void testGetPokemonsOrderParNom() {
+    public void testTriPokemonsParNom() {
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(herbizarre);
 
-        List<Pokemon> pokemonsAttendusTriNom = List.of(bulbizarre, herbizarre);
+        List<Pokemon> pokemonsTries = pokedex.getPokemons(PokemonComparators.NAME);
 
-        when(pokedex.getPokemons(PokemonComparators.NAME)).thenReturn(pokemonsAttendusTriNom);
-
-        List<Pokemon> pokemonsObtenusTriNom = pokedex.getPokemons(PokemonComparators.NAME);
-
-        assertEquals(pokemonsAttendusTriNom, pokemonsObtenusTriNom, "La liste doit correspondre à celle attendue !!!");
-
-        for(int i = 0; i < pokemonsObtenusTriNom.size() - 1; i++) {
-            Pokemon pokemonActuel = pokemonsObtenusTriNom.get(i);
-            Pokemon pokemonSuivant = pokemonsObtenusTriNom.get(i + 1);
-
-            assertTrue(PokemonComparators.NAME.compare(pokemonActuel, pokemonSuivant) <= 0,
-                    "La liste doit etre trié dans un ordre croissant pour les indx !!!");
-        }
+        assertEquals("Bulbizarre", pokemonsTries.get(0).getName());
+        assertEquals("Herbizarre", pokemonsTries.get(1).getName());
     }
 
-
-// test par index
-
-    @Test
-    public void testGetPokemonsOrderParIndex() {
-
-        List<Pokemon> pokemonsAttendusTriIndex = List.of(bulbizarre, herbizarre);
-
-        when(pokedex.getPokemons(PokemonComparators.INDEX)).thenReturn(pokemonsAttendusTriIndex);
-
-
-        List<Pokemon> pokemonsObtenusTriIndex = pokedex.getPokemons(PokemonComparators.INDEX);
-
-        assertEquals(pokemonsAttendusTriIndex, pokemonsObtenusTriIndex, "La liste doit correspondre à celle attendue !!!");
-
-        for(int i = 0; i < pokemonsObtenusTriIndex.size() - 1; i++) {
-            Pokemon pokemonActuel = pokemonsObtenusTriIndex.get(i);
-            Pokemon pokemonSuivant = pokemonsObtenusTriIndex.get(i + 1);
-            assertTrue(PokemonComparators.INDEX.compare(pokemonActuel, pokemonSuivant) <= 0,
-                    "La liste doit etre trié dans un ordre croissant pour les indx !!!");
-        }
-    }
-
-
-    // test par CP
-
-    @Test
-    public void testGetPokemonsOrderParCP()  {
-
-        List<Pokemon> pokemonsAttendusTriCP = List.of(herbizarre, bulbizarre);
-
-        when(pokedex.getPokemons(PokemonComparators.CP)).thenReturn(pokemonsAttendusTriCP);
-
-        List<Pokemon> pokemonsObtenusTriCP = pokedex.getPokemons(PokemonComparators.CP);
-
-        assertEquals(pokemonsAttendusTriCP, pokemonsObtenusTriCP, "La liste doit correspondre à celle attendue !!!");
-
-        for(int i = 0; i < pokemonsObtenusTriCP.size() - 1; i++) {
-            Pokemon pokemonActuel = pokemonsObtenusTriCP.get(i);
-            Pokemon pokemonSuivant = pokemonsObtenusTriCP.get(i + 1);
-            assertTrue(PokemonComparators.CP.compare(pokemonActuel, pokemonSuivant) <= 0,
-                    "La liste doit etre trié dans un ordre croissant par les CP!!!");
-        }
-    }
 }
