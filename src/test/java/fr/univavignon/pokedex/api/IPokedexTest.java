@@ -113,16 +113,17 @@ public class IPokedexTest {
 
     @Test
     public void testTriDesPokemons() {
-        pokedex.add(bulbizarre);
-        pokedex.add(herbizarre);
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(herbizarre);
 
-        Comparator<Pokemon> comparateurNomDesc = Comparator.comparing(Pokemon::getNom).reversed();
+        Comparator<Pokemon> nameDescendingComparator = Comparator.comparing(Pokemon::getName).reversed();
 
-        List<Pokemon> pokemonsTriesName = pokedex.getPokemons(comparateurNomDesc);
 
-        assertEquals(2, pokemonsTries.size());
-        assertEquals(herbizarre.getName(), pokemonsTriesName.get(0).getName());
-        assertEquals(bulbizarre.getName(), pokemonsTriesName.get(1).getName());
+        List<Pokemon> sortedPokemonsName = pokedex.getPokemons(nameDescendingComparator);
+
+        assertEquals(2, sortedPokemons.size());
+        assertEquals(herbizarre.getName(), sortedPokemonsName.get(0).getName());
+        assertEquals(bulbizarre.getName(), sortedPokemonsName.get(1).getName());
     }
 
 }
