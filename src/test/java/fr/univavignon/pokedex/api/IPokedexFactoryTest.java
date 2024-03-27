@@ -33,7 +33,7 @@ public class IPokedexFactoryTest {
     private Pokemon herbizarre;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws PokedexException {
         pokedex = mock(IPokedex.class);
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         herbizarre = new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
