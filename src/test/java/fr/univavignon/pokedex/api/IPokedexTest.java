@@ -101,4 +101,28 @@ public class IPokedexTest {
         assertEquals(herbizarre.getName(), fetchedHerbizarre.getName());
     }
 
+    @Test
+    public void testTriDesPokemons() {
+        pokedex.add(bulbizarre);
+        pokedex.add(herbizarre);
+
+        Comparator<Pokemon> comparateurNomDesc = Comparator.comparing(Pokemon::getNom).reversed();
+
+        List<Pokemon> pokemonsTries = pokedex.getPokemons(comparateurNomDesc);
+
+        assertEquals(2, pokemonsTries.size());
+        assertEquals(herbizarre.getNom(), pokemonsTries.get(0).getNom());
+        assertEquals(bulbizarre.getNom(), pokemonsTries.get(1).getNom());
+    }
+
+    @Test
+    public void testErreurLorsDeLaRecuperationDesMetadonnees() {
+        int indxInvalid = 155;
+        when(pokemonMetadataProvider.getPokemonMetadata(indxInvalid)).thenThrow(new RuntimeException("erreur database"));
+
+        PokedexException exceptionIndxInvalid = assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(indxInvalid));
+        assertEquals("impossible d'avoir les metadonnees !!!", exceptionIndxInvalid.getMessage());
+    }
+
+
 }
