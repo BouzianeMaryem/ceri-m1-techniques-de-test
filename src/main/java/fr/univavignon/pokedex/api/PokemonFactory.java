@@ -14,7 +14,8 @@ public class PokemonFactory implements IPokemonFactory {
                                  final int candy) {
         PokemonMetadata pokemonMetadata;
         try {
-            pokemonMetadata = new PokemonMetadataProvider().getPokemonMetadata(index);
+            pokemonMetadata =
+                    new PokemonMetadataProvider().getPokemonMetadata(index);
         } catch (PokedexException pe) {
             return null;
         }
