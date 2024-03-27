@@ -1,9 +1,5 @@
 package fr.univavignon.pokedex.api;
-/**
- * Pokemon factory. Implementation of IPodexFactory
- *
- * @author Maryem Bouziane
- */
+// je dois ajouter comments pour generation du javadoc
 public class PokedexFactory implements IPokedexFactory {
     @Override
     public IPokedex createPokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {

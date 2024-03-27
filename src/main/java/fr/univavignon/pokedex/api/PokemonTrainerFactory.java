@@ -1,5 +1,6 @@
 package fr.univavignon.pokedex.api;
 
+// je dois ajouter comments pour generation du javadoc
 public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 
     private final IPokemonMetadataProvider metadataProvider;

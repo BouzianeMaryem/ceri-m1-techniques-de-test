@@ -17,3 +17,6 @@
 - **Dépendances** :
     - `IPokemonMetadataProvider` : Offre l'accès aux métadonnées des Pokémon.
     - `IPokemonFactory` : Utilisée pour créer de nouvelles instances de Pokémon.
+  
+### `PokedexFactory`
+- **Classe `PokedexFactory`** : Implémente `IPokedexFactory`, fournissant une méthode de fabrique pour créer des instances de `Pokedex`. Cette approche modulaire facilite l'extension et la maintenance du système.

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+// je dois ajouter comments pour generation du javadoc
 public class Pokedex implements IPokedex {
 
     private List<Pokemon> pokemonList;
