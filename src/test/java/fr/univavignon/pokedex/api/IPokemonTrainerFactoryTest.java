@@ -26,9 +26,6 @@ public class IPokemonTrainerFactoryTest {
 
     @BeforeEach
     void setUp() {
-        IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
-        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
-        IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
 
         lenient().when(pokedexFactory.createPokedex(any(), any())).thenReturn(pokedex);
     }
@@ -103,6 +100,9 @@ public class IPokemonTrainerFactoryTest {
 
     @Test
     public void testCreateTrainer() {
+        IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
+        IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+        IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
 
         PokemonTrainerFactory trainerFactory = new PokemonTrainerFactory(metadataProvider, pokemonFactory);
         String name = "Mona";
