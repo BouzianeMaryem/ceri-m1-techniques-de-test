@@ -101,19 +101,6 @@ public class IPokedexTest {
         assertEquals(herbizarre.getName(), fetchedHerbizarre.getName());
     }
 
-    @Test
-    public void testTriDesPokemons() {
-        pokedex.add(bulbizarre);
-        pokedex.add(herbizarre);
-
-        Comparator<Pokemon> comparateurNomDesc = Comparator.comparing(Pokemon::getNom).reversed();
-
-        List<Pokemon> pokemonsTries = pokedex.getPokemons(comparateurNomDesc);
-
-        assertEquals(2, pokemonsTries.size());
-        assertEquals(herbizarre.getNom(), pokemonsTries.get(0).getNom());
-        assertEquals(bulbizarre.getNom(), pokemonsTries.get(1).getNom());
-    }
 
     @Test
     public void testErreurLorsDeLaRecuperationDesMetadonnees() {
@@ -124,5 +111,18 @@ public class IPokedexTest {
         assertEquals("impossible d'avoir les metadonnees !!!", exceptionIndxInvalid.getMessage());
     }
 
+    @Test
+    public void testTriDesPokemons() {
+        pokedex.add(bulbizarre);
+        pokedex.add(herbizarre);
+
+        Comparator<Pokemon> comparateurNomDesc = Comparator.comparing(Pokemon::getNom).reversed();
+
+        List<Pokemon> pokemonsTriesName = pokedex.getPokemons(comparateurNomDesc);
+
+        assertEquals(2, pokemonsTries.size());
+        assertEquals(herbizarre.getName(), pokemonsTriesName.get(0).getName());
+        assertEquals(bulbizarre.getName(), pokemonsTriesName.get(1).getName());
+    }
 
 }
