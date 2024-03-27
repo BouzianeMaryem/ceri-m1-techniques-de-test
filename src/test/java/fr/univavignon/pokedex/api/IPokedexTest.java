@@ -103,7 +103,7 @@ public class IPokedexTest {
 
 
     @Test
-    public void testLaRecuperationDesMetadonnees() {
+    public void testLaRecuperationDesMetadonnees() throws PokedexException {
         assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
     }
 
