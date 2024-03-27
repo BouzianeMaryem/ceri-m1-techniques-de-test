@@ -129,7 +129,7 @@ public class IPokedexTest {
         pokedex.addPokemon(bulbizarre);
         pokedex.addPokemon(herbizarre);
 
-        List<Pokemon> pokemonsTriesIndex = pokedex.getPokemons(PokemonComparators.Index);
+        List<Pokemon> pokemonsTriesIndex = pokedex.getPokemons(PokemonComparators.INDEX);
 
         assertEquals("Bulbizarre", pokemonsTriesIndex.get(0).getName());
         assertEquals("Herbizarre", pokemonsTriesIndex.get(1).getName());
