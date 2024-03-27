@@ -46,7 +46,15 @@ public class Pokedex implements IPokedex {
     public List<Pokemon> getPokemons() {
         return pokemonList;
     }
+    @Override
+    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
+    }
 
+    @Override
+    public PokemonMetadata getPokemonMetadata( int indx) throws PokedexException {
+        return pokemonMetadataProvider.getPokemonMetadata(indx);
+    }
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> comparator) {
         List<Pokemon> listOrdonnee = new ArrayList<>(pokemonList);
@@ -55,20 +63,5 @@ public class Pokedex implements IPokedex {
     }
 
 
-    @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
-        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
-    }
-
-    @Override
-    public PokemonMetadata getPokemonMetadata(int index) throws PokedexException {
-        PokemonMetadata metadata;
-        try {
-            metadata = metadataProvider.getPokemonMetadata(index);
-        } catch (Exception e) {
-            throw new PokedexException("impossible d'avoir les metadonnees !!!");
-        }
-        return metadata;
-    }
 
 }

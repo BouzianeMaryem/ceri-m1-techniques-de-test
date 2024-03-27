@@ -108,18 +108,21 @@ public class IPokedexTest {
     }
 
     @Test
-    public void testTriDesPokemonsName() {
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(herbizarre);
+    public void testTriDesPokemonsParNom() {
+        List<Pokemon> pokemonsTriesParNom = pokedex.getPokemons(PokemonComparators.NAME);
+        assertTrue(pokemonsTriesParNom.get(0).getName().compareTo(pokemonsTriesParNom.get(1).getName()) < 0, "Les Pokémon doivent être triés par nom dans l'ordre croissant");
+    }
 
-        Comparator<Pokemon> nameDescendingComparator = Comparator.comparing(Pokemon::getName).reversed();
+    @Test
+    public void testTriDesPokemonsParIndex() {
+        List<Pokemon> pokemonsTriesParIndex = pokedex.getPokemons(PokemonComparators.INDEX);
+        assertTrue(pokemonsTriesParIndex.get(0).getIndex() < pokemonsTriesParIndex.get(1).getIndex(), "Les Pokémon doivent être triés par index dans l'ordre croissant");
+    }
 
-
-        List<Pokemon> sortedPokemonsName = pokedex.getPokemons(nameDescendingComparator);
-
-        assertEquals(2, sortedPokemonsName.size());
-        assertEquals(herbizarre.getName(), sortedPokemonsName.get(0).getName());
-        assertEquals(bulbizarre.getName(), sortedPokemonsName.get(1).getName());
+    @Test
+    public void testTriDesPokemonsParCP() {
+        List<Pokemon> pokemonsTriesParCP = pokedex.getPokemons(PokemonComparators.CP);
+        assertTrue(pokemonsTriesParCP.get(0).getCp() <= pokemonsTriesParCP.get(1).getCp(), "Les Pokémon doivent être triés par CP dans l'ordre croissant ou égal");
     }
 
 }
