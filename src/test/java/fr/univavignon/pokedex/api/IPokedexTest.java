@@ -137,7 +137,7 @@ public class IPokedexTest {
 
     //test par CP
     @Test
-    public void testTriPokemonsParIndex() {
+    public void testTriPokemonsParCp() {
         pokedex.addPokemon(bulbizarre);
         pokedex.addPokemon(herbizarre);
 
