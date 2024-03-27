@@ -81,7 +81,19 @@ public class IPokedexTest {
         assertEquals(pokedex.getPokemons().size(), pokemonList.size());
     }
 
+    @Test
+    public void testCreatePokemon() throws PokedexException {
+        when(pokemonFactory.createPokemon(0, 613, 64, 4000, 4)).thenReturn(bulbizarre);
+        Pokemon pokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
+
+        assertNotNull(pokemon, "La creation n'a pas retourné d'instance.");
+        assertEquals(bulbizarre, pokemon, "ne correspond pas à l'attendu.");
+
+        verify(pokemonFactory).createPokemon(0, 613, 64, 4000, 4);
+    }
+
     //test order
+
     //et aussi PokemonComparators
 
     //test par nom
