@@ -66,6 +66,16 @@ public class IPokedexTest {
     // test getpokemon()
     @Test
     public void testGetPokemon() throws PokedexException {
+        assertEquals(pokedex.getPokemon(0), pokemonList.get(0));
+        assertEquals(pokedex.getPokemon(0).getIndex(), bulbizarre.getIndex());
+        assertEquals(pokedex.getPokemon(0).getName(), bulbizarre.getName());
+        assertEquals(pokedex.getPokemon(0).getAttack(), bulbizarre.getAttack());
+        assertEquals(pokedex.getPokemon(0).getDefense(), bulbizarre.getDefense());
+        assertEquals(pokedex.getPokemon(0).getCp(), bulbizarre.getCp());
+        assertEquals(pokedex.getPokemon(0).getCandy(), bulbizarre.getCandy());
+        assertEquals(pokedex.getPokemon(0).getDust(), bulbizarre.getDust());
+        assertEquals(pokedex.getPokemon(0).getHp(), bulbizarre.getHp());
+
 
     }
     //test getPokemon si index est invalid
