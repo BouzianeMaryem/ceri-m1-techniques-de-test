@@ -117,10 +117,34 @@ public class IPokedexTest {
         pokedex.addPokemon(bulbizarre);
         pokedex.addPokemon(herbizarre);
 
-        List<Pokemon> pokemonsTries = pokedex.getPokemons(PokemonComparators.NAME);
+        List<Pokemon> pokemonsTriesNom = pokedex.getPokemons(PokemonComparators.NAME);
 
-        assertEquals("Bulbizarre", pokemonsTries.get(0).getName());
-        assertEquals("Herbizarre", pokemonsTries.get(1).getName());
+        assertEquals("Bulbizarre", pokemonsTriesNom.get(0).getName());
+        assertEquals("Herbizarre", pokemonsTriesNom.get(1).getName());
+    }
+
+    //test par Index
+    @Test
+    public void testTriPokemonsParIndex() {
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(herbizarre);
+
+        List<Pokemon> pokemonsTriesIndex = pokedex.getPokemons(PokemonComparators.Index);
+
+        assertEquals("Bulbizarre", pokemonsTriesIndex.get(0).getName());
+        assertEquals("Herbizarre", pokemonsTriesIndex.get(1).getName());
+    }
+
+    //test par CP
+    @Test
+    public void testTriPokemonsParIndex() {
+        pokedex.addPokemon(bulbizarre);
+        pokedex.addPokemon(herbizarre);
+
+        List<Pokemon> pokemonsTriesCp = pokedex.getPokemons(PokemonComparators.CP);
+
+        assertEquals("Herbizarre", pokemonsTriesCp.get(0).getName());
+        assertEquals("Bulbizarre", pokemonsTriesCp.get(1).getName());
     }
 
 }
