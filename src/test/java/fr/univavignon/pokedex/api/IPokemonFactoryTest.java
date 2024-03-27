@@ -33,9 +33,6 @@ public class IPokemonFactoryTest {
 
         lenient().when(mockMetadataProvider.getPokemonMetadata(anyInt())).thenAnswer(invocation -> {
             int index = invocation.getArgument(0);
-            if (index < 0 || index > 150) {
-                throw new PokedexException("Index hors limites.");
-            }
             return new PokemonMetadata(index, "TestName", 10, 10, 10);
         });
     }
