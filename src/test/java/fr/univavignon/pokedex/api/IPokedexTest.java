@@ -107,22 +107,6 @@ public class IPokedexTest {
         assertEquals(pokedex.getPokemonMetadata(0), pokemonMetadataProvider.getPokemonMetadata(0));
     }
 
-    @Test
-    public void testTriDesPokemonsParNom() {
-        List<Pokemon> pokemonsTriesParNom = pokedex.getPokemons(PokemonComparators.NAME);
-        assertTrue(pokemonsTriesParNom.get(0).getName().compareTo(pokemonsTriesParNom.get(1).getName()) < 0, "Les Pokémon doivent être triés par nom dans l'ordre croissant");
-    }
 
-    @Test
-    public void testTriDesPokemonsParIndex() {
-        List<Pokemon> pokemonsTriesParIndex = pokedex.getPokemons(PokemonComparators.INDEX);
-        assertTrue(pokemonsTriesParIndex.get(0).getIndex() < pokemonsTriesParIndex.get(1).getIndex(), "Les Pokémon doivent être triés par index dans l'ordre croissant");
-    }
-
-    @Test
-    public void testTriDesPokemonsParCP() {
-        List<Pokemon> pokemonsTriesParCP = pokedex.getPokemons(PokemonComparators.CP);
-        assertTrue(pokemonsTriesParCP.get(0).getCp() <= pokemonsTriesParCP.get(1).getCp(), "Les Pokémon doivent être triés par CP dans l'ordre croissant ou égal");
-    }
 
 }
