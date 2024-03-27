@@ -130,5 +130,5 @@ public class IPokemonFactoryTest {
         Pokemon pokemon = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
         assertEquals(25, pokemon.getIv(), "L'IV du Pokémon créé doit être fixé à 25.");
     }
-}
+
 }
