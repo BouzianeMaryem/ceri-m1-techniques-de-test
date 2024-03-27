@@ -19,8 +19,7 @@ public class PokemonFactory implements IPokemonFactory {
         } catch (PokedexException e) {
             System.err.println("Attention: je ne trouve pas de metadonnees pour l'index " + index+ "!!!");
             return null;
-        }.
-
+        }
 
         int iv = 25;
 
