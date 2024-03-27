@@ -1,10 +1,6 @@
 package fr.univavignon.pokedex.api;
 
-/**
- * Pokemon factory. Implementation of IPokemonFactory.
- *
- * @author Khaoula Otmani
- */
+
 public class PokemonFactory implements IPokemonFactory {
 
 
