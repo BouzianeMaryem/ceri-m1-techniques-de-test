@@ -22,7 +22,9 @@ public class IPokemonTrainerFactoryTest {
     private IPokemonTrainerFactory trainerFactory;
 
     @Mock
-    private PokemonTrainer expectedTrainer;
+    private PokemonTrainer expectedMerly;
+
+
 
     @BeforeEach
     void setUp() {
