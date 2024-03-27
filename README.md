@@ -29,3 +29,9 @@
 
 ### `PokemonTrainerFactory`
 - **Classe `PokemonTrainerFactory`** : Implémente `IPokemonTrainerFactory`, permettant de créer des instances de `PokemonTrainer`. Cette classe utilise les fabricants `IPokedexFactory`, `IPokemonMetadataProvider` et `IPokemonFactory` pour assembler un `PokemonTrainer` complet avec son propre `Pokedex`.
+
+## Choix Techniques :
+- **Maven** : Maven pour la gestion des dépendances .
+- **CircleCI** :  pour la validation des tests.
+- **JUnit/Mockito** : pour les tests unitaires.
+- **JaCoCo** : pour les rapports de couverture de tests et de code, codecove.
