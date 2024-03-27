@@ -65,7 +65,7 @@ public class IPokedexTest {
     @Test
     public void testCreatePokemon() {
         Pokemon createdPokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
-        assertNotNull(createdPokemon);
+        assertNotNull(createdPokemo_n);
     }
 
     @Test
