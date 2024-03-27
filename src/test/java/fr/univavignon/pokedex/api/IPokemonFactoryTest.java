@@ -27,6 +27,14 @@ public class IPokemonFactoryTest {
         lenient().when(pokemonFactory.createPokemon(eq(0), eq(613), eq(64), eq(4000), eq(4))).thenReturn(bulbizarre);
         lenient().when(pokemonFactory.createPokemon(eq(133), eq(2729), eq(202), eq(5000), eq(4))).thenReturn(aquali);
         lenient().when(pokemonFactory.createPokemon(eq(-1), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(null);
+
+        lenient().when(mockMetadataProvider.getPokemonMetadata(anyInt())).thenAnswer(invocation -> {
+            int index = invocation.getArgument(0);
+            if (index < 0 || index > 150) {
+                throw new PokedexException("Index hors limites.");
+            }
+            return new PokemonMetadata(index, "TestName", 10, 10, 10);
+        });
     }
 
     @Test
@@ -99,11 +107,28 @@ public class IPokemonFactoryTest {
         assertEquals(bulbizarre.getDust(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getDust(), "la poussière doit correspondre à celui de  Bulbizarre!!");
         assertEquals(aquali.getDust(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getDust(), "la poussière doit correspondre à celui de  Aquali!!");
     }
+
     @Test
     void testLaIvDuPokemonEstCorrectementDefinie() {
         assertEquals(bulbizarre.getIv(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getIv(), "la IV pourcentage  doit correspondre à celui de  Bulbizarre!!");
         assertEquals(aquali.getIv(), pokemonFactory.createPokemon(133, 2729, 202, 5000, 4).getIv(), "la IV pourcentage doit correspondre à celui de  Aquali!!");
     }
 
+    @Test
+    void testPokemonCreationWithInvalidIndexThrowsException() {
+        assertThrows(PokedexException.class, () -> {
+            pokemonFactory.createPokemon(-1, 100, 100, 1000, 10);
+        }, "La création d'un Pokémon avec un index invalide doit lever une PokedexException.");
 
+        assertThrows(PokedexException.class, () -> {
+            pokemonFactory.createPokemon(151, 100, 100, 1000, 10);
+        }, "La création d'un Pokémon avec un index hors limites doit lever une PokedexException.");
+    }
+
+    @Test
+    void testPokemonCreationWithValidIndexSetsIVCorrectly() {
+        Pokemon pokemon = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+        assertEquals(25, pokemon.getIv(), "L'IV du Pokémon créé doit être fixé à 25.");
+    }
+}
 }
