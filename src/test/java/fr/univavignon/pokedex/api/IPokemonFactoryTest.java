@@ -1,27 +1,20 @@
 package fr.univavignon.pokedex.api;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class IPokemonFactoryTest {
     IPokemonFactory pokemonFactory = new PokemonFactory();
     Pokemon bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
-
     Pokemon aquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1000);
-
 
     @Test
     void ShouldReturnNull(){
-        assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25));
+        Assertions.assertNull(pokemonFactory.createPokemon(-1, 25, 25, 25, 25));
     }
+
     @Test
     void ShouldRetunRightCp() {
         assertEquals(bulbizarre.getCp(), pokemonFactory.createPokemon(0, 613, 64, 4000, 4).getCp());
