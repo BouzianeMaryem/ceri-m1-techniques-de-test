@@ -16,6 +16,9 @@ public class IPokemonFactoryTest {
     @Mock
     private IPokemonFactory pokemonFactory;
 
+    @Mock
+    private IPokemonMetadataProvider mockMetadataProvider;
+
     private Pokemon bulbizarre;
     private Pokemon aquali;
 
