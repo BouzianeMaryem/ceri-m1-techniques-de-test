@@ -17,7 +17,6 @@ public class PokemonFactory implements IPokemonFactory {
         try {
             metadata = metadataProvider.getPokemonMetadata(index);
         } catch (PokedexException e) {
-            System.err.println("Attention: je ne trouve pas de metadonnees pour l'index " + index+ "!!!");
             return null;
         }
 
