@@ -11,9 +11,9 @@ import java.util.Arrays;
 import org.mockito.Mockito;
 public class IPokedexTest {
 
-    IPokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
-    IPokemonFactory pokemonFactory = new PokemonFactory();
-    IPokedex pokedex;
+    private final IPokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
+    private IPokemonFactory pokemonFactory = new PokemonFactory();
+    private IPokedex pokedex;
     private List<Pokemon> pokemonList ;
     private Pokemon bulbizarre;
     private Pokemon herbizarre;
