@@ -49,6 +49,13 @@ public class IPokedexTest {
         pokemonList.add(herbizarre);
 
     }
+
+    @Test
+    public void testAddPokemonNull() {
+        int index = pokedex.addPokemon(null);
+        assertEquals(-1, index, "si on ajoute un pokemon null alors retourne -1 !!! ");
+    }
+
     //test on peut pas ajouter des pokemons si la liste est full
     // c à d : on doit pas dépasser 151 pokemons
     @Test
