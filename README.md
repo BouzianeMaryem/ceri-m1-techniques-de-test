@@ -20,22 +20,27 @@
 ## Implementations Doc :
 
 ### Pokedex :
-- **Classe `Pokedex`** : 
-- Implémente l'interface IPokedex, servant de répertoire pour stocker et interagir avec les informations des Pokémon. Elle utilise des listes pour gérer les données et les métadonnées des Pokémon.
+- **Classe Pokedex** :
+  <br>
+Implémente l'interface IPokedex, servant de répertoire pour stocker et interagir avec les informations des Pokémon. Elle utilise des listes pour gérer les données et les métadonnées des Pokémon.
   
 ### PokedexFactory :
-- **Classe `PokedexFactory`** : 
-- Implémente IPokedexFactory, fournissant une méthode de fabrique pour créer des instances de Pokedex. Cette approche modulaire facilite l'extension et la maintenance du système.
+- **Classe PokedexFactory** :
+  <br>
+Implémente IPokedexFactory, fournissant une méthode de fabrique pour créer des instances de Pokedex. Cette approche modulaire facilite l'extension et la maintenance du système.
 
 ### FactoryPokemon :
-- **Classe `FactoryPokemon`** : 
-- Implémente IPokemonFactory, chargée de la création des objets Pokemon avec leurs caractéristiques de base et des attributs calculés comme les points de combat (CP) et les points de vie (HP).
+- **Classe FactoryPokemon** :
+  <br>
+Implémente IPokemonFactory, chargée de la création des objets Pokemon avec leurs caractéristiques de base et des attributs calculés comme les points de combat (CP) et les points de vie (HP).
 
 ### PokemonMetadataProvider :
-- **Classe `PokemonMetadataProvider`** :
-- Implémente IPokemonMetadataProvider, s'occupant de la fourniture des métadonnées pour les Pokémon. Les métadonnées incluent des informations essentielles telles que le nom, l'attaque, la défense et l'endurance des Pokémon.
+- **ClassePokemonMetadataProvider** :
+  <br>
+Implémente IPokemonMetadataProvider, s'occupant de la fourniture des métadonnées pour les Pokémon. Les métadonnées incluent des informations essentielles telles que le nom, l'attaque, la défense et l'endurance des Pokémon.
 
 ### PokemonTrainerFactory :
-- **Classe `PokemonTrainerFactory`** :
-- Implémente IPokemonTrainerFactory, permettant de créer des instances de PokemonTrainer. Cette classe utilise les fabricants IPokedexFactory, IPokemonMetadataProvider et IPokemonFactory pour assembler un PokemonTrainer complet avec son propre Pokedex.
+- **ClassePokemonTrainerFactory** :
+  <br>
+Implémente IPokemonTrainerFactory, permettant de créer des instances de PokemonTrainer. Cette classe utilise les fabricants IPokedexFactory, IPokemonMetadataProvider et IPokemonFactory pour assembler un PokemonTrainer complet avec son propre Pokedex.
 
