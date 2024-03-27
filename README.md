@@ -23,3 +23,6 @@
 
 ### `PokemonFactory`
 - **Classe `PokemonFactory`** : Implémente `IPokemonFactory`, chargée de la création des objets `Pokemon` avec leurs caractéristiques de base et des attributs calculés comme les points de combat (CP) et les points de vie (HP).
+
+### `PokemonMetadataProvider`
+- **Classe `PokemonMetadataProvider`** : Implémente `IPokemonMetadataProvider`, s'occupant de la fourniture des métadonnées pour les Pokémon. Les métadonnées incluent des informations essentielles telles que le nom, l'attaque, la défense et l'endurance des Pokémon.
