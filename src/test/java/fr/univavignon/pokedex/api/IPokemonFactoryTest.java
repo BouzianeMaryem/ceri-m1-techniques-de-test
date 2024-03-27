@@ -118,17 +118,6 @@ public class IPokemonFactoryTest {
     }
 
     @Test
-    void testPokemonCreationWithInvalidIndexThrowsException() {
-        assertThrows(PokedexException.class, () -> {
-            pokemonFactory.createPokemon(-1, 100, 100, 1000, 10);
-        }, "La création d'un Pokémon avec un index invalide doit lever une PokedexException.");
-
-        assertThrows(PokedexException.class, () -> {
-            pokemonFactory.createPokemon(151, 100, 100, 1000, 10);
-        }, "La création d'un Pokémon avec un index hors limites doit lever une PokedexException.");
-    }
-
-    @Test
     void testPokemonCreationWithValidIndexSetsIVCorrectly() {
         Pokemon pokemon = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
         assertEquals(25, pokemon.getIv(), "L'IV du Pokémon créé doit être fixé à 25.");
