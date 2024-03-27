@@ -117,12 +117,10 @@ public class IPokedexTest {
 
     @Test
     public void testGetPokemonsOrderParNom() {
-        pokemonList.add(aquali);
-        pokedex.addPokemon(aquali);
-        assertEquals(pokemonList, pokedex.getPokemons(PokemonComparators.INDEX));
+        pokedex.addPokemon(herbizarre);
         ArrayList<Pokemon> pokemonsOrderedByName = new ArrayList<>();
-        pokemonsOrderedByName.add(aquali);
         pokemonsOrderedByName.add(bulbizarre);
+        pokemonsOrderedByName.add(herbizarre);
         assertEquals(pokemonsOrderedByName, pokedex.getPokemons(PokemonComparators.NAME));
     }
 
@@ -131,6 +129,11 @@ public class IPokedexTest {
 
     @Test
     public void testGetPokemonsOrderParIndex() {
+        pokedex.addPokemon(herbizarre);
+        ArrayList<Pokemon> pokemonsOrderedByIndex = new ArrayList<>();
+        pokemonsOrderedByIndex.add(bulbizarre);
+        pokemonsOrderedByIndex.add(herbizarre);
+        assertEquals(pokemonsOrderedByName, pokedex.getPokemons(PokemonComparators.INDEX));
 
     }
 
@@ -139,6 +142,11 @@ public class IPokedexTest {
 
     @Test
     public void testGetPokemonsOrderParCP()  {
+        pokedex.addPokemon(herbizarre);
+        ArrayList<Pokemon> pokemonsOrderedByCP = new ArrayList<>();
+        pokemonsOrderedByCP.add(herbizarre);
+        pokemonsOrderedByCP.add(bulbizarre);
+        assertEquals(pokemonsOrderedByCP, pokedex.getPokemons(PokemonComparators.CP));
 
     }
 
