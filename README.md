@@ -26,3 +26,6 @@
 
 ### `PokemonMetadataProvider`
 - **Classe `PokemonMetadataProvider`** : Implémente `IPokemonMetadataProvider`, s'occupant de la fourniture des métadonnées pour les Pokémon. Les métadonnées incluent des informations essentielles telles que le nom, l'attaque, la défense et l'endurance des Pokémon.
+
+### `PokemonTrainerFactory`
+- **Classe `PokemonTrainerFactory`** : Implémente `IPokemonTrainerFactory`, permettant de créer des instances de `PokemonTrainer`. Cette classe utilise les fabricants `IPokedexFactory`, `IPokemonMetadataProvider` et `IPokemonFactory` pour assembler un `PokemonTrainer` complet avec son propre `Pokedex`.
