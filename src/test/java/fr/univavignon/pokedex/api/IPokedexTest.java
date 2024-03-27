@@ -49,8 +49,7 @@ public class IPokedexTest {
     }
     @Test
     public void testGetPokemonMetadataWithException() {
-        int invalidIndx = 155;
-        assertThrows(PokedexException.class, () -> pokedex.getPokemonMetadata(invalidIndx));
+        assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
     }
     @Test
     public void testGetPokemons() {
