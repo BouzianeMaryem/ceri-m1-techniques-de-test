@@ -47,7 +47,7 @@ class IPokemonFactoryTest {
 
         Pokemon pokemonInvalidAllParams = pokemonFactory.createPokemon(-1000, -1000, -1000, -1000, -1000);
 
-        assertNull(pokemonInvalidAllParams);
+        Assertions.assertNull(pokemonInvalidAllParams);
 
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCp());
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getHp());
@@ -62,7 +62,7 @@ class IPokemonFactoryTest {
 
         Pokemon pokemonNegativeIndex = pokemonFactory.createPokemon(-1, 1632, 201, 4000, 5);
 
-        assertNull(pokemonNegativeIndex);
+        Assertions.assertNull(pokemonNegativeIndex);
 
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
@@ -77,7 +77,7 @@ class IPokemonFactoryTest {
 
         Pokemon pokemonSupIndex = pokemonFactory.createPokemon(200, 1632, 201, 4000, 5);
 
-        assertNull(pokemonSupIndex);
+        Assertions.assertNull(pokemonSupIndex);
 
 
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCp());

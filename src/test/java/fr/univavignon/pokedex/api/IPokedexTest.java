@@ -81,7 +81,7 @@ public class IPokedexTest {
     public void testCreatePokemonInvalidParams() {
         Pokemon pokemonInvalidAllParams = pokedex.createPokemon(-1000, -1000, -1000, -1000, -1000);
 
-        assertNull(pokemonInvalidAllParams);
+        Assertions.assertNull(pokemonInvalidAllParams);
 
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCp());
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getHp());
@@ -95,7 +95,7 @@ public class IPokedexTest {
 
         Pokemon pokemonNegativeIndex = pokedex.createPokemon(-1, 1632, 201, 4000, 5);
 
-        assertNull(pokemonNegativeIndex);
+        Assertions.assertNull(pokemonNegativeIndex);
 
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
@@ -111,7 +111,7 @@ public class IPokedexTest {
 
         Pokemon pokemonSupIndex = pokedex.createPokemon(200, 1632, 201, 4000, 5);
 
-        assertNull(pokemonSupIndex);
+        Assertions.assertNull(pokemonSupIndex);
 
 
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCp());
