@@ -94,19 +94,13 @@ class IPokemonFactoryTest {
     @Test
     void verifierLaCoherenceDesMetadonneesPokemon() {
 
-        int pokemonIndex = 4;
-        int CP = 25;
-        int HP = 25;
-        int Dust = 25;
-        int Candy = 25;
-        Pokemon pokemonCohrence = pokemonFactory.createPokemon(4, 613, 64, 4000, 4);
-
-        Assertions.assertNotNull(pokemonCohrence);
-
-        Assertions.assertEquals(expectedCoherence.getCp(), pokemonCohrence.getCp());
-        Assertions.assertEquals(expectedCoherence.getHp(), pokemonCohrence.getHp());
-        Assertions.assertEquals(expectedCoherence.getDust(), pokemonCohrence.getDust());
-        Assertions.assertEquals(expectedCoherence.getCandy(), pokemonCohrence.getCandy());
+        Pokemon bulbizarre = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
+        Assertions.assertNotNull(bulbizarre);
+        Assertions.assertEquals(expectedBulbizarre.getCp(), bulbizarre.getCp());
+        Assertions.assertEquals(expectedBulbizarre.getHp(), bulbizarre.getHp());
+        Assertions.assertEquals(expectedBulbizarre.getDust(), bulbizarre.getDust());
+        Assertions.assertEquals(expectedBulbizarre.getCandy(), bulbizarre.getCandy());
+        Assertions.assertEquals(expectedBulbizarre.getIv(), bulbizarre.getIv());
     }
 
 }
