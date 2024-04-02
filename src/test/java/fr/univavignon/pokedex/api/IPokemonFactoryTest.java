@@ -51,6 +51,8 @@ class IPokemonFactoryTest {
 
         Pokemon pokemonInvalidAllParams = pokemonFactory.createPokemon(-1000, -1000, -1000, -1000, -1000);
 
+        assertNull(pokemonInvalidAllParams);
+
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCp());
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getHp());
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getDust());
@@ -64,6 +66,8 @@ class IPokemonFactoryTest {
 
         Pokemon pokemonNegativeIndex = pokemonFactory.createPokemon(-1, 1632, 201, 4000, 5);
 
+        assertNull(pokemonNegativeIndex);
+
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getDust());
@@ -76,6 +80,9 @@ class IPokemonFactoryTest {
     void testInvalidIndxSup150ReturnNull() {
 
         Pokemon pokemonSupIndex = pokemonFactory.createPokemon(200, 1632, 201, 4000, 5);
+
+        assertNull(pokemonSupIndex);
+
 
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCp());
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getHp());
@@ -96,11 +103,11 @@ class IPokemonFactoryTest {
         Pokemon pokemonCree = pokemonFactory.createPokemon(pokemonIndex, CP, HP, Dust, Candy);
 
         assertAll("Vérification de la cohérence des métadonnées du Pokémon créé",
-                () -> assertEquals(pokemonIndex, pokemonCree.getIndex(), "L'index doit etre le meme !!!"),
-                () -> assertEquals(CP, pokemonCree.getCp(), "Le CP doit etre le meme !!!"),
-                () -> assertEquals(HP, pokemonCree.getHp(), "Le HP doit etre le meme !!!"),
-                () -> assertEquals(Candy, pokemonCree.getCandy(), "Le candy doit etre le meme !!!"),
-                () -> assertEquals(Dust, pokemonCree.getDust(), "L'Dust doit etre le meme !!!")
+                () -> assertEquals(pokemonIndex, pokemonCree.getIndex()),
+                () -> assertEquals(CP, pokemonCree.getCp()),
+                () -> assertEquals(HP, pokemonCree.getHp()),
+                () -> assertEquals(Candy, pokemonCree.getCandy()),
+                () -> assertEquals(Dust, pokemonCree.getDust())
         );
     }
 

@@ -73,6 +73,8 @@ public class IPokedexTest {
     public void testCreatePokemonInvalidParams() {
         Pokemon pokemonInvalidAllParams = pokedex.createPokemon(-1000, -1000, -1000, -1000, -1000);
 
+        assertNull(pokemonInvalidAllParams);
+
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCp());
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getHp());
         assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getDust());
@@ -85,11 +87,14 @@ public class IPokedexTest {
 
         Pokemon pokemonNegativeIndex = pokedex.createPokemon(-1, 1632, 201, 4000, 5);
 
+        assertNull(pokemonNegativeIndex);
+
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getDust());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCandy());
         assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getIv());
+
 
     }
 
@@ -97,6 +102,9 @@ public class IPokedexTest {
     void testInvalidIndxSup150ReturnNull() {
 
         Pokemon pokemonSupIndex = pokedex.createPokemon(200, 1632, 201, 4000, 5);
+
+        assertNull(pokemonSupIndex);
+
 
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCp());
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getHp());
