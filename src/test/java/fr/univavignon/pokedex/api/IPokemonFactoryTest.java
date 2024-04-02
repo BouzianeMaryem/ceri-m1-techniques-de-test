@@ -9,7 +9,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.*;
-
+import static org.junit.Assert.assertNull;
 class IPokemonFactoryTest {
     static IPokemonFactory pokemonFactory;
     static Pokemon expectedBulbizarre;

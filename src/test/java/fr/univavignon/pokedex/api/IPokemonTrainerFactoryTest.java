@@ -50,22 +50,22 @@ public class IPokemonTrainerFactoryTest {
         assertEquals(team, trainer.getTeam());
     }
     @Test
-    public void testTrainerInformationConsistency() {
-        String trainerName = "Mimi";
+    public void TrainerInformationCoherencetest() {
+        String nom = "Mimi";
         Team team = Team.VALOR;
 
-        PokemonTrainer trainer = new PokemonTrainer(trainerName, team, pokedex);
-        when(trainerFactory.createTrainer(trainerName, team, pokedexFactory)).thenReturn(trainer);
+        PokemonTrainer trainerCoherence = new PokemonTrainer(nom, team, pokedex);
+        when(trainerFactory.createTrainer(nom, team, pokedexFactory)).thenReturn(trainerCoherence);
 
-        PokemonTrainer createdTrainer = trainerFactory.createTrainer(trainerName, team, pokedexFactory);
-        assertAll("les infos doivent etre consistants!!!",
-                () -> assertEquals(trainerName, createdTrainer.getName(), "name !!!"),
-                () -> assertEquals(team, createdTrainer.getTeam(), "Team!!!"),
-                () -> assertSame(pokedex, createdTrainer.getPokedex(), "Pokedex!!!")
+        PokemonTrainer createdTrainerCoherence = trainerFactory.createTrainer(nom, team, pokedexFactory);
+        assertAll("les infos doivent etre coherentes!!!",
+                () -> assertEquals(nom, createdTrainerCoherence.getName(), "name !!!"),
+                () -> assertEquals(team, createdTrainerCoherence.getTeam(), "Team!!!"),
+                () -> assertSame(pokedex, createdTrainerCoherence.getPokedex(), "Pokedex!!!")
         );
     }
     @Test
-    public void testCreateTrainerReturnsExpectedTrainer() {
+    public void trainerAttenduCreationTest() {
         when(trainerFactory.createTrainer(anyString(), any(Team.class), any(IPokedexFactory.class))).thenReturn(expectedMerly);
         PokemonTrainer Merly = trainerFactory.createTrainer("Merly", Team.MYSTIC, pokedexFactory);
         assertSame(expectedMerly, Merly, "doit creer le trainer expected!!!");
