@@ -94,19 +94,18 @@ class IPokemonFactoryTest {
         int combatPower = 500, healthPoints = 50, evolutionCandyCost = 1000, powerUpStardustCost = 10;
         double individualValue = 0.5;
 
-        PokemonMetadata metadataAttendues = new PokemonMetadata(pokemonIndex, pokemonName, baseAttack, baseDefense, baseStamina);
-        Pokemon pokemonAttendu = new Pokemon(pokemonIndex, pokemonName, baseAttack, baseDefense, baseStamina, combatPower, healthPoints, evolutionCandyCost, powerUpStardustCost, individualValue);
-
-        when(pokemonFactory.createPokemon(eq(pokemonIndex), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(pokemonAttendu);
-
         Pokemon pokemonCree = pokemonFactory.createPokemon(pokemonIndex, combatPower, healthPoints, evolutionCandyCost, powerUpStardustCost);
 
-        assertAll("verification de la coherence des metadonnees !!!",
-                () -> assertEquals(metadataAttendues.getIndex(), pokemonCree.getIndex(), "L'indx doit etre le meme !!!"),
-                () -> assertEquals(metadataAttendues.getName(), pokemonCree.getName(), "Le nom  doit etre le meme !!!"),
-                () -> assertEquals(metadataAttendues.getAttack(), pokemonCree.getAttack(), "L'attaque doit etre le meme !!!"),
-                () -> assertEquals(metadataAttendues.getDefense(), pokemonCree.getDefense(), "La défense doit etre le meme !!!"),
-                () -> assertEquals(metadataAttendues.getStamina(), pokemonCree.getStamina(), "L'endurance doit etre le meme!!!")
+        assertAll("Vérification de la cohérence des métadonnées du Pokémon créé",
+                () -> assertEquals(pokemonIndex, pokemonCree.getIndex(), "L'index doit etre le meme !!!"),
+                () -> assertEquals(pokemonName, pokemonCree.getName(), "Le nom doit doit etre le meme !!!"),
+                () -> assertEquals(baseAttack, pokemonCree.getAttack(), "L'attaque doit  etre le meme !!!"),
+                () -> assertEquals(baseDefense, pokemonCree.getDefense(), "La défense doit etre le meme !!!"),
+                () -> assertEquals(baseStamina, pokemonCree.getStamina(), "L'endurance doit etre le meme !!!"),
+                () -> assertEquals(combatPower, pokemonCree.getCp(), "Le CP doit etre le meme !!!"),
+                () -> assertEquals(healthPoints, pokemonCree.getHp(), "Le HP doit etre le meme !!!"),
+                () -> assertEquals(evolutionCandyCost, pokemonCree.getCandy(), "Le candy doit etre le meme !!!"),
+                () -> assertEquals(individualValue, pokemonCree.getIv(), "L'IV doit etre le meme !!!")
         );
     }
 
