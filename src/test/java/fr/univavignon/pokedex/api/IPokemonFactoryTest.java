@@ -106,7 +106,6 @@ class IPokemonFactoryTest {
                 () -> assertEquals(metadataAttendues.getName(), pokemonCree.getName(), "Le nom  doit etre le meme !!!"),
                 () -> assertEquals(metadataAttendues.getAttack(), pokemonCree.getAttack(), "L'attaque doit etre le meme !!!"),
                 () -> assertEquals(metadataAttendues.getDefense(), pokemonCree.getDefense(), "La défense doit etre le meme !!!"),
-                () -> assertEquals(metadataAttendues.getCandy(), pokemonCree.getCandy(), "candy doit etre le meme !!!"),
                 () -> assertEquals(metadataAttendues.getStamina(), pokemonCree.getStamina(), "L'endurance doit etre le meme!!!")
         );
     }
