@@ -13,13 +13,14 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     private void initMetadataList() {
         PokemonMetadata bulbizarre = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
+        PokemonMetadata Coherence = new PokemonMetadata(3, "Coherence", 127, 127, 91);
         PokemonMetadata aquali = new PokemonMetadata(133, "Aquali", 186, 168, 260);
-
         for (int i = 0; i < SIZE; i++) {
             metadataList.add(null);
         }
 
         metadataList.set(0, bulbizarre);
+        metadataList.set(3, Coherence);
         metadataList.set(133, aquali);
     }
 
