@@ -60,31 +60,81 @@ public class IPokedexTest {
         assertTrue(pokemons.contains(herbizarre));
     }
 
-
+//test creation pokemon
+    //valid params
     @Test
-    public void testCreatePokemon() {
+    public void testCreatePokemonValidParams() {
         Pokemon createdPokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
         assertNotNull(createdPokemon);
     }
 
+    //invalid params :
+    @Test
+    public void testCreatePokemonInvalidParams() {
+        Pokemon pokemonInvalidAllParams = pokedex.createPokemon(-1000, -1000, -1000, -1000, -1000);
+
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getHp());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getDust());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCandy());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getIv());
+    }
+
+    @Test
+    void testInvalidNegativeIndxReturnNull() {
+
+        Pokemon pokemonNegativeIndex = pokedex.createPokemon(-1, 1632, 201, 4000, 5);
+
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getDust());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCandy());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getIv());
+
+    }
+
+    @Test
+    void testInvalidIndxSup150ReturnNull() {
+
+        Pokemon pokemonSupIndex = pokedex.createPokemon(200, 1632, 201, 4000, 5);
+
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getHp());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getDust());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCandy());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getIv());
+
+    }
+
+//verification metaDonnes
     @Test
     public void testGetPokemonMetadata() throws PokedexException {
-        PokemonMetadata metadata = pokedex.getPokemonMetadata(0);
-        assertNotNull(metadata);
-        assertEquals("Bulbizarre", metadata.getName());
+        //test meta data 1
+        PokemonMetadata metadata1 = pokedex.getPokemonMetadata(0);
+        assertNotNull(metadata1);
+        assertEquals("Bulbizarre", metadata1.getName());
+
+        //test meta data 2
+        PokemonMetadata metadata2 = pokedex.getPokemonMetadata(1);
+        assertNotNull(metadata2);
+        assertEquals("Herbizarre", metadata2.getName());
+
     }
 
     @Test
     public void testAddPokemonNull() {
+
         assertEquals(-1, pokedex.addPokemon(null));
     }
 
     @Test
-    public void testGetPokemonInvalidIndex() {
+    public void testGetPokemonInvalidNegativeIndex() {
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(-6));
+    }
+    @Test
+    public void testGetPokemonInvalidSup150Index() {
         assertThrows(PokedexException.class, () -> pokedex.getPokemon(500));
     }
-
     @Test
     public void testAddAndGetPokemon() throws PokedexException {
         int indexBulbizarre = pokedex.addPokemon(bulbizarre);
@@ -101,11 +151,16 @@ public class IPokedexTest {
     }
 
 
+//test recuperation meta data
     @Test
-    public void testLaRecuperationDesMetadonnees() throws PokedexException {
-        assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
+    public void testLaRecuperationDesMetadonneesIndxZero() throws PokedexException {
+        assertEquals(pokedex.getPokemonMetadata(0), pokemonMetadataProvider.getPokemonMetadata(0));
     }
 
+    @Test
+    public void testLaRecuperationDesMetadonneesIndxUn() throws PokedexException {
+        assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
+    }
 
     //test order
     //et aussi PokemonComparators

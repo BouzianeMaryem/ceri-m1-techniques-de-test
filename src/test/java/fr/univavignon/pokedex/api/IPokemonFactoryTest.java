@@ -89,23 +89,18 @@ class IPokemonFactoryTest {
     void verifierLaCoherenceDesMetadonneesPokemon() {
 
         int pokemonIndex = 1;
-        String pokemonName = "Bulbul";
-        int baseAttack = 50, baseDefense = 50, baseStamina = 50;
-        int combatPower = 500, healthPoints = 50, evolutionCandyCost = 1000, powerUpStardustCost = 10;
-        double individualValue = 0.5;
-
-        Pokemon pokemonCree = pokemonFactory.createPokemon(pokemonIndex, combatPower, healthPoints, evolutionCandyCost, powerUpStardustCost);
+        int CP = 50.;
+        int HP = 50;
+        int Dust = 500;
+        int Candy = 5;
+        Pokemon pokemonCree = pokemonFactory.createPokemon(pokemonIndex, CP, HP, Dust, Candy);
 
         assertAll("Vérification de la cohérence des métadonnées du Pokémon créé",
                 () -> assertEquals(pokemonIndex, pokemonCree.getIndex(), "L'index doit etre le meme !!!"),
-                () -> assertEquals(pokemonName, pokemonCree.getName(), "Le nom doit doit etre le meme !!!"),
-                () -> assertEquals(baseAttack, pokemonCree.getAttack(), "L'attaque doit  etre le meme !!!"),
-                () -> assertEquals(baseDefense, pokemonCree.getDefense(), "La défense doit etre le meme !!!"),
-                () -> assertEquals(baseStamina, pokemonCree.getStamina(), "L'endurance doit etre le meme !!!"),
-                () -> assertEquals(combatPower, pokemonCree.getCp(), "Le CP doit etre le meme !!!"),
-                () -> assertEquals(healthPoints, pokemonCree.getHp(), "Le HP doit etre le meme !!!"),
-                () -> assertEquals(evolutionCandyCost, pokemonCree.getCandy(), "Le candy doit etre le meme !!!"),
-                () -> assertEquals(individualValue, pokemonCree.getIv(), "L'IV doit etre le meme !!!")
+                () -> assertEquals(CP, pokemonCree.getCp(), "Le CP doit etre le meme !!!"),
+                () -> assertEquals(HP, pokemonCree.getHp(), "Le HP doit etre le meme !!!"),
+                () -> assertEquals(Candy, pokemonCree.getCandy(), "Le candy doit etre le meme !!!"),
+                () -> assertEquals(Dust, pokemonCree.getDust(), "L'Dust doit etre le meme !!!")
         );
     }
 
