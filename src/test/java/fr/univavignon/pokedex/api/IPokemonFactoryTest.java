@@ -10,6 +10,7 @@ class IPokemonFactoryTest {
     static IPokemonFactory pokemonFactory;
     static Pokemon expectedBulbizarre;
     static Pokemon expectedAquali;
+    static Pokemon expectedCoherence;
     @BeforeAll
     static void setUp() {
         pokemonFactory = new FactoryPokemon();
