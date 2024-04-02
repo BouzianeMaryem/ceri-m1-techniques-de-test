@@ -13,20 +13,26 @@ public class IPokemonMetadataProviderTest {
     private final PokemonMetadata bulbizarre = new PokemonMetadata(0, "Bulbizarre", 126, 126, 90);
     private final PokemonMetadata aquali = new PokemonMetadata(133, "Aquali", 186, 168, 260);
     private final IPokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
+
     @Test
     public void getPokemonMetadata_AvecValidIndexBulbizarre() throws PokedexException {
+
         PokemonMetadata fetchedBulbizarre = pokemonMetadataProvider.getPokemonMetadata(0);
+
         assertEquals(bulbizarre.getIndex(), fetchedBulbizarre.getIndex());
         assertEquals(bulbizarre.getName(), fetchedBulbizarre.getName());
         assertEquals(bulbizarre.getAttack(), fetchedBulbizarre.getAttack());
         assertEquals(bulbizarre.getDefense(), fetchedBulbizarre.getDefense());
         assertEquals(bulbizarre.getStamina(), fetchedBulbizarre.getStamina());
+
     }
 
     // Test pour un index valide avec le Pokémon Aquali
     @Test
     public void getPokemonMetadata_AvecValidIndexAquali() throws PokedexException {
+
         PokemonMetadata fetchedAquali = pokemonMetadataProvider.getPokemonMetadata(133);
+
         assertEquals(aquali.getIndex(), fetchedAquali.getIndex());
         assertEquals(aquali.getName(), fetchedAquali.getName());
         assertEquals(aquali.getAttack(), fetchedAquali.getAttack());
@@ -41,23 +47,30 @@ public class IPokemonMetadataProviderTest {
         Exception sup150Exception = assertThrows(PokedexException.class, () -> {
             pokemonMetadataProvider.getPokemonMetadata(155);
         });
+
         assertEquals("Attention: invalid index: 155!!!", sup150Exception.getMessage());
     }
+
     // inf à 0
     @Test
     public void getPokemonMetadata_invalidIndexInfZero() throws PokedexException {
+
         Exception InfZeroException = assertThrows(PokedexException.class, () -> {
             pokemonMetadataProvider.getPokemonMetadata(-6);
         });
+
         assertEquals("Attention: invalid index: -6!!!", InfZeroException.getMessage());
+
     }
 
     @Test
     public void getPokemonMetadata_invalidIndexNull() throws PokedexException {
+
         Exception IndxNullException = assertThrows(PokedexException.class, () -> {
             pokemonMetadataProvider.getPokemonMetadata(23);
         });
-        assertEquals("Attention: je ne trouve pas de metadonnees pour l'index 3!!!", IndxNullException.getMessage());
+
+        assertEquals("Attention: je ne trouve pas de metadonnees pour l'index 23!!!", IndxNullException.getMessage());
     }
 
 }
