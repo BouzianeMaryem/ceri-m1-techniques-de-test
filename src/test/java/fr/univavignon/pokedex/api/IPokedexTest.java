@@ -28,7 +28,7 @@ public class IPokedexTest {
     @BeforeEach
     public void setUp() throws PokedexException {
         pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
-        pokemonFactory = mock(IPokemonFactory.class);
+        pokemonFactory = new FactoryPokemon();
 
         pokedex = new Pokedex(pokemonMetadataProvider, pokemonFactory);
 
