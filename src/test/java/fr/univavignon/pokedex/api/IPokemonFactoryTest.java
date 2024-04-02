@@ -16,6 +16,8 @@ class IPokemonFactoryTest {
         expectedBulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 1);
         expectedAquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1);
 
+        expectedCoherence = new Pokemon(4, "Coherence", 25, 25, 25, 25, 25, 25, 25, 1);
+
 
 
     }
@@ -100,10 +102,10 @@ class IPokemonFactoryTest {
 
         Assertions.assertNotNull(pokemonCohrence);
 
-        Assertions.assertEquals(CP, pokemonCohrence.getCp());
-        Assertions.assertEquals(HP, pokemonCohrence.getHp());
-        Assertions.assertEquals(Dust, pokemonCohrence.getDust());
-        Assertions.assertEquals(Candy, pokemonCohrence.getCandy());
+        Assertions.assertEquals(expectedCoherence.getCp(), pokemonCohrence.getCp());
+        Assertions.assertEquals(expectedCoherence.getHp(), pokemonCohrence.getHp());
+        Assertions.assertEquals(expectedCoherence.getDust(), pokemonCohrence.getDust());
+        Assertions.assertEquals(expectedCoherence.getCandy(), pokemonCohrence.getCandy());
     }
 
 }
