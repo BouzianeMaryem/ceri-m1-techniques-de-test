@@ -17,7 +17,7 @@ class IPokemonFactoryTest {
         expectedBulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 1);
         expectedAquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1);
 
-        expectedCoherence = new Pokemon(4, "Coherence", 25, 25, 25, 25, 25, 25, 25, 1);
+        expectedCoherence = new Pokemon(4, "Coherence", 126, 126, 90, 613, 64, 4000, 4, 1));
 
 
 
@@ -99,7 +99,7 @@ class IPokemonFactoryTest {
         int HP = 25;
         int Dust = 25;
         int Candy = 25;
-        Pokemon pokemonCohrence = pokemonFactory.createPokemon(pokemonIndex, CP, HP, Dust, Candy);
+        Pokemon pokemonCohrence = pokemonFactory.createPokemon(4, 613, 64, 4000, 4);
 
         Assertions.assertNotNull(pokemonCohrence);
 
