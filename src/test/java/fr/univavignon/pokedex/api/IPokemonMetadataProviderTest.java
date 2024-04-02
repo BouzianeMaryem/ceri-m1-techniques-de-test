@@ -55,7 +55,7 @@ public class IPokemonMetadataProviderTest {
     @Test
     public void getPokemonMetadata_invalidIndexNull() throws PokedexException {
         Exception IndxNullException = assertThrows(PokedexException.class, () -> {
-            pokemonMetadataProvider.getPokemonMetadata(3);
+            pokemonMetadataProvider.getPokemonMetadata(23);
         });
         assertEquals("Attention: je ne trouve pas de metadonnees pour l'index 3!!!", IndxNullException.getMessage());
     }
