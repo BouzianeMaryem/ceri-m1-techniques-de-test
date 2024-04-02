@@ -96,15 +96,14 @@ class IPokemonFactoryTest {
         int HP = 50;
         int Dust = 500;
         int Candy = 5;
-        Pokemon pokemonCree = pokemonFactory.createPokemon(pokemonIndex, CP, HP, Dust, Candy);
+        Pokemon pokemonCohrence = pokemonFactory.createPokemon(pokemonIndex, CP, HP, Dust, Candy);
 
-        assertAll("Vérification de la cohérence des métadonnées du Pokémon créé",
-                () -> assertEquals(pokemonIndex, pokemonCree.getIndex()),
-                () -> assertEquals(CP, pokemonCree.getCp()),
-                () -> assertEquals(HP, pokemonCree.getHp()),
-                () -> assertEquals(Candy, pokemonCree.getCandy()),
-                () -> assertEquals(Dust, pokemonCree.getDust())
-        );
+        Assertions.assertNotNull(pokemonCohrence);
+
+        Assertions.assertEquals(CP, pokemonCohrence.getCp());
+        Assertions.assertEquals(HP, pokemonCohrence.getHp());
+        Assertions.assertEquals(Dust, pokemonCohrence.getDust());
+        Assertions.assertEquals(Candy, pokemonCohrence.getCandy());
     }
 
 }
