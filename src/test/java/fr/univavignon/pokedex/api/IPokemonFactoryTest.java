@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class BulbizarreTest {
+class IPokemonFactoryTest {
     static IPokemonFactory pokemonFactory;
     static Pokemon expectedBulbizarre;
     static Pokemon expectedAquali;
@@ -16,10 +16,7 @@ class BulbizarreTest {
 
     }
 
-    @Test
-    void ShouldReturnNull() {
-        Assertions.assertNull(pokemonFactory.createPokemon(-1, 0, 0, 0, 0));
-    }
+
     @Test
     void testCreateBulbizarre() {
         Pokemon bulbizarre = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
@@ -40,5 +37,12 @@ class BulbizarreTest {
         Assertions.assertEquals(expectedAquali.getDust(), aquali.getDust());
         Assertions.assertEquals(expectedAquali.getCandy(), aquali.getCandy());
         Assertions.assertEquals(expectedAquali.getIv(), aquali.getIv());
+    }
+    @Test
+    void testInvalidParamsReturnNull() {
+        Pokemon pokemonNegativeIndex = pokemonFactory.createPokemon(-1, 1632, 201, 4000, 5);
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
+
     }
 }

@@ -17,7 +17,7 @@
 - **JUnit/Mockito** : pour les tests unitaires.
 - **JaCoCo** : pour les rapports de couverture de tests et de code, codecove.
 
-## Implementations Doc :
+## Implementations :
 
 ### Pokedex :
 - **Classe Pokedex** :
