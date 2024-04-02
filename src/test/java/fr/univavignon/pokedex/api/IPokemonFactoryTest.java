@@ -89,7 +89,7 @@ class IPokemonFactoryTest {
     void verifierLaCoherenceDesMetadonneesPokemon() {
 
         int pokemonIndex = 1;
-        int CP = 50.;
+        int CP = 50;
         int HP = 50;
         int Dust = 500;
         int Candy = 5;
