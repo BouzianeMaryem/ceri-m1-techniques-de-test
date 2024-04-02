@@ -20,6 +20,8 @@ class IPokemonFactoryTest {
         expectedBulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 1);
         expectedAquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1);
 
+
+
     }
 
 
@@ -104,7 +106,7 @@ class IPokemonFactoryTest {
                 () -> assertEquals(metadataAttendues.getName(), pokemonCree.getName(), "Le nom  doit etre le meme !!!"),
                 () -> assertEquals(metadataAttendues.getAttack(), pokemonCree.getAttack(), "L'attaque doit etre le meme !!!"),
                 () -> assertEquals(metadataAttendues.getDefense(), pokemonCree.getDefense(), "La défense doit etre le meme !!!"),
-                () -> assertEquals(metadataAttendues.getDefense(), pokemonCree.getCandy(), "candy doit etre le meme !!!"),
+                () -> assertEquals(metadataAttendues.getCandy(), pokemonCree.getCandy(), "candy doit etre le meme !!!"),
                 () -> assertEquals(metadataAttendues.getStamina(), pokemonCree.getStamina(), "L'endurance doit etre le meme!!!")
         );
     }
