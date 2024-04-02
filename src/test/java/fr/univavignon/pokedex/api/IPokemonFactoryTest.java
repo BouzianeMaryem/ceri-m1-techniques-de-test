@@ -91,11 +91,11 @@ class IPokemonFactoryTest {
     @Test
     void verifierLaCoherenceDesMetadonneesPokemon() {
 
-        int pokemonIndex = 1;
-        int CP = 50;
-        int HP = 50;
-        int Dust = 500;
-        int Candy = 5;
+        int pokemonIndex = 4;
+        int CP = 25;
+        int HP = 25;
+        int Dust = 25;
+        int Candy = 25;
         Pokemon pokemonCohrence = pokemonFactory.createPokemon(pokemonIndex, CP, HP, Dust, Candy);
 
         Assertions.assertNotNull(pokemonCohrence);
