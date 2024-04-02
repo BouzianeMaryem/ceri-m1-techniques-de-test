@@ -40,10 +40,68 @@ class IPokemonFactoryTest {
         Assertions.assertEquals(expectedAquali.getIv(), aquali.getIv());
     }
     @Test
-    void testInvalidParamsReturnNull() {
-        Pokemon pokemonNegativeIndex = pokemonFactory.createPokemon(-1, 1632, 201, 4000, 5);
-        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
-        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
+    void testInvalidAllParamsReturnNull() {
+
+        Pokemon pokemonInvalidAllParams = pokemonFactory.createPokemon(-1000, -1000, -1000, -1000, -1000);
+
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getHp());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getDust());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getCandy());
+        assertThrows(NullPointerException.class, () -> pokemonInvalidAllParams.getIv());
 
     }
+
+    @Test
+    void testInvalidNegativeIndxReturnNull() {
+
+        Pokemon pokemonNegativeIndex = pokemonFactory.createPokemon(-1, 1632, 201, 4000, 5);
+
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getHp());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getDust());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getCandy());
+        assertThrows(NullPointerException.class, () -> pokemonNegativeIndex.getIv());
+
+    }
+
+    @Test
+    void testInvalidIndxSup150ReturnNull() {
+
+        Pokemon pokemonSupIndex = pokemonFactory.createPokemon(200, 1632, 201, 4000, 5);
+
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCp());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getHp());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getDust());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getCandy());
+        assertThrows(NullPointerException.class, () -> pokemonSupIndex.getIv());
+
+    }
+
+    @Test
+    void verifierLaCoherenceDesMetadonneesPokemon() {
+
+        int pokemonIndex = 1;
+        String pokemonName = "Bulbul";
+        int baseAttack = 50, baseDefense = 50, baseStamina = 50;
+        int combatPower = 500, healthPoints = 50, evolutionCandyCost = 1000, powerUpStardustCost = 10;
+        double individualValue = 0.5;
+
+        PokemonMetadata metadataAttendues = new PokemonMetadata(pokemonIndex, pokemonName, baseAttack, baseDefense, baseStamina);
+        Pokemon pokemonAttendu = new Pokemon(pokemonIndex, pokemonName, baseAttack, baseDefense, baseStamina, combatPower, healthPoints, evolutionCandyCost, powerUpStardustCost, individualValue);
+
+        when(pokemonFactory.createPokemon(eq(pokemonIndex), anyInt(), anyInt(), anyInt(), anyInt())).thenReturn(pokemonAttendu);
+
+        Pokemon pokemonCree = pokemonFactory.createPokemon(pokemonIndex, combatPower, healthPoints, evolutionCandyCost, powerUpStardustCost);
+
+        assertAll("verification de la coherence des metadonnees !!!",
+                () -> assertEquals(metadataAttendues.getIndex(), pokemonCree.getIndex(), "L'indx doit etre le meme !!!"),
+                () -> assertEquals(metadataAttendues.getName(), pokemonCree.getName(), "Le nom  doit etre le meme !!!"),
+                () -> assertEquals(metadataAttendues.getAttack(), pokemonCree.getAttack(), "L'attaque doit etre le meme !!!"),
+                () -> assertEquals(metadataAttendues.getDefense(), pokemonCree.getDefense(), "La défense doit etre le meme !!!"),
+                () -> assertEquals(metadataAttendues.getDefense(), pokemonCree.getCandy(), "candy doit etre le meme !!!"),
+                () -> assertEquals(metadataAttendues.getStamina(), pokemonCree.getStamina(), "L'endurance doit etre le meme!!!")
+        );
+    }
+
 }
