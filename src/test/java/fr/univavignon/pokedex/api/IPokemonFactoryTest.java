@@ -17,7 +17,7 @@ class IPokemonFactoryTest {
         expectedBulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 1);
         expectedAquali = new Pokemon(133, "Aquali", 186, 168, 260, 2729, 202, 5000, 5, 1);
 
-        expectedCoherence = new Pokemon(4, "Coherence", 126, 126, 90, 613, 64, 4000, 4, 1);
+        expectedCoherence = new Pokemon(3, "Coherence", 126, 126, 90, 613, 64, 4000, 4, 1);
 
 
 
@@ -94,13 +94,13 @@ class IPokemonFactoryTest {
     @Test
     void verifierLaCoherenceDesMetadonneesPokemon() {
 
-        Pokemon bulbizarre = pokemonFactory.createPokemon(0, 613, 64, 4000, 4);
-        Assertions.assertNotNull(bulbizarre);
-        Assertions.assertEquals(expectedBulbizarre.getCp(), bulbizarre.getCp());
-        Assertions.assertEquals(expectedBulbizarre.getHp(), bulbizarre.getHp());
-        Assertions.assertEquals(expectedBulbizarre.getDust(), bulbizarre.getDust());
-        Assertions.assertEquals(expectedBulbizarre.getCandy(), bulbizarre.getCandy());
-        Assertions.assertEquals(expectedBulbizarre.getIv(), bulbizarre.getIv());
+        Pokemon testCo = pokemonFactory.createPokemon(3, 613, 64, 4000, 4);
+        Assertions.assertNotNull(testCo);
+        Assertions.assertEquals(expectedCoherence.getCp(), testCo.getCp());
+        Assertions.assertEquals(expectedCoherence.getHp(), testCo.getHp());
+        Assertions.assertEquals(expectedCoherence.getDust(), testCo.getDust());
+        Assertions.assertEquals(expectedCoherence.getCandy(), testCo.getCandy());
+        Assertions.assertEquals(expectedCoherence.getIv(), testCo.getIv());
     }
 
 }
