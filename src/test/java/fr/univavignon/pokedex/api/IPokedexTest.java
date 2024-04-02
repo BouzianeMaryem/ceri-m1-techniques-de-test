@@ -19,8 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 public class IPokedexTest {
     private IPokedex pokedex;
+    private IPokedex pokedex2;
     private IPokemonMetadataProvider pokemonMetadataProvider;
     private IPokemonFactory pokemonFactory;
+    private IPokemonFactory pokemonFactory2;
 
     private Pokemon bulbizarre;
     private Pokemon herbizarre;
@@ -28,10 +30,10 @@ public class IPokedexTest {
     @BeforeEach
     public void setUp() throws PokedexException {
         pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
-        pokemonFactory = new FactoryPokemon();
-
+        pokemonFactory = mock(IPokemonFactory.class);
+        pokemonFactory2 = new FactoryPokemon();
         pokedex = new Pokedex(pokemonMetadataProvider, pokemonFactory);
-
+        pokedex2 = new Pokedex(pokemonMetadataProvider, pokemonFactory2);
         bulbizarre = new Pokemon(0, "Bulbizarre", 126, 126, 90, 613, 64, 4000, 4, 56);
         herbizarre = new Pokemon(1, "Herbizarre", 60, 62, 63, 80, 80, 1500, 20, 70);
 
@@ -79,7 +81,8 @@ public class IPokedexTest {
     //invalid params :
     @Test
     public void testCreatePokemonInvalidParams() {
-        Pokemon pokemonInvalidAllParams = pokedex.createPokemon(-1000, -1000, -1000, -1000, -1000);
+
+        Pokemon pokemonInvalidAllParams = pokedex2.createPokemon(-1000, -1000, -1000, -1000, -1000);
 
         Assertions.assertNull(pokemonInvalidAllParams);
 
@@ -93,7 +96,7 @@ public class IPokedexTest {
     @Test
     void testInvalidNegativeIndxReturnNull() {
 
-        Pokemon pokemonNegativeIndex = pokedex.createPokemon(-1, 1632, 201, 4000, 5);
+        Pokemon pokemonNegativeIndex = pokedex2.createPokemon(-1, 1632, 201, 4000, 5);
 
         Assertions.assertNull(pokemonNegativeIndex);
 
@@ -109,7 +112,7 @@ public class IPokedexTest {
     @Test
     void testInvalidIndxSup150ReturnNull() {
 
-        Pokemon pokemonSupIndex = pokedex.createPokemon(200, 1632, 201, 4000, 5);
+        Pokemon pokemonSupIndex = pokedex2.createPokemon(200, 1632, 201, 4000, 5);
 
         Assertions.assertNull(pokemonSupIndex);
 
