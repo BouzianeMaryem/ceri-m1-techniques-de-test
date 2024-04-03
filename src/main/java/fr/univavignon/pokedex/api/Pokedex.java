@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-// je dois ajouter comments pour generation du javadoc
+
+
 public class Pokedex implements IPokedex {
 
     private List<Pokemon> pokemonList;
@@ -20,18 +21,23 @@ public class Pokedex implements IPokedex {
 
     @Override
     public int size() {
+
         return pokemonList.size();
+
     }
 
     @Override
     public int addPokemon(Pokemon pokemon) {
-        if (pokemon != null) {
-            pokemonList.add(pokemon);
-            int indxLastElement = pokemonList.size() - 1;
-            return indxLastElement;
-        } else {
+        int indxLastElement ;
+
+        if (pokemon == null) {
             return -1;
         }
+
+        pokemonList.add(pokemon);
+        indxLastElement = pokemonList.size() - 1;
+
+        return indxLastElement;
     }
 
     @Override
@@ -45,21 +51,27 @@ public class Pokedex implements IPokedex {
 
     @Override
     public List<Pokemon> getPokemons() {
+
         return pokemonList;
     }
     @Override
     public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+
         return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
     }
 
     @Override
     public PokemonMetadata getPokemonMetadata( int indx) throws PokedexException {
+
         return metadataProvider.getPokemonMetadata(indx);
     }
     @Override
     public List<Pokemon> getPokemons(Comparator<Pokemon> comparator) {
+
         List<Pokemon> listOrdonnee = new ArrayList<>(pokemonList);
-        listOrdonnee.sort(comparator);
+
+        Collections.sort(listOrdonnee, comparator);
+
         return listOrdonnee;
     }
 

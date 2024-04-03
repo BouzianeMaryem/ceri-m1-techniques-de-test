@@ -2,7 +2,7 @@ package fr.univavignon.pokedex.api;
 
 import java.util.ArrayList;
 import java.util.List;
-// je dois ajouter comments pour generation du javadoc
+
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
     private List<PokemonMetadata> metadataList;
