@@ -7,10 +7,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 class IPokemonFactoryTest {
+
+
     static IPokemonFactory pokemonFactory;
     static Pokemon expectedBulbizarre;
     static Pokemon expectedAquali;
     static Pokemon expectedCoherence;
+
+
     @BeforeAll
     static void setUp() {
         pokemonFactory = new FactoryPokemon();

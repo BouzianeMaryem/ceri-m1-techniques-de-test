@@ -58,6 +58,7 @@ public class IPokemonTrainerFactoryTest {
         when(trainerFactory.createTrainer(nom, team, pokedexFactory)).thenReturn(trainerCoherence);
 
         PokemonTrainer createdTrainerCoherence = trainerFactory.createTrainer(nom, team, pokedexFactory);
+
         assertAll("les infos doivent etre coherentes!!!",
                 () -> assertEquals(nom, createdTrainerCoherence.getName(), "name !!!"),
                 () -> assertEquals(team, createdTrainerCoherence.getTeam(), "Team!!!"),
@@ -66,9 +67,11 @@ public class IPokemonTrainerFactoryTest {
     }
     @Test
     public void trainerAttenduCreationTest() {
+
         when(trainerFactory.createTrainer(anyString(), any(Team.class), any(IPokedexFactory.class))).thenReturn(expectedMerly);
         PokemonTrainer Merly = trainerFactory.createTrainer("Merly", Team.MYSTIC, pokedexFactory);
         assertSame(expectedMerly, Merly, "doit creer le trainer expected!!!");
+
     }
 
 

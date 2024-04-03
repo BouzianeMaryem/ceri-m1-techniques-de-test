@@ -30,7 +30,7 @@ public class IPokemonMetadataProviderTest {
 
     }
 
-    // Test pour un index valide avec le Pokémon Aquali
+    // Test pour un index valide avec le Pokemon Aquali
     @Test
     public void getPokemonMetadata_AvecValidIndexAquali() throws PokedexException {
 
@@ -43,7 +43,7 @@ public class IPokemonMetadataProviderTest {
         assertEquals(aquali.getStamina(), fetchedAquali.getStamina());
     }
 
-    //pour que je teste un index Invalid
+    //pour que je teste un index Invalide
     // sup à 150
     @Test
     public void getPokemonMetadata_invalidIndexSup150() throws PokedexException {
