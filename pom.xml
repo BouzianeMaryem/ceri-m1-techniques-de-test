@@ -160,7 +160,7 @@
                         <configuration>
                             <outputDir>badges</outputDir>
                             <inputFiles>
-                                <inputFile>target/checkstyle-badge.xml</inputFile>
+                                <inputFile>target/checkstyle-result.xml</inputFile>
                             </inputFiles>
                         </configuration>
                     </execution>
