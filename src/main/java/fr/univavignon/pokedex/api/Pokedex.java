@@ -13,12 +13,11 @@ public class Pokedex implements IPokedex {
     private IPokemonMetadataProvider metadataProvider;
     private IPokemonFactory pokemonFactory;
 
-    public Pokedex(IPokemonMetadataProvider metadataProvider, IPokemonFactory pokemonFactory) {
-
-        this.metadataProvider = metadataProvider;
-        this.pokemonFactory = pokemonFactory;
+    public Pokedex(final IPokemonMetadataProvider vmetadataProvider,
+                   final IPokemonFactory vpokemonFactory) {
+        this.metadataProvider = vmetadataProvider;
+        this.pokemonFactory = vpokemonFactory;
         this.pokemonList = new ArrayList<>();
-
     }
 
     @Override
@@ -29,21 +28,18 @@ public class Pokedex implements IPokedex {
     }
 
     @Override
-    public int addPokemon(Pokemon pokemon) {
-        int indxLastElement ;
-
+    public int addPokemon(final Pokemon pokemon) {
+        int indxLastElement;
         if (pokemon == null) {
             return -1;
         }
-
         pokemonList.add(pokemon);
         indxLastElement = pokemonList.size() - 1;
-
         return indxLastElement;
     }
 
     @Override
-    public Pokemon getPokemon(int id) throws PokedexException {
+    public Pokemon getPokemon(final int id) throws PokedexException {
 
         int lowExcepted = 0;
         int highExcepted = pokemonList.size();
@@ -61,18 +57,23 @@ public class Pokedex implements IPokedex {
         return pokemonList;
     }
     @Override
-    public Pokemon createPokemon(int index, int cp, int hp, int dust, int candy) {
+    public Pokemon createPokemon(final int index,
+                                 final int cp, final int hp,
+                                 final  int dust,
+                                 final int candy) {
 
-        return pokemonFactory.createPokemon(index, cp, hp, dust, candy);
+        return pokemonFactory.createPokemon(index,
+                cp, hp, dust, candy);
     }
 
     @Override
-    public PokemonMetadata getPokemonMetadata( int indx) throws PokedexException {
+    public PokemonMetadata getPokemonMetadata(final int indx)
+            throws PokedexException {
 
         return metadataProvider.getPokemonMetadata(indx);
     }
     @Override
-    public List<Pokemon> getPokemons(Comparator<Pokemon> comparator) {
+    public List<Pokemon> getPokemons(final Comparator<Pokemon> comparator) {
 
         List<Pokemon> listOrdonnee = new ArrayList<>(pokemonList);
 
@@ -80,7 +81,6 @@ public class Pokedex implements IPokedex {
 
         return listOrdonnee;
     }
-
 
 
 }
