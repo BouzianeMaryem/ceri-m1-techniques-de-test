@@ -22,6 +22,10 @@ jobs:
           command: |
             bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
 
+      - run:
+          name: Checkstyle Code Analysis
+          command: mvn checkstyle:check || true
+
 workflows:
   version: 2
   build:

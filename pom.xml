@@ -55,6 +55,18 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- checkstyle Inline  -->
+        <dependency>
+            <groupId>com.puppycrawl.tools</groupId>
+            <artifactId>checkstyle</artifactId>
+            <version>10.14.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.bordertech.buildtools</groupId>
+            <artifactId>badger</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -112,6 +124,47 @@
                         <include>**/*Test.java</include>
                     </includes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.1.2</version>
+                <executions>
+                    <execution>
+                        <id>check-style</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <configLocation>checkstyle_config/checkstyle_google.xml</configLocation>
+                            <encoding>UTF-8</encoding>
+                            <failsOnError>true</failsOnError>
+                            <failOnViolation>true</failOnViolation>
+                            <violationSeverity>error</violationSeverity>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Plugin badges -->
+            <plugin>
+                <groupId>com.github.bordertech.buildtools</groupId>
+                <artifactId>badger</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>badges</goal>
+                        </goals>
+                        <configuration>
+                            <outputDir>badges</outputDir>
+                            <inputFiles>
+                                <inputFile>target/checkstyle-badge.xml</inputFile>
+                            </inputFiles>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
