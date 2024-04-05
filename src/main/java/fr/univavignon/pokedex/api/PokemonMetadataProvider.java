@@ -70,13 +70,14 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
             throws PokedexException {
         if (indx < firstIndx || indx > lastIndx) {
             throw new PokedexException("Attention: " +
-                    "index invalide : " + indx + "!!!");
+                    "invalid index: " + indx + "!!!");
         }
 
         PokemonMetadata metadata = metadataList.get(indx);
         if (metadata == null) {
             throw new PokedexException("Attention: je ne trouve " +
                     "pas de metadonnees pour l'index " + indx + "!!!");
+
         }
         return metadata;
     }
