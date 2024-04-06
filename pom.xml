@@ -66,6 +66,12 @@
             <artifactId>badger</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- dependency pour RocketPokemonFactory  -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.0</version>
+        </dependency>
 
     </dependencies>
 

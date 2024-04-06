@@ -41,29 +41,8 @@
 - **JavaDoc** :
   <br>
   JavaDoc génère automatiquement de la documentation pour notre code. En cliquant sur le **badge JavaDoc**, vous serez **redirigé vers le lien en ligne** de la documentation générée automatiquement pour notre implémentation.
+## Implementations et documentation :
 
-
-
+- vous pouvez consulter la java donc en cliquant sur le badge java doc ou par le lien suivant:
+- https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/
   
-## Implementations :
-
-- **Classe Pokedex** :
-  <br>
-Implémente l'interface IPokedex, servant de répertoire pour stocker et interagir avec les informations des Pokémon. Elle utilise des listes pour gérer les données et les métadonnées des Pokémon.
-
-- **Classe PokedexFactory** :
-  <br>
-Implémente IPokedexFactory, fournissant une méthode de fabrique pour créer des instances de Pokedex. Cette approche modulaire facilite l'extension et la maintenance du système.
-
-- **Classe FactoryPokemon** :
-  <br>
-Implémente IPokemonFactory, chargée de la création des objets Pokemon avec leurs caractéristiques de base et des attributs calculés comme les points de combat (CP) et les points de vie (HP).
-
-- **ClassePokemonMetadataProvider** :
-  <br>
-Implémente IPokemonMetadataProvider, s'occupant de la fourniture des métadonnées pour les Pokémon. Les métadonnées incluent des informations essentielles telles que le nom, l'attaque, la défense et l'endurance des Pokémon.
-
-- **ClassePokemonTrainerFactory** :
-  <br>
-Implémente IPokemonTrainerFactory, permettant de créer des instances de PokemonTrainer. Cette classe utilise les fabricants IPokedexFactory, IPokemonMetadataProvider et IPokemonFactory pour assembler un PokemonTrainer complet avec son propre Pokedex.
-
