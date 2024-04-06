@@ -1,5 +1,5 @@
 # Techniques de Test - M1 IA Alt
-___
+
 ## Informations :
 
 - **Nom** : Bouziane
@@ -18,7 +18,6 @@ ___
 ![Checkstyle result](badges/checkstyle-result.svg)
 - **JavaDoc** :
 [![JavaDoc](https://img.shields.io/badge/JavaDoc-Online-green)](https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/)
-___
 ___
 ## technologies :
 - **Maven** :
@@ -48,7 +47,6 @@ ___
 
 
 
-___
 ___
 ## Implementations :
 
