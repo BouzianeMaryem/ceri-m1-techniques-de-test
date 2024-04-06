@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: fr.univavignon.pokedex.api.IPokedexFactoryTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 2.979 s <<< FAILURE! - in fr.univavignon.pokedex.api.IPokedexFactoryTest
-testGetPokemonInvalidIndexNegatifException  Time elapsed: 2.771 s  <<< ERROR!
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 2.939 s <<< FAILURE! - in fr.univavignon.pokedex.api.IPokedexFactoryTest
+testGetPokemonInvalidIndexNegatifException  Time elapsed: 2.753 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class fr.univavignon.pokedex.api.PokedexFactory.
@@ -34,7 +34,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
  - Classes that are part of the Android distribution
 Caused by: java.lang.IllegalArgumentException: Java 19 (63) is not supported by the current version of Byte Buddy which officially supports Java 18 (62) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 
-testCreatePokedex  Time elapsed: 0.046 s  <<< ERROR!
+testCreatePokedex  Time elapsed: 0.031 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class fr.univavignon.pokedex.api.PokedexFactory.
@@ -66,7 +66,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
  - Classes that are part of the Android distribution
 Caused by: java.lang.IllegalArgumentException: Java 19 (63) is not supported by the current version of Byte Buddy which officially supports Java 18 (62) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 
-testGetPokemonInvalidIndexSup150Exception  Time elapsed: 0.041 s  <<< ERROR!
+testGetPokemonInvalidIndexSup150Exception  Time elapsed: 0.057 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class fr.univavignon.pokedex.api.PokedexFactory.
@@ -98,7 +98,7 @@ This problem should never occur for javac-compiled classes. This problem has bee
  - Classes that are part of the Android distribution
 Caused by: java.lang.IllegalArgumentException: Java 19 (63) is not supported by the current version of Byte Buddy which officially supports Java 18 (62) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
 
-testPokedexSizeApresAjoutPokemons  Time elapsed: 0.068 s  <<< ERROR!
+testPokedexSizeApresAjoutPokemons  Time elapsed: 0.04 s  <<< ERROR!
 org.mockito.exceptions.base.MockitoException: 
 
 Mockito cannot mock this class: class fr.univavignon.pokedex.api.PokedexFactory.
