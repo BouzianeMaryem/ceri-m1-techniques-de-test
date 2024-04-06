@@ -1,3 +1,4 @@
+/*
 package fr.univavignon.pokedex.api;
 
 import java.util.HashMap;
@@ -59,3 +60,4 @@ public class RocketPokemonFactory implements IPokemonFactory {
 	}
 
 }
+*/

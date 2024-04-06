@@ -1,3 +1,4 @@
+/*
 package fr.univavignon.pokedex.api;
 
 import org.junit.jupiter.api.Assertions;
@@ -48,7 +49,7 @@ class RocketPokemonFactoryTest {
         Assertions.assertEquals(expectedAquali.getCandy(), aquali.getCandy());
         Assertions.assertEquals(expectedAquali.getIv(), aquali.getIv());
     }
-/*
+
     @Test
     void testInvalidAllParamsReturnNullRocket() {
 
@@ -96,7 +97,7 @@ class RocketPokemonFactoryTest {
 
     }
 
-*/
+
 
     @Test
     void verifierLaCoherenceDesMetadonneesPokemonRocket() {
@@ -111,4 +112,7 @@ class RocketPokemonFactoryTest {
         Assertions.assertEquals(expectedCoherence.getCandy(), testCo.getCandy());
         Assertions.assertEquals(expectedCoherence.getIv(), testCo.getIv());
     }
+
 }
+
+ */
