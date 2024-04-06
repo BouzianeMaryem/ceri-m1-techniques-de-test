@@ -48,7 +48,6 @@ class IPokemonFactoryTest {
         Assertions.assertEquals(expectedAquali.getCandy(), aquali.getCandy());
         Assertions.assertEquals(expectedAquali.getIv(), aquali.getIv());
     }
-    /*
     @Test
     void testInvalidAllParamsReturnNull() {
 
@@ -94,7 +93,7 @@ class IPokemonFactoryTest {
         assertThrows(NullPointerException.class, () -> pokemonSupIndex.getIv());
 
     }
-*/
+
     @Test
     void verifierLaCoherenceDesMetadonneesPokemon() {
 
