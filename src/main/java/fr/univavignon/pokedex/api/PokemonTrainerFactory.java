@@ -1,28 +1,28 @@
 package fr.univavignon.pokedex.api;
 
 /**
- * Classe factory pour créer des instances de {@link PokemonTrainer}.
- * Utilise les Pokémons factory les métadonnées fournisseurs
- * pour créer les dresseurs et leurs pokédex associés.
+ * Factory class for creating {@link PokemonTrainer} instances.
+ * Uses Pokemon factories and metadata providers
+ * to create trainers and their associated Pokédexes.
  */
 public class PokemonTrainerFactory implements IPokemonTrainerFactory {
 
     /**
-     * Fournisseur de métadonnées de Pokémon.
+     * Pokemon metadata provider.
      */
     private final IPokemonMetadataProvider metadataProvider;
 
     /**
-     * Factory pour créer les Pokémons.
+     * Factory for creating Pokemons.
      */
     private final IPokemonFactory pokemonFactory;
 
     /**
-     * Construit un nouveau PokemonTrainerFactory avec
-     * les métadonnées fournisseurs et le Factory de Pokemon.
+     * Constructs a new PokemonTrainerFactory with
+     * the metadata provider and the Pokemon factory.
      *
-     * @param metadataProvider Le fournisseur de métadonnées de Pokémon.
-     * @param pokemonFactory La factory pour créer les Pokémons.
+     * @param metadataProvider The Pokemon metadata provider.
+     * @param pokemonFactory The factory for creating Pokemons.
      */
     public PokemonTrainerFactory(
             final IPokemonMetadataProvider metadataProvider,
@@ -32,13 +32,13 @@ public class PokemonTrainerFactory implements IPokemonTrainerFactory {
     }
 
     /**
-     * Crée un nouveau dresseur Pokémon avec un nom,
-     * une équipe et une factory de pokédex spécifiés.
+     * Creates a new Pokemon trainer with a specified name,
+     * team, and Pokédex factory.
      *
-     * @param name Le nom du dresseur.
-     * @param team L'équipe du dresseur.
-     * @param pokedexFactory La factory pour créer un pokédex.
-     * @return un nouveau {@link PokemonTrainer}.
+     * @param name The trainer's name.
+     * @param team The trainer's team.
+     * @param pokedexFactory The factory for creating a Pokédex.
+     * @return a new {@link PokemonTrainer}.
      */
     @Override
     public PokemonTrainer createTrainer(

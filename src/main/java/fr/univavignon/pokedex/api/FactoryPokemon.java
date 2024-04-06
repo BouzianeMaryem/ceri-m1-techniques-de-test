@@ -1,19 +1,19 @@
 package fr.univavignon.pokedex.api;
 
 /**
- * Factory pour créer des objets Pokemon.
- * Cette classe implémente IPokemonFactory et crée des Pokemon.
+ * Factory to create Pokemon objects.
+ * Implements IPokemonFactory to produce Pokemon.
  */
 public final class FactoryPokemon implements IPokemonFactory {
 
     /**
-     * Crée un nouveau Pokémon avec les paramètres spécifiés.
-     * @param index L'index du Pokémon dans le Pokédex.
-     * @param cp Les points de combat du Pokémon.
-     * @param hp Les points de vie du Pokémon.
-     * @param dust La poussière d'étoile pour améliorer le Pokémon.
-     * @param candy Les bonbons pour améliorer le Pokémon.
-     * @return Un nouvel objet Pokémon, ou null si une erreur est survenue.
+     * Creates a new Pokemon with specified parameters.
+     * @param index Pokemon's index in the Pokedex.
+     * @param cp Pokemon's combat points.
+     * @param hp Pokemon's health points.
+     * @param dust Stardust required for upgrading.
+     * @param candy Candies needed for evolving.
+     * @return A new Pokemon object, or null if an error occurs.
      */
     @Override
     public Pokemon createPokemon(final int index, final int cp, final int hp,

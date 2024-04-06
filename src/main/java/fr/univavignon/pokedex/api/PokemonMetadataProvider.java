@@ -4,29 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fournisseur de metadonnees Pokemon.
+ * Pokemon metadata provider.
  *
- * Cette classe fournit les metadonnees des Pokemons
- * a partir de leur index.
+ * This class provides metadata for Pokemons
+ * based on their index.
  */
 public class PokemonMetadataProvider implements IPokemonMetadataProvider {
 
-    /** Liste des metadonnees des Pokemons. */
+    /** List of Pokemon metadata. */
     private List<PokemonMetadata> metadataList;
 
-    /** Taille maximale de la liste des metadonnees. */
+    /** Maximum size of the metadata list. */
     private static final int SIZE = 151;
 
-    /** Index du premier Pokemon dans la liste. */
+    /** Index of the first Pokemon in the list. */
     private static final int FIRST_INDX = 0;
 
-    /** Index du dernier Pokemon dans la liste. */
+    /** Index of the last Pokemon in the list. */
     private static final int LAST_INDX = 150;
 
     /**
-     * Initialise la liste des metadonnees des Pokemons.
+     * Initializes the list of Pokemon metadata.
      *
-     * Les metadonnees de certains Pokemons specifiques.
+     * The metadata for some specific Pokemons.
      */
     private void initMetadataList() {
         PokemonMetadata bulbizarre = new
@@ -47,21 +47,21 @@ public class PokemonMetadataProvider implements IPokemonMetadataProvider {
     }
 
     /**
-     * Constructeur par defaut.
+     * Default constructor.
      *
-     * Initialise le fournisseur de metadonnees des Pokemons.
+     * Initializes the Pokemon metadata provider.
      */
     public PokemonMetadataProvider() {
         initMetadataList();
     }
 
     /**
-     * Obtient les metadonnees du Pokemon correspondant a l'index donne.
+     * Fetches Pokemon metadata by index.
      *
-     * @param indx L'index du Pokemon.
-     * @return Les metadonnees du Pokemon.
-     * @throws PokedexException Si l'index depasse les
-     * limites de la liste ou si aucune metadonnee n'est trouvee.
+     * @param indx The index of the Pokemon.
+     * @return The metadata of the Pokemon.
+     * @throws PokedexException If the index is out of the list's
+     * bounds or if no metadata is found.
      */
     @Override
     public PokemonMetadata getPokemonMetadata(final int indx)

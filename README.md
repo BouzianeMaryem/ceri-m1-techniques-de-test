@@ -15,6 +15,8 @@
 
 - **checkstyle** : 
 ![Checkstyle result](badges/checkstyle-result.svg)
+- **JavaDoc** :
+[![JavaDoc](https://img.shields.io/badge/JavaDoc-Online-green)](https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/)
 
 ## technologies :
 - **Maven** : Maven pour la gestion des dépendances .
