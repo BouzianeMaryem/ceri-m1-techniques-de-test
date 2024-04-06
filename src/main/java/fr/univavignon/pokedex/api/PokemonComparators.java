@@ -7,31 +7,31 @@ import java.util.Comparator;
  */
 public enum PokemonComparators implements Comparator<Pokemon> {
 
-	/** Comparator using Pokemon name. **/
-	NAME(Comparator.comparing(Pokemon::getName)),
+    /** Comparator using Pokemon name. **/
+    NAME(Comparator.comparing(Pokemon::getName)),
 
-	/** Comparator using Pokemon index. **/
-	INDEX(Comparator.comparing(Pokemon::getIndex)),
+    /** Comparator using Pokemon index. **/
+    INDEX(Comparator.comparing(Pokemon::getIndex)),
 
-	/** Comparator using Pokemon combat point. **/
-	CP(Comparator.comparing(Pokemon::getCp));
+    /** Comparator using Pokemon combat point. **/
+    CP(Comparator.comparing(Pokemon::getCp));
 
-	/** Delegate comparator instance. **/
-	private final Comparator<Pokemon> delegate;
+    /** Delegate comparator instance. **/
+    private final Comparator<Pokemon> delegate;
 
-	/**
-	 * Default constructor.
-	 *
-	 * @param delegate Delegate comparator instance.
-	 */
-	PokemonComparators(final Comparator<Pokemon> delegate) {
-		this.delegate = delegate;
-	}
+    /**
+     * Default constructor.
+     *
+     * @param delegate Delegate comparator instance.
+     */
+    PokemonComparators(final Comparator<Pokemon> delegate) {
+        this.delegate = delegate;
+    }
 
-	/** {@inheritDoc} **/
-	@Override
-	public int compare(final Pokemon first, final Pokemon second) {
-		return delegate.compare(first, second);
-	}
+    /** {@inheritDoc} **/
+    @Override
+    public int compare(final Pokemon first, final Pokemon second) {
+        return delegate.compare(first, second);
+    }
 
 }

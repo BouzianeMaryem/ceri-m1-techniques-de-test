@@ -7,91 +7,91 @@ package fr.univavignon.pokedex.api;
  */
 public final class Pokemon extends PokemonMetadata {
 
-	/** Combat Point of the pokemon. **/
-	private final int cp;
+    /** Combat Point of the pokemon. **/
+    private final int cp;
 
-	/** HP of the pokemon. **/
-	private final int hp;
+    /** HP of the pokemon. **/
+    private final int hp;
 
-	/** Required dust for upgrading this pokemon. **/
-	private final int dust;
+    /** Required dust for upgrading this pokemon. **/
+    private final int dust;
 
-	/** Required candy for upgrading this pokemon. **/
-	private final int candy;
+    /** Required candy for upgrading this pokemon. **/
+    private final int candy;
 
-	/** IV perfection percentage. **/
-	private final double iv;
+    /** IV perfection percentage. **/
+    private final double iv;
 
-	/**
-	 * Default constructor.
-	 * @param index Pokemon index.
-	 * @param name Pokemon name.
-	 * @param attack Attack level.
-	 * @param defense Defense level.
-	 * @param stamina Stamina level.
-	 * @param cp Pokemon cp.
-	 * @param hp Pokemon hp.
-	 * @param dust Required dust for upgrading this pokemon.
-	 * @param candy Required candy for upgrading this pokemon.
-	 * @param iv IV perfection percentage.
-	 */
-	public Pokemon(
-			final int index,
-			final String name,
-			final int attack,
-			final int defense,
-			final int stamina,
-			final int cp,
-			final int hp,
-			final int dust,
-			final int candy,
-			final double iv) {
-		super(index, name, attack, defense, stamina);
-		this.cp = cp;
-		this.hp = hp;
-		this.dust = dust;
-		this.candy = candy;
-		this.iv = iv;
-	}
+    /**
+     * Default constructor.
+     * @param index Pokemon index.
+     * @param name Pokemon name.
+     * @param attack Attack level.
+     * @param defense Defense level.
+     * @param stamina Stamina level.
+     * @param cp Pokemon cp.
+     * @param hp Pokemon hp.
+     * @param dust Required dust for upgrading this pokemon.
+     * @param candy Required candy for upgrading this pokemon.
+     * @param iv IV perfection percentage.
+     */
+    public Pokemon(
+            final int index,
+            final String name,
+            final int attack,
+            final int defense,
+            final int stamina,
+            final int cp,
+            final int hp,
+            final int dust,
+            final int candy,
+            final double iv) {
+        super(index, name, attack, defense, stamina);
+        this.cp = cp;
+        this.hp = hp;
+        this.dust = dust;
+        this.candy = candy;
+        this.iv = iv;
+    }
 
-	/**
-	 * Combat Point getter.
-	 * @return the cp.
-	 */
-	public int getCp() {
-		return cp;
-	}
+    /**
+     * Combat Point getter.
+     * @return the cp.
+     */
+    public int getCp() {
+        return cp;
+    }
 
-	/**
-	 * HP getter.
-	 * @return the hp.
-	 */
-	public int getHp() {
-		return hp;
-	}
+    /**
+     * HP getter.
+     * @return the hp.
+     */
+    public int getHp() {
+        return hp;
+    }
 
-	/**
-	 * Dust getter.
-	 * @return the dust.
-	 */
-	public int getDust() {
-		return dust;
-	}
+    /**
+     * Dust getter.
+     * @return the dust.
+     */
+    public int getDust() {
+        return dust;
+    }
 
-	/**
-	 * Candy getter.
-	 * @return the candy.
-	 */
-	public int getCandy() {
-		return candy;
-	}
+    /**
+     * Candy getter.
+     * @return the candy.
+     */
+    public int getCandy() {
+        return candy;
+    }
 
-	/**
-	 * IV getter.
-	 * @return the iv.
-	 */
-	public double getIv() {
-		return iv;
-	}
+    /**
+     * IV getter.
+     * @return the iv.
+     */
+    public double getIv() {
+        return iv;
+    }
 
 }
