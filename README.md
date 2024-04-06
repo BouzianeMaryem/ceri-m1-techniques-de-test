@@ -6,7 +6,6 @@
 - **Prénom** : Maryem
 - **Groupe** : M1 IA Alt
 
-___
 ## Badges :
 - **CircleCI** : 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/BouzianeMaryem/ceri-m1-techniques-de-test/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/BouzianeMaryem/ceri-m1-techniques-de-test/tree/master)
@@ -18,7 +17,6 @@ ___
 ![Checkstyle result](badges/checkstyle-result.svg)
 - **JavaDoc** :
 [![JavaDoc](https://img.shields.io/badge/JavaDoc-Online-green)](https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/)
-___
 ## technologies :
 - **Maven** :
   <br>
@@ -46,8 +44,7 @@ ___
 
 
 
-
-___
+  
 ## Implementations :
 
 - **Classe Pokedex** :
