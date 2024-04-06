@@ -56,7 +56,7 @@ public class RocketPokemonFactory implements IPokemonFactory {
 			stamina = RocketPokemonFactory.generateRandomStat();
 			iv = 1;
 		}
-		return new Pokemon(index, name, attack, defense, stamina, cp, hp, dust, candy, iv);
+		return new Pokemon(index, name, attack, defense,stamina, cp, hp, dust, candy, iv);
 	}
 
 }
