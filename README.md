@@ -26,6 +26,8 @@
 ## Rapport TP6 :
 
 - vous pouvez regarder le rapport du TP6 dans le lien suivant :
+- [Voir le Rapport TP6](https://github.com/BouzianeMaryem/ceri-m1-techniques-de-test/blob/master/Rapport_TP6.pdf)
+
 
 
 
