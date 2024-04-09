@@ -51,23 +51,23 @@ public class IPokedexTest {
 
     @Test
     public void testSize() {
-        assertEquals(0, pokedex.size());
+        assertEquals(0, pokedex2.size());
 
-        pokedex.addPokemon(bulbizarre);
-        assertEquals(1, pokedex.size());
+        pokedex2.addPokemon(bulbizarre);
+        assertEquals(1, pokedex2.size());
 
-        pokedex.addPokemon(herbizarre);
-        assertEquals(2, pokedex.size());
+        pokedex2.addPokemon(herbizarre);
+        assertEquals(2, pokedex2.size());
     }
     @Test
     public void testGetPokemonMetadataWithException() throws PokedexException {
-        assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
+        assertEquals(pokedex2.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
     }
     @Test
     public void testGetPokemons() {
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(herbizarre);
-        List<Pokemon> pokemons = pokedex.getPokemons();
+        pokedex2.addPokemon(bulbizarre);
+        pokedex2.addPokemon(herbizarre);
+        List<Pokemon> pokemons = pokedex2.getPokemons();
         assertEquals(2, pokemons.size());
         assertTrue(pokemons.contains(bulbizarre));
         assertTrue(pokemons.contains(herbizarre));
@@ -77,7 +77,7 @@ public class IPokedexTest {
     //valid params
     @Test
     public void testCreatePokemonValidParams() {
-        Pokemon createdPokemon = pokedex.createPokemon(0, 613, 64, 4000, 4);
+        Pokemon createdPokemon = pokedex2.createPokemon(0, 613, 64, 4000, 4);
         assertNotNull(createdPokemon);
     }
 
@@ -132,12 +132,12 @@ public class IPokedexTest {
     @Test
     public void testGetPokemonMetadata() throws PokedexException {
         //test meta data 1
-        PokemonMetadata metadata1 = pokedex.getPokemonMetadata(0);
+        PokemonMetadata metadata1 = pokedex2.getPokemonMetadata(0);
         assertNotNull(metadata1);
         assertEquals("Bulbizarre", metadata1.getName());
 
         //test meta data 2
-        PokemonMetadata metadata2 = pokedex.getPokemonMetadata(1);
+        PokemonMetadata metadata2 = pokedex2.getPokemonMetadata(1);
         assertNotNull(metadata2);
         assertEquals("Herbizarre", metadata2.getName());
 
@@ -146,29 +146,29 @@ public class IPokedexTest {
     @Test
     public void testAddPokemonNull() {
 
-        assertEquals(-1, pokedex.addPokemon(null));
+        assertEquals(-1, pokedex2.addPokemon(null));
     }
 
     @Test
     public void testGetPokemonInvalidNegativeIndex() {
-        assertThrows(PokedexException.class, () -> pokedex.getPokemon(-6));
+        assertThrows(PokedexException.class, () -> pokedex2.getPokemon(-6));
     }
     @Test
     public void testGetPokemonInvalidSup150Index() {
-        assertThrows(PokedexException.class, () -> pokedex.getPokemon(500));
+        assertThrows(PokedexException.class, () -> pokedex2.getPokemon(500));
     }
     @Test
     public void testAddAndGetPokemon() throws PokedexException {
-        int indexBulbizarre = pokedex.addPokemon(bulbizarre);
+        int indexBulbizarre = pokedex2.addPokemon(bulbizarre);
         assertEquals(0, indexBulbizarre);
 
-        Pokemon fetchedBulbizarre = pokedex.getPokemon(indexBulbizarre);
+        Pokemon fetchedBulbizarre = pokedex2.getPokemon(indexBulbizarre);
         assertEquals(bulbizarre.getName(), fetchedBulbizarre.getName());
 
-        int indexHerbizarre = pokedex.addPokemon(herbizarre);
+        int indexHerbizarre = pokedex2.addPokemon(herbizarre);
         assertEquals(1, indexHerbizarre);
 
-        Pokemon fetchedHerbizarre = pokedex.getPokemon(indexHerbizarre);
+        Pokemon fetchedHerbizarre = pokedex2.getPokemon(indexHerbizarre);
         assertEquals(herbizarre.getName(), fetchedHerbizarre.getName());
     }
 
@@ -176,12 +176,12 @@ public class IPokedexTest {
 //test recuperation meta data
     @Test
     public void testLaRecuperationDesMetadonneesIndxZero() throws PokedexException {
-        assertEquals(pokedex.getPokemonMetadata(0), pokemonMetadataProvider.getPokemonMetadata(0));
+        assertEquals(pokedex2.getPokemonMetadata(0), pokemonMetadataProvider.getPokemonMetadata(0));
     }
 
     @Test
     public void testLaRecuperationDesMetadonneesIndxUn() throws PokedexException {
-        assertEquals(pokedex.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
+        assertEquals(pokedex2.getPokemonMetadata(1), pokemonMetadataProvider.getPokemonMetadata(1));
     }
 
     //test order
@@ -190,10 +190,10 @@ public class IPokedexTest {
     //test par nom
     @Test
     public void testTriPokemonsParNom() {
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(herbizarre);
+        pokedex2.addPokemon(bulbizarre);
+        pokedex2.addPokemon(herbizarre);
 
-        List<Pokemon> pokemonsTriesNom = pokedex.getPokemons(PokemonComparators.NAME);
+        List<Pokemon> pokemonsTriesNom = pokedex2.getPokemons(PokemonComparators.NAME);
 
         assertEquals("Bulbizarre", pokemonsTriesNom.get(0).getName());
         assertEquals("Herbizarre", pokemonsTriesNom.get(1).getName());
@@ -202,10 +202,10 @@ public class IPokedexTest {
     //test par Index
     @Test
     public void testTriPokemonsParIndex() {
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(herbizarre);
+        pokedex2.addPokemon(bulbizarre);
+        pokedex2.addPokemon(herbizarre);
 
-        List<Pokemon> pokemonsTriesIndex = pokedex.getPokemons(PokemonComparators.INDEX);
+        List<Pokemon> pokemonsTriesIndex = pokedex2.getPokemons(PokemonComparators.INDEX);
 
         assertEquals("Bulbizarre", pokemonsTriesIndex.get(0).getName());
         assertEquals("Herbizarre", pokemonsTriesIndex.get(1).getName());
@@ -214,10 +214,10 @@ public class IPokedexTest {
     //test par CP
     @Test
     public void testTriPokemonsParCp() {
-        pokedex.addPokemon(bulbizarre);
-        pokedex.addPokemon(herbizarre);
+        pokedex2.addPokemon(bulbizarre);
+        pokedex2.addPokemon(herbizarre);
 
-        List<Pokemon> pokemonsTriesCp = pokedex.getPokemons(PokemonComparators.CP);
+        List<Pokemon> pokemonsTriesCp = pokedex2.getPokemons(PokemonComparators.CP);
 
         assertEquals("Herbizarre", pokemonsTriesCp.get(0).getName());
         assertEquals("Bulbizarre", pokemonsTriesCp.get(1).getName());
