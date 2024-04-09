@@ -17,6 +17,18 @@
   ![Checkstyle result](badges/checkstyle-result.svg)
 - **JavaDoc** :
   [![JavaDoc](https://img.shields.io/badge/JavaDoc-Online-green)](https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/)
+
+## Implementations et documentation :
+
+- vous pouvez consulter la Java DOC en cliquant sur le badge java doc ou par le lien suivant:
+- https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/
+
+## Rapport TP6 :
+
+- vous pouvez regarder le rapport du TP6 dans le lien suivant :
+
+
+
 ## technologies :
 - **Maven** :
   <br>
@@ -41,8 +53,3 @@
 - **JavaDoc** :
   <br>
   JavaDoc génère automatiquement de la documentation pour notre code. En cliquant sur le **badge JavaDoc**, vous serez **redirigé vers le lien en ligne** de la documentation générée automatiquement pour notre implémentation.
-## Implementations et documentation :
-
-- vous pouvez consulter la Java DOC en cliquant sur le badge java doc ou par le lien suivant:
-- https://bouzianemaryem.github.io/ceri-m1-techniques-de-test/
-  
